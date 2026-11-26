@@ -16,8 +16,8 @@
 .media b{display:block;font:700 16.5px var(--body);color:var(--blue)}.media span{display:block;font-size:13.5px;color:var(--grey);margin-top:4px}
 .media label:has(input:checked){background:var(--blue);border-color:var(--blue)}.media label:has(input:checked) b{color:#fff}.media label:has(input:checked) span{color:#D5DAF0}
 .media label:has(input:focus-visible){outline:3px solid #F2B705;outline-offset:2px}
-.nav{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:40px;padding-top:22px;border-top:1px solid var(--line)}.nav .right{display:flex;gap:10px;flex-wrap:wrap}
-.nav .btn{cursor:pointer;background:#fff;font-family:var(--body)}.nav .btn.solid{background:var(--blue)}
+.cfgnav{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:40px;padding-top:22px;border-top:1px solid var(--line)}.cfgnav .right{display:flex;gap:10px;flex-wrap:wrap}
+.cfgnav .btn{cursor:pointer;background:#fff;font-family:var(--body)}.cfgnav .btn.solid{background:var(--blue)}
 .calcline{background:var(--tint);padding:14px 16px;margin:22px 0 0;font-size:15px;font-weight:400}.calcline:empty{display:none}.calcline b{font-weight:700}
 .msg{padding:14px 16px;margin:18px 0 0;font-size:15px;font-weight:400}.msg.err{background:#FBEDEA;color:#8E2A1D}.msg.ok{background:var(--tint)}
 .prod{border:1.5px solid var(--line);margin-top:22px}.prod header{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;padding:18px 20px;flex-wrap:wrap}
@@ -31,4 +31,7 @@
 #summary{background:var(--tint);padding:20px;margin:20px 0 0;font:400 14px/1.55 ui-monospace,Consolas,monospace;white-space:pre-wrap;overflow-wrap:anywhere}
 @media (max-width:900px){.media{grid-template-columns:1fr 1fr}.row3{grid-template-columns:1fr}.steps5{grid-template-columns:repeat(5,1fr)}.steps5 li{font-size:0}.steps5 li small{font-size:11px}}
 @media (max-width:560px){.row2{grid-template-columns:1fr}.media{grid-template-columns:1fr}}
-@media print{header.top,footer,.contact,.nav,.steps5,.hint{display:none!important}#summary{background:none;padding:0}}
+@media print{header.top,footer,.contact,.cfgnav,.subnav,.steps5,.hint{display:none!important}#summary{background:none;padding:0}}
+
+.steps5 li.done{cursor:pointer}.steps5 li.done:hover{color:var(--blue)}.steps5 li.done small:after{content:" \2713"}
+.cfg h2{margin-bottom:6px}

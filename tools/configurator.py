@@ -29,7 +29,7 @@ os.makedirs(SITE+'/data',exist_ok=True); os.makedirs(SITE+'/configurator',exist_
 json.dump(out,open(SITE+'/data/products.json','w',encoding='utf-8'),ensure_ascii=False,separators=(',',':'))
 
 _body='''<div class="wrap"><p class="crumb"><a href="../">Products</a> / <b>Configurator</b></p>
-<div class="intro" style="padding-top:22px;padding-bottom:30px"><p class="eyebrow">North America</p><h1>Configurator</h1><p class="sub">Five steps from your operating data to a request for a quote. US units throughout, metric in parentheses.</p></div></div></header>
+<div class="intro" style="padding-top:22px;padding-bottom:30px"><p class="eyebrow">North America</p><h1>Configurator</h1><p class="sub">Five steps from your operating data to a request for a quote. You see the suitable pipe systems with velocity and pressure loss for every size. US units throughout, metric in parentheses.</p></div></div></header>
 <main>
 <section class="cfg" id="cfg"><div class="wrap">
 <ol class="steps5" id="progress" aria-label="Progress"><li class="on"><small>Step 1</small>Use case</li><li><small>Step 2</small>Specifications</li><li><small>Step 3</small>Products</li><li><small>Step 4</small>Supplementary materials</li><li><small>Step 5</small>Contact information</li></ol>
@@ -45,41 +45,41 @@ _body='''<div class="wrap"><p class="crumb"><a href="../">Products</a> / <b>Conf
 <label><input type="radio" name="medium" value="Drinking water"><b>Drinking water</b><span>Hot and cold water systems</span></label>
 <label><input type="radio" name="medium" value="Heat pump"><b>Heat pump</b><span>Heat pump networks</span></label>
 <label><input type="radio" name="medium" value="Other"><b>Other</b><span>Let us discuss available options</span></label></div>
-<div class="nav"><span></span><button class="btn solid" type="submit">Next</button></div></form>
+<div class="cfgnav"><span></span><button class="btn solid" type="submit">Next</button></div></form>
 
 <form id="s2" class="step" novalidate hidden><h2>Specifications</h2><p class="hint">These values are required to select the products that fit your requirements.</p>
 <h3>Temperature</h3><div class="row3">
-<label>Supply temperature<span class="unit"><input id="tin" type="number" inputmode="decimal" step="any" min="-40" max="400" required><i>°F</i></span></label>
-<label>Return temperature<span class="unit"><input id="tout" type="number" inputmode="decimal" step="any" min="-40" max="400" required><i>°F</i></span></label>
+<label>Supply temperature<span class="unit"><input id="tin" type="number" placeholder="e.g. 180" inputmode="decimal" step="any" min="-40" max="400" required><i>°F</i></span></label>
+<label>Return temperature<span class="unit"><input id="tout" type="number" placeholder="e.g. 140" inputmode="decimal" step="any" min="-40" max="400" required><i>°F</i></span></label>
 <label>Peak temperature <em>(optional)</em><span class="unit"><input id="tpeak" type="number" inputmode="decimal" step="any" min="-40" max="400"><i>°F</i></span></label></div>
 <h3>Length and load</h3><div class="row3">
-<label>Route length<span class="unit"><input id="len" type="number" inputmode="decimal" step="any" min="1" max="100000" required><i>ft</i></span></label>
-<label>Heat load<span class="unit"><input id="load" type="number" inputmode="decimal" step="any" min="1" max="10000000" required><i>MBH</i></span></label>
+<label>Route length<span class="unit"><input id="len" type="number" placeholder="e.g. 400" inputmode="decimal" step="any" min="1" max="100000" required><i>ft</i></span></label>
+<label>Heat load<span class="unit"><input id="load" type="number" placeholder="e.g. 1700" inputmode="decimal" step="any" min="1" max="10000000" required><i>MBH</i></span></label>
 <label>Max. operating pressure <em>(optional)</em><span class="unit"><input id="pmax" type="number" inputmode="decimal" step="any" min="0" max="1000"><i>psi</i></span></label></div>
 <p class="hint">1 MBH = 1,000 BTU/h. Route length is the trench length; single pipes need supply and return, twin pipes carry both in one jacket.</p>
 <p class="calcline" id="flow" aria-live="polite"></p>
-<div class="nav"><button class="btn" type="button" data-back>Previous</button><button class="btn solid" type="submit">Next</button></div></form>
+<div class="cfgnav"><button class="btn" type="button" data-back>Previous</button><button class="btn solid" type="submit">Next</button></div></form>
 
 <form id="s3" class="step" novalidate hidden><h2>Suitable products</h2><p class="calcline" id="recap"></p><p class="hint" id="s3hint">Select the sizes you would like an offer for.</p>
 <div id="products"></div><div id="unsuitable"></div>
 <p class="note" id="method"></p>
-<div class="nav"><button class="btn" type="button" data-back>Previous</button><button class="btn solid" type="submit">Next</button></div></form>
+<div class="cfgnav"><button class="btn" type="button" data-back>Previous</button><button class="btn solid" type="submit">Next</button></div></form>
 
 <form id="s4" class="step" novalidate hidden><h2>Supplementary materials</h2><p class="hint">We include suitable fittings and accessories in our offer.</p>
 <div class="row2"><label>Building entrances<span class="unit"><input id="entr" type="number" inputmode="numeric" step="1" min="0" max="999" value="0"><i>pcs</i></span></label><span></span></div>
 <label>Notes for BRUGG Pipes <em>(optional)</em><textarea id="notes" rows="4" maxlength="800"></textarea></label>
-<div class="nav"><button class="btn" type="button" data-back>Previous</button><button class="btn solid" type="submit">Next</button></div></form>
+<div class="cfgnav"><button class="btn" type="button" data-back>Previous</button><button class="btn solid" type="submit">Next</button></div></form>
 
 <form id="s5" class="step" novalidate hidden><h2>Contact information</h2>
 <div class="row2"><label>First name<input id="fn" type="text" maxlength="60" autocomplete="given-name" required></label><label>Last name<input id="ln" type="text" maxlength="60" autocomplete="family-name" required></label></div>
 <div class="row2"><label>Company<input id="co" type="text" maxlength="100" autocomplete="organization" required></label><label>Project name <em>(optional)</em><input id="pr" type="text" maxlength="100"></label></div>
 <div class="row3"><label>Email<input id="em" type="email" maxlength="120" autocomplete="email" required></label><label>Phone <em>(optional)</em><input id="ph" type="tel" maxlength="30" autocomplete="tel"></label><label>State or province <em>(optional)</em><input id="st" type="text" maxlength="40" autocomplete="address-level1"></label></div>
 <p class="msg ok">Nothing you enter is stored or sent by this page. Your request leaves your device only when you send the email from your own mail program.</p>
-<div class="nav"><button class="btn" type="button" data-back>Previous</button><button class="btn solid" type="submit">Review request</button></div></form>
+<div class="cfgnav"><button class="btn" type="button" data-back>Previous</button><button class="btn solid" type="submit">Review request</button></div></form>
 
 <div id="s6" class="step" hidden><h2>Your request</h2><p class="hint">Check the summary, then send it to BRUGG Pipes. We answer with an offer.</p>
 <pre id="summary" tabindex="0"></pre>
-<div class="nav"><button class="btn" type="button" data-back>Previous</button><span class="right"><button class="btn" type="button" id="print">Print or save as PDF</button><button class="btn" type="button" id="copy">Copy summary</button><a class="btn solid" id="mail" href="mailto:sales.bpna@brugg.com">Email request to BRUGG Pipes</a></span></div>
+<div class="cfgnav"><button class="btn" type="button" data-back>Previous</button><span class="right"><a class="btn" href="./">Start over</a><button class="btn" type="button" id="print">Print or save as PDF</button><button class="btn" type="button" id="copy">Copy summary</button><a class="btn solid" id="mail" href="mailto:sales.bpna@brugg.com">Email request to BRUGG Pipes</a></span></div>
 <p class="hint" id="copied" aria-live="polite"></p></div>
 </div></section>'''
 _h=page('BRUGG Pipes Configurator: North America','../',[('All products','../'),('Configurator','./'),('Academy','../academy/'),('CAD / BIM',CAD),('Contact','https://www.bruggpipes.com/us/contact/')],_body,

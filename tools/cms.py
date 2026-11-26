@@ -21,6 +21,14 @@ def doc_lists(D,h3style=' style="margin-top:30px"'):
     return out
 def apply_group(h,G,p):
     V=items(G,'videos'); D=items(G,'documents'); inst=[x for x in V if x['id']!='product']
+    have={x['id'] for x in D}
+    for x in (G.get('documents') or []):   # links to documents that are not available yet
+        if x.get('id') and x['id'] not in have: h=re.sub(r'<a class="dl sm" href="'+re.escape(x['id'])+r'"[^>]*>.*?</a>','',h,flags=re.S)
+    if not any(x['id']=='product' for x in V):
+        h=re.sub(r'<section id="video">.*?</section>\s*','',h,count=1,flags=re.S).replace('<a class="btn solid" href="#video">Watch the video</a>','<a class="btn solid" href="#why">Advantages</a>').replace('<section id="why" style="padding-top:0">','<section id="why">')
+    if not inst:
+        h=re.sub(r'<div class="inst"><div class="videobox">.*?</div>\s*<div><div class="tabs"[^>]*>.*?</div>(?=<div class="mlinks">)','<div><div>',h,count=1,flags=re.S)
+        h=re.sub(r'(<section id="installation".*?<p class="lead">)(.*?)(</p>)',lambda m:m.group(1)+' '.join(x for x in re.split(r'(?<=[.!?])\s+',m.group(2)) if 'video' not in x.lower() and x.strip()!='Pick yours.')+m.group(3),h,count=1,flags=re.S)
     if D: h=re.sub(r'(<h2>Everything you need, one file each\.</h2>).*?(<p id="dlmsg")',lambda m:m.group(1)+doc_lists(D)+m.group(2),h,count=1,flags=re.S)
     if inst:
         tabs=''.join(f'<button type="button" class="tab{" on" if i==0 else ""}" id="tab-{e(x["id"])}" data-v="{e(x["id"])}" data-src="{e(x["file"])}" data-poster="{e(x.get("poster"))}" aria-pressed="{"true" if i==0 else "false"}"><b>{e(x.get("title"))}</b><span>{e(x.get("description"))}</span><em>{e(x.get("duration"))}</em></button>' for i,x in enumerate(inst))
@@ -32,6 +40,11 @@ def apply_group(h,G,p):
         if x['id'].startswith('docs/'): h=h.replace('"'+x['id']+'"','"'+e(x['file'])+'"')
     assert JS_OLD in h,p
     return h.replace(JS_OLD,JS_NEW)
+def hide_missing_videos(h):
+    def f(m):
+        if exists(m.group(2)): return m.group(0)
+        return (f'<img src="{m.group(1)}" alt="">' if m.group(1) and exists(m.group(1)) else '')+'<p class="soon">This video follows shortly.</p>'
+    return re.sub(r'<video[^>]*? poster="([^"]*)" src="([^"]*)"[^>]*></video>',f,h)
 def _figs(V):
     return ('<div class="vids'+(' one' if len(V)==1 else '')+'">'+''.join(f'<figure><div class="videobox"><video controls preload="none" poster="{e(x.get("poster"))}" src="{e(x["file"])}"></video></div><figcaption><b>{e(x.get("title"))}</b>'+' · '.join(y for y in (e(x.get('description')),e(x.get('duration'))) if y)+'</figcaption></figure>' for x in V)+'</div>') if V else ''
 def _band(G):
@@ -80,6 +93,9 @@ def build_extra():
             h=h.replace('<a href="https://www.bruggpipes.com/us/t-c/">Terms and conditions</a></p>','<a href="https://www.bruggpipes.com/us/t-c/">Terms and conditions</a></p>'+SOC)
             h=re.sub(r'<title>.*?</title>',f'<title>{e(A["title"])}: BRUGG Pipes Academy</title><link rel="icon" href="/media/logo.png">',h,count=1)
             h=h.replace('<meta charset="utf-8">','<meta charset="utf-8">'+CSPMETA,1)
+            for x in (A.get('modules') or []): h=h.replace(f'"media/{x.get("id")}.mp4"','"'+e(x.get('file'))+'"').replace(f'"media/poster-{x.get("id")}.jpg"','"'+e(x.get('poster'))+'"')
+            h=hide_missing_videos(h)
+            h=restyle(h,'../../','academy',A['title']+': BRUGG Pipes Academy',A.get('description') or A['title'])
             js=[]; h=re.sub(r'<script>(.*?)</script>',lambda m:(js.append(m.group(1)),'')[1],h,flags=re.S)
             open(f'{SITE}/academy/{slug}/course.js','w',encoding='utf-8').write('"use strict";\n'+'\n'.join(js))
             h=h.replace('</body>','<script src="course.js" defer></script>\n</body>')
@@ -90,3 +106,5 @@ def build_extra():
             h=page(f'{A["title"]}: BRUGG Pipes Academy','../../',[('Academy','../'),('Modules','#modules'),('Downloads','#documents'),('Contact','https://www.bruggpipes.com/us/contact/')],body,'Course content is general training material and does not replace project engineering or local codes.',A.get('description') or A['title'])
         open(f'{SITE}/academy/{slug}/index.html','w',encoding='utf-8').write(h)
     open(SITE+'/robots.txt','w').write('User-agent: *\nDisallow: /admin/\n')
+    body='<div class="wrap intro"><p class="eyebrow">Page not found</p><h1>This page does not exist.</h1><p class="sub">The address may have changed. Start again from the product overview.</p><div class="cta"><a class="btn solid" href="/">All products</a><a class="btn" href="/configurator/">Configurator</a></div></div></header>\n<main>'
+    open(SITE+'/404.html','w',encoding='utf-8').write(page('Page not found: BRUGG Pipes','/',[],body,STD_FOOT,'Page not found.'))

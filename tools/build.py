@@ -14,10 +14,13 @@ GROUPS=_load('groups'); ACADEMY=_load('academy')
 CSP="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; font-src 'self'; connect-src 'self'; form-action 'none'; base-uri 'none'; object-src 'none'"
 CSPMETA='<meta http-equiv="Content-Security-Policy" content="'+CSP+'">'
 def sl(x): return re.sub(r'[^a-z0-9]+','-',str(x).lower()).strip('-')
+MISSING=[]
+def exists(f): return (not str(f).startswith('/')) or os.path.exists(SITE+str(f))
 def items(G,key):
     out=[]
     for i,x in enumerate(G.get(key) or []):
         if not isinstance(x,dict) or not x.get('file'): continue
+        if not exists(x['file']): MISSING.append(x['file']); continue
         x=dict(x); x['id']=x.get('id') or (sl(x.get('title') or os.path.basename(x['file']))+'-'+str(i)); out.append(x)
     return out
 def e(x): return html.escape(str(x or ''))
@@ -62,26 +65,48 @@ a.card:hover{border-color:var(--blue);box-shadow:0 18px 40px -26px rgba(27,42,10
 '''
 open(f'{SITE}/assets/site.css','w',encoding='utf-8').write(ff+css+extra)
 
-SOC='<p class="legal social"><a href="https://www.facebook.com/bruggpipes" target="_blank" rel="noopener">Facebook</a><a href="https://www.youtube.com/c/BRUGGPipes" target="_blank" rel="noopener">YouTube</a><a href="https://www.bruggpipes.com/linkedin" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.instagram.com/bruggpipes" target="_blank" rel="noopener">Instagram</a><a href="https://twitter.com/BRUGG_Pipes" target="_blank" rel="noopener">X</a></p>'
-LEGAL='<p class="legal"><a href="https://www.bruggpipes.com/us/legal-notice/">Legal notice</a><a href="https://www.bruggpipes.com/us/privacy-policy/">Privacy policy</a><a href="https://www.bruggpipes.com/us/compliance/">Compliance</a><a href="https://www.bruggpipes.com/us/t-c/">Terms and conditions</a></p><p class="legal social"><a href="https://www.facebook.com/bruggpipes" target="_blank" rel="noopener">Facebook</a><a href="https://www.youtube.com/c/BRUGGPipes" target="_blank" rel="noopener">YouTube</a><a href="https://www.bruggpipes.com/linkedin" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.instagram.com/bruggpipes" target="_blank" rel="noopener">Instagram</a><a href="https://twitter.com/BRUGG_Pipes" target="_blank" rel="noopener">X</a></p>'
+CONTACT='https://www.bruggpipes.com/us/contact/'
+def chrome_head(root,active):
+    main=[('Products',root,'products',0),('Configurator',root+'configurator/','configurator',0),('Academy',root+'academy/','academy',0),('CAD / BIM library',CAD,None,1),('Contact',CONTACT,None,1)]
+    t=''.join(f'<a href="{h}"'+(' class="ext" target="_blank" rel="noopener"' if x else (' class="on" aria-current="page"' if k==active else ''))+f'>{l}</a>' for l,h,k,x in main)
+    return f'<div class="hnav"><nav class="util" aria-label="Contact"><a href="tel:+18159277355">+1 815 927 7355</a><a href="mailto:sales.bpna@brugg.com">sales.bpna@brugg.com</a><a href="https://www.bruggpipes.com/us/" target="_blank" rel="noopener">bruggpipes.com</a></nav><nav class="tabs3" aria-label="Main">{t}</nav></div></div></div>'
+def subnav(tabs):
+    a=[(l,h) for l,h in tabs if h.startswith('#')]
+    return ('<nav class="subnav" aria-label="On this page"><div class="wrap"><span>On this page</span>'+''.join(f'<a href="{h}">{l}</a>' for l,h in a)+'</div></nav>') if a else ''
+SOCIAL='<p class="links social"><a href="https://www.facebook.com/bruggpipes" target="_blank" rel="noopener">Facebook</a><a href="https://www.youtube.com/c/BRUGGPipes" target="_blank" rel="noopener">YouTube</a><a href="https://www.bruggpipes.com/linkedin" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.instagram.com/bruggpipes" target="_blank" rel="noopener">Instagram</a><a href="https://twitter.com/BRUGG_Pipes" target="_blank" rel="noopener">X</a></p>'
+def footer(root,note):
+    return f'<footer class="site-footer"><div class="wrap"><div><p>BRUGG Pipes · <a href="https://www.bruggpipes.com/us/">bruggpipes.com</a> · <a href="mailto:sales.bpna@brugg.com">sales.bpna@brugg.com</a> · <a href="tel:+18159277355">+1 815 927 7355</a></p><p class="links"><a href="{root}">Products</a><a href="{root}configurator/">Configurator</a><a href="{root}academy/">Academy</a><a href="{CONTACT}" target="_blank" rel="noopener">Contact</a></p><p class="links"><a href="https://www.bruggpipes.com/us/legal-notice/">Legal notice</a><a href="https://www.bruggpipes.com/us/privacy-policy/">Privacy policy</a><a href="https://www.bruggpipes.com/us/compliance/">Compliance</a><a href="https://www.bruggpipes.com/us/t-c/">Terms and conditions</a></p>{SOCIAL}<p class="group">A BRUGG GROUP COMPANY</p><p>{note}</p></div><img src="/media/logo.png" alt="BRUGG Pipes"></div></footer>'
+def headtags(title,desc):
+    return f'<link rel="icon" href="/favicon.ico" sizes="32x32"><link rel="icon" type="image/png" href="/favicon.png"><meta property="og:type" content="website"><meta property="og:site_name" content="BRUGG Pipes North America"><meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}"><meta property="og:image" content="https://bruggpipes-us.netlify.app/media/og.jpg"><link rel="stylesheet" href="/assets/chrome.css">'
+def restyle(h,root,active,title,desc,extra_tabs=()):
+    """give a hand-built page the common header, section navigation and footer"""
+    old=re.search(r'<nav class="tabs3".*?</nav>',h,re.S).group(0)
+    tabs=[(html.unescape(l),u) for u,l in re.findall(r'<a href="(#[^"]+)">(.*?)</a>',old) if u!='#contact']
+    h=re.sub(r'<div class="hnav">.*?</nav></div></div></div>',lambda m:chrome_head(root,active),h,count=1,flags=re.S)
+    if '</header>' not in h: h=h.replace('<main>','</header>\n<main>',1)
+    h=h.replace('</header>','</header>\n'+subnav(tabs),1)
+    f=re.search(r'<footer.*?</footer>',h,re.S).group(0); note=re.findall(r'<p>(.*?)</p>',f,re.S)[-1]
+    h=h.replace(f,footer(root,note))
+    h=re.sub(r'<link rel="icon"[^>]*>','',h)
+    return h.replace('</head>',headtags(title,desc)+'</head>',1)
 def page(title,root,tabs,body,footline,desc):
-    util=f'<a href="{root}">All products</a><a class="ext" href="https://brugg.partcommunity.com/3d-cad-models/sso/?languageIso=en" target="_blank" rel="noopener">CAD / BIM library</a><a class="ext" href="https://www.bruggpipes.com/us/" target="_blank" rel="noopener">bruggpipes.com</a>'
-    t=''.join(f'<a href="{h}"'+(' target="_blank" rel="noopener"' if h.startswith('http') else '')+f'>{l}</a>' for l,h in tabs)
-    return f'''<!DOCTYPE html>
+    active='configurator' if 'Configurator' in title else ('academy' if 'Academy' in title else 'products')
+    body=body.replace('</header>','</header>\n'+subnav(tabs),1)
+    return f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">{CSPMETA}<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{title}</title><meta name="description" content="{html.escape(desc)}">
-<link rel="icon" href="{root}media/logo.png"><link rel="stylesheet" href="{root}assets/site.css"></head><body>
-<header class="top" id="top"><div class="hd"><div class="wrap hrow"><a class="brand" href="{root}"><img src="{root}media/logo.png" alt="BRUGG Pipes"><span>A BRUGG GROUP COMPANY</span></a>
-<div class="hnav"><nav class="util" aria-label="More">{util}</nav><nav class="tabs3" aria-label="Sections">{t}</nav></div></div></div>
+<link rel="stylesheet" href="{root}assets/site.css">{headtags(title,desc)}</head><body>
+<header class="top" id="top"><div class="hd"><div class="wrap hrow"><a class="brand" href="{root}"><img src="/media/logo.png" alt="BRUGG Pipes"><span>A BRUGG GROUP COMPANY</span></a>
+{chrome_head(root,active)}
 {body}
 <section id="contact" class="contact"><div class="wrap"><p class="eyebrow" style="color:#fff">Contact</p><h2>Send us your route. We size it and price it.</h2><p class="lead">BRUGG Pipes supports your project with pressure-loss and heat-loss sizing, routing and installer training.</p>
-<div class="ways"><a href="mailto:sales.bpna@brugg.com"><small>Email</small><b>sales.bpna@brugg.com</b></a><a href="tel:+18159277355"><small>Phone</small><b>+1 815 927 7355</b></a><a href="https://www.bruggpipes.com/us/contact/" target="_blank" rel="noopener"><small>Contact page</small><b>bruggpipes.com/us/contact</b></a></div></div></section>
+<div class="ways"><a href="mailto:sales.bpna@brugg.com"><small>Email</small><b>sales.bpna@brugg.com</b></a><a href="tel:+18159277355"><small>Phone</small><b>+1 815 927 7355</b></a><a href="{CONTACT}" target="_blank" rel="noopener"><small>Contact page</small><b>bruggpipes.com/us/contact</b></a></div></div></section>
 </main>
-<footer><div class="wrap"><div><p>BRUGG Pipes · <a href="https://www.bruggpipes.com/us/">bruggpipes.com</a> · sales.bpna@brugg.com · +1 815 927 7355</p>
-{LEGAL}<p class="group">A BRUGG GROUP COMPANY</p><p>{footline}</p></div><img src="{root}media/logo.png" alt="BRUGG Pipes"></div></footer>
+{footer(root,footline)}
 <script src="{root}assets/site.js" defer></script>
-</body></html>'''
+</body></html>"""
 
+SOC=''
 # ---------- root overview ----------
 heat=[];cool=[]
 for slug,G in sorted(GROUPS.items(),key=lambda kv:(kv[1].get('order') or 99,kv[0])):
@@ -93,7 +118,7 @@ for slug,G in sorted(GROUPS.items(),key=lambda kv:(kv[1].get('order') or 99,kv[0
     c=(f'<a class="card" href="{slug}/">{inner}<span class="go">'+('Open product page')+'</span></div></a>') if live else f'<div class="card off">{inner}<span class="go">Product page in preparation</span></div></div>'
     (cool if cat else heat).append(c)
 body=f'''<div class="wrap intro"><p class="eyebrow">North America</p><h1>District Heating and Cooling Solutions</h1>
-<p class="sub">Pre-insulated pipe systems for North America. Pick a product to open its page with data, videos and documents.</p></div></header>
+<p class="sub">Pre-insulated pipe systems for North America. Pick a product to open its page with data, videos and documents, or let the configurator size your line.</p><div class="cta"><a class="btn solid" href="configurator/">Open the configurator</a><a class="btn" href="https://www.bruggpipes.com/us/contact/" target="_blank" rel="noopener">Talk to sales</a></div></div></header>
 <main>
 <section id="heating" style="padding-top:20px"><div class="wrap"><p class="eyebrow">Heating</p><h2>Systems for local and district heating.</h2><div class="grid">{''.join(heat)}</div></div></section>
 <section id="cooling" class="tinted"><div class="wrap"><p class="eyebrow">Cooling and cold water</p><h2>Systems for cooling and cold water.</h2><div class="grid">{''.join(cool)}</div></div></section>
@@ -262,7 +287,9 @@ for p,t in TITLE.items():
     h=h.replace('</body>','<script src="product.js" defer></script>\n</body>')
     h=h.replace('<a href="#contact">Contact</a>','<a href="https://www.bruggpipes.com/us/contact/" target="_blank" rel="noopener">Contact</a>').replace('<a href="https://www.bruggpipes.com/us/" target="_blank" rel="noopener"><small>Web</small><b>bruggpipes.com</b></a>','<a href="https://www.bruggpipes.com/us/contact/" target="_blank" rel="noopener"><small>Contact page</small><b>bruggpipes.com/us/contact</b></a>')
     h=h.replace('<a href="https://www.bruggpipes.com/us/t-c/">Terms and conditions</a></p>','<a href="https://www.bruggpipes.com/us/t-c/">Terms and conditions</a></p>'+SOC)
+    h=h.replace('<a class="btn" href="#documents">Downloads</a></div>','<a class="btn" href="#documents">Downloads</a><a class="btn" href="../configurator/">Configurator</a></div>',1)
+    h=restyle(h,'../','products',t,f'{N} by BRUGG Pipes: data, videos and documents for North America.')
     open(f'{SITE}/{p}/index.html','w',encoding='utf-8').write(h)
 exec(open(ROOT+'/tools/configurator.py',encoding='utf-8').read())
 build_extra()
-print('built')
+print('built;',len(set(MISSING)),'files referenced in data/ are not in site/ and are hidden')

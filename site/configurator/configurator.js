@@ -14,11 +14,11 @@
     cur = n;
     for (var i = 1; i <= 6; i++) $('s' + i).hidden = i !== n;
     var li = $('progress').children;
-    for (var k = 0; k < li.length; k++) { li[k].className = (k + 1 === Math.min(n, 5)) ? 'on' : (k + 1 < n ? 'done' : ''); }
+    for (var k = 0; k < li.length; k++) { var dn = k + 1 < Math.min(n, 5) || (n === 6 && k < 5); li[k].className = (k + 1 === Math.min(n, 5) && n < 6) ? 'on' : (dn ? 'done' : ''); if (dn) { li[k].tabIndex = 0; li[k].setAttribute('role', 'button'); } else { li[k].removeAttribute('tabindex'); li[k].removeAttribute('role'); } }
     $('err').hidden = true;
     $('cfg').scrollIntoView({ block: 'start' });
   }
-  function fail(msg, input) { var e = $('err'), stp = $('s' + cur), nav = stp ? stp.querySelector('.nav') : null; if (nav) stp.insertBefore(e, nav); e.textContent = msg; e.hidden = false; if (input) { input.classList.add('bad'); input.focus({ preventScroll: true }); } e.scrollIntoView({ block: 'center' }); return false; }
+  function fail(msg, input) { var e = $('err'), stp = $('s' + cur), nav = stp ? stp.querySelector('.cfgnav') : null; if (nav) stp.insertBefore(e, nav); e.textContent = msg; e.hidden = false; if (input) { input.classList.add('bad'); input.focus({ preventScroll: true }); } e.scrollIntoView({ block: 'center' }); return false; }
   function num(id, label, req) {
     var i = $(id); i.classList.remove('bad');
     if (i.value.trim() === '') { if (req) { fail('Please enter ' + label + '.', i); return NaN; } return null; }
@@ -168,6 +168,7 @@
       $('mail').href = 'mailto:sales.bpna@brugg.com?subject=' + encodeURIComponent('Request for a quote' + (c.pr ? ': ' + c.pr : '') + ' (' + c.co + ')') + '&body=' + encodeURIComponent(t);
       $('copied').textContent = ''; show(6);
     });
+    Array.prototype.forEach.call($('progress').children, function (li, k) { function go() { if (li.className === 'done') show(k + 1); } li.addEventListener('click', go); li.addEventListener('keydown', function (ev) { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); go(); } }); });
     document.querySelectorAll('[data-back]').forEach(function (b) { b.addEventListener('click', function () { show(cur - 1); }); });
     $('print').addEventListener('click', function () { window.print(); });
     $('copy').addEventListener('click', function () { var t = $('summary').textContent; (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(function () { $('copied').textContent = 'Summary copied.'; }).catch(function () { var r = document.createRange(); r.selectNodeContents($('summary')); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); $('copied').textContent = 'Summary selected. Press Ctrl+C to copy.'; }); });
