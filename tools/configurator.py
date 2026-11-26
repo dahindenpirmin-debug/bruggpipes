@@ -30,9 +30,10 @@ os.makedirs(SITE+'/data',exist_ok=True); os.makedirs(SITE+'/configurator',exist_
 json.dump(out,open(SITE+'/data/products.json','w',encoding='utf-8'),ensure_ascii=False,separators=(',',':'))
 
 _body='''<div class="wrap"><p class="crumb"><a href="../">Products</a> / <b>Configurator</b></p>
-<div class="intro" style="padding-top:22px;padding-bottom:30px"><p class="eyebrow">North America</p><h1>Configurator</h1><p class="sub">From your route and operating data to pipe sizes, fittings, truck loads and a project summary.</p><p class="sub" style="margin-top:10px;font-size:15px">Heating a biogas digester? Use the <a href="../bioflex/sizing.html" style="color:inherit;font-weight:700">BIOFLEX digester sizing tool</a>.</p></div></div></header>
+<div class="intro" style="padding-top:22px;padding-bottom:30px"><p class="eyebrow">North America</p><h1>Configurator</h1><p class="sub">From your route and operating data to pipe sizes, fittings, truck loads and a project summary.</p></div></div></header>
 <main>
 <section class="cfg" id="cfg"><div class="wrap">
+<p class="biohint" style="display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:var(--tint);padding:16px 20px;margin:0 0 26px;font-size:15.5px"><span><b style="font-weight:700">Biogas plant?</b> Digester heating with BIOFLEX is sized by heat demand and tank size, not by route length. The BIOFLEX sizing tool returns pipe length, circuits, brackets and the CALPEX line to the heat source.</span><a class="dl solid" href="../bioflex/sizing.html">Open the BIOFLEX sizing tool</a></p>
 <div class="unitbar"><span id="unitlabel">Units</span><div class="seg" role="group" aria-labelledby="unitlabel"><button type="button" id="u-us" aria-pressed="true">Imperial (°F, ft, MBH, psi)</button><button type="button" id="u-si" aria-pressed="false">Metric (°C, m, kW, bar)</button></div></div>
 <ol class="steps5" id="progress" aria-label="Progress"><li class="on"><small>Step 1</small>Use case</li><li><small>Step 2</small>Route and data</li><li><small>Step 3</small>Pipe system</li><li><small>Step 4</small>Fittings and transport</li><li><small>Step 5</small>Contact</li></ol>
 <noscript><p class="msg err">The configurator needs JavaScript. You can also send your data to sales.bpna@brugg.com.</p></noscript>

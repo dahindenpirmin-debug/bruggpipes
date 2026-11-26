@@ -34,7 +34,10 @@ function sizeBioflex(p){ // p: D,H (m), T,tin (C), q (kW), v (m/s), fluid, margi
   var pick=p.loops?opts[p.loops-1]:ok[0];
   var vol=Math.PI*p.D*p.D/4*p.H, rrk=pick.total/vol, rng=RRK[p.T>=46?'thermo':'meso'];
   var perRow=Math.ceil(Math.PI*p.D/SPACING), bRows=Math.ceil(pick.rows/2), br=perRow*bRows, packs=Math.ceil(br/10);
-  return {loop:loop,qd:qd,opts:opts,pick:pick,vol:vol,rrk:rrk,rrkRange:rng,rrkOk:rrk>=rng[0]&&rrk<=rng[1],rowsMax:rowsMax,
+  // pipe that is thermally needed for the heat required (no margin, no rounding to full loops)
+  var qmax=pick.m*CP[p.fluid]*(p.tin-p.T)/1000, share=p.q/pick.circuits/qmax;
+  var reqL=share<1?-CP[p.fluid]*pick.m/K_L*Math.log(1-share)*pick.circuits:null;
+  return {reqL:reqL,loop:loop,qd:qd,opts:opts,pick:pick,vol:vol,rrk:rrk,rrkRange:rng,rrkOk:rrk>=rng[0]&&rrk<=rng[1],rowsMax:rowsMax,
     qInst:pick.circuits*pick.qc,flow:pick.circuits*pick.m,
     brackets:{perRow:perRow,rows:bRows,count:br,packs:packs,ordered:packs*10},
     fittings:{ends:2*pick.circuits,fix:packs*10+12*pick.circuits},
@@ -64,6 +67,50 @@ var FT=3.28084, f0=function(x){return Math.round(x).toLocaleString('en-US')}, f1
 var toC=function(f){return (f-32)/1.8}, toF=function(c){return c*1.8+32};
 function el(t,c,txt){var e=document.createElement(t);if(c)e.className=c;if(txt!=null)e.textContent=txt;return e}
 function row(tb,cells,head){var tr=el('tr');cells.forEach(function(c){tr.appendChild(el(head?'th':'td',null,c))});tb.appendChild(tr);return tr}
+var NS='http://www.w3.org/2000/svg';
+function sv(t,a,txt){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);if(txt!=null)e.textContent=txt;return e}
+function draw(p,r){
+  var g=$('fig'),k=r.pick;while(g.firstChild)g.removeChild(g.firstChild);
+  var BL='#293D91',DK='#1B2A6B',ST='#8C93A3',LN='#C9CED8',INK='#16181D',GR='#4A5160',COL=[BL,'#6F7FC4',DK,'#9AA6DA'];
+  var cx=330,rx=215,ry=40,top=78,bot=372,xl=cx-rx,xr=cx+rx;
+  function add(t,a,txt){var e=sv(t,a,txt);g.appendChild(e);return e}
+  function txt(x,y,s,a){a=a||{};a.x=x;a.y=y;if(!a['font-size'])a['font-size']=13;if(!a.fill)a.fill=GR;return add('text',a,s)}
+  // tank
+  add('path',{d:'M'+xl+' '+top+' L'+xl+' '+bot+' A'+rx+' '+ry+' 0 0 0 '+xr+' '+bot+' L'+xr+' '+top,fill:'#EEF1F8',stroke:ST,'stroke-width':2});
+  add('ellipse',{cx:cx,cy:bot,rx:rx,ry:ry,fill:'none',stroke:LN,'stroke-width':1.5,'stroke-dasharray':'5 5'});
+  var lvl=top+26; add('ellipse',{cx:cx,cy:lvl,rx:rx,ry:ry,fill:'#DCE2F3',stroke:LN,'stroke-width':1.5});
+  add('ellipse',{cx:cx,cy:top,rx:rx,ry:ry,fill:'none',stroke:ST,'stroke-width':2});
+  txt(cx,lvl+5,'liquid level',{'text-anchor':'middle','font-size':12});
+  // diameter
+  add('line',{x1:xl,y1:26,x2:xr,y2:26,stroke:GR,'stroke-width':1});add('line',{x1:xl,y1:20,x2:xl,y2:32,stroke:GR});add('line',{x1:xr,y1:20,x2:xr,y2:32,stroke:GR});
+  txt(cx,20,'Digester Ø '+f0(p.D*FT)+' ft ('+f1(p.D)+' m)',{'text-anchor':'middle',fill:INK,'font-weight':600});
+  // rows
+  var rows=k.rows, y0=bot-34, avail=y0-(lvl+48), pitch=rows>1?Math.min(30,avail/(rows-1)):0, sw=rows>10?4:6;
+  function ell(y,c,front){return add('path',{d:'M'+xl+' '+y+' A'+rx+' '+ry+' 0 0 '+(front?0:1)+' '+xr+' '+y,fill:'none',stroke:c,'stroke-width':front?sw:Math.max(2,sw-3),'stroke-linecap':'round',opacity:front?1:.45})}
+  var i,c,n,y,yA,yB,col;
+  for(c=0;c<k.circuits;c++){ col=COL[c%COL.length];
+    for(n=0;n<k.loops;n++){ y=y0-(c*k.loops+n)*pitch; ell(y,col,false) } }
+  for(c=0;c<k.circuits;c++){ col=COL[c%COL.length]; yA=y0-(c*k.loops)*pitch; yB=y0-(c*k.loops+k.loops-1)*pitch;
+    for(n=0;n<k.loops;n++){ y=y0-(c*k.loops+n)*pitch; ell(y,col,true);
+      if(n<k.loops-1) add('path',{d:'M'+xr+' '+y+' q14 '+(-pitch/2)+' 0 '+(-pitch),fill:'none',stroke:col,'stroke-width':sw,'stroke-linecap':'round'}) }
+    // connections through the wall: supply at the first loop, return at the last loop of the circuit
+    var one=k.loops===1, ys=yA+(one?5:0), yr=yB-(one?5:0), lab=rows<=8||c===0||c===k.circuits-1;
+    add('line',{x1:xr,y1:ys,x2:xr+46,y2:ys,stroke:'#C8402F','stroke-width':3});add('path',{d:'M'+(xr+26)+' '+(ys-5)+' l-9 5 l9 5 z',fill:'#C8402F'});
+    add('line',{x1:xr,y1:yr,x2:xr+46,y2:yr,stroke:BL,'stroke-width':3});add('path',{d:'M'+(xr+30)+' '+(yr-5)+' l9 5 l-9 5 z',fill:BL});
+    if(lab){ txt(xr+52,(ys+yr)/2+4,'Circuit '+(c+1),{fill:INK,'font-weight':700,'font-size':13});
+      if(k.circuits<=3||c===0) txt(xr+52,(ys+yr)/2+20,k.loops+(k.loops>1?' loops, ':' loop, ')+f0(k.Lft)+' ft',{'font-size':12}) }
+    // brace on the left
+    add('path',{d:'M'+(xl-12)+' '+(yB-6)+' h-8 v'+(yA-yB+12)+' h8',fill:'none',stroke:col,'stroke-width':2});
+  }
+  // callouts
+  var yl=y0; add('line',{x1:cx-40,y1:yl+ry-1,x2:cx-70,y2:bot+ry+22,stroke:GR,'stroke-width':1});
+  txt(cx-74,bot+ry+38,'1 loop = pipe once around the wall = '+f0(r.loop*FT)+' ft ('+f1(r.loop)+' m)',{'text-anchor':'middle',fill:INK,'font-weight':600});
+  txt(xl-26,(y0+(y0-(rows-1)*pitch))/2-4,k.circuits+(k.circuits>1?' circuits':' circuit'),{'text-anchor':'end',fill:INK,'font-weight':700});
+  txt(xl-26,(y0+(y0-(rows-1)*pitch))/2+12,'= '+rows+(rows>1?' rows of pipe':' row of pipe'),{'text-anchor':'end','font-size':12});
+  txt(xr+52,top+6,'supply',{fill:'#C8402F','font-weight':700,'font-size':12});txt(xr+52,top+22,'return',{fill:BL,'font-weight':700,'font-size':12});
+  add('line',{x1:xr+100,y1:top+2,x2:xr+124,y2:top+2,stroke:'#C8402F','stroke-width':3});add('line',{x1:xr+100,y1:top+18,x2:xr+124,y2:top+18,stroke:BL,'stroke-width':3});
+  g.setAttribute('aria-label','Digester with '+k.circuits+' heating circuits of '+k.loops+' loops each');
+}
 function read(){
   var unit=$('qunit').value, q=parseFloat($('q').value), kw=unit==='kw'?q:unit==='mbh'?q*1000/3412.142:q/3412.142;
   var proc=$('proc').value, T=proc==='meso'?100:proc==='thermo'?125:parseFloat($('tproc').value);
@@ -91,6 +138,20 @@ function run(){
   $('h-circ-sub').textContent=(k.circuits>1?'heating circuits':'heating circuit')+' × '+(k.loops>1?'loops':'loop')+' around the wall';
   $('h-br').textContent=f0(r.brackets.ordered);
   $('h-br-sub').textContent='two-loop brackets, '+r.brackets.packs+' packs of 10';
+  draw(p,r);
+  var pin=$('pin');pin.textContent='';
+  [['Digester',f0(p.D*FT)+' ft inside diameter ('+f1(p.D)+' m), '+f0(p.H*FT)+' ft liquid depth ('+f1(p.H)+' m)'],['Process temperature',f0(p.TF)+' °F ('+f0(p.T)+' °C)'],['Heat into the digester',f0(p.q*3412.142)+' BTU/h ('+f0(p.q)+' kW), design margin '+Math.round(p.margin*100)+'%'],
+   ['Heating water',f0(p.tinF)+' °F supply ('+f0(p.tin)+' °C), '+(p.fluid==='glycol'?'water with 35% glycol':'water')+', '+f1(p.v*FT)+' ft/s ('+p.v+' m/s)'],['Route to the heat source',f0(p.route*FT)+' ft ('+f0(p.route)+' m)']].forEach(function(x){row(pin,x)});
+  $('pmeta').textContent=(p.name?p.name+' · ':'')+new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+  var need=$('need');need.textContent='';
+  var exact=k.total*FT, rows3=[['Thermally needed for your heat',r.reqL?r.reqL*FT:null,'Pipe that transfers '+f0(p.q*3412.142)+' BTU/h at your temperatures, without margin','steel'],
+    ['Full loops around the wall',exact,k.circuits+' × '+k.loops+(k.loops>1?' loops of ':' loop of ')+f0(r.loop*FT)+' ft, plus 6.6 ft per circuit for the two ends','mid'],
+    ['To order',k.totalFt,'Each coil rounded up to the next 10 ft: '+k.circuits+' × '+f0(k.Lft)+' ft','blue']];
+  rows3.forEach(function(x){ if(x[1]==null) return;
+    var d=el('div','nrow'), t=el('div','nt'); t.appendChild(el('b',null,x[0])); t.appendChild(el('span',null,x[2]));
+    var bw=el('div','nb'), b=el('i',x[3]); b.style.width=Math.max(4,Math.round(x[1]/k.totalFt*100))+'%'; bw.appendChild(b);
+    d.appendChild(t); d.appendChild(bw); d.appendChild(el('em',null,f0(x[1])+' ft')); need.appendChild(d)});
+  $('needt').textContent=r.reqL?'Why more than the thermal length? A loop always runs once around the whole wall, so the pipe comes in full loops. The extra surface is your reserve: this layout delivers '+f0(r.qInst*3412.142)+' BTU/h, '+Math.round((r.qInst/p.q-1)*100)+'% above the heat required.':'';
   var kv=$('kv');kv.textContent='';
   [['Heat required',f0(p.q*3412.142)+' BTU/h ('+f0(p.q)+' kW)'],
    ['Design heat incl. '+Math.round(p.margin*100)+'% margin',f0(r.qd*3412.142)+' BTU/h ('+f0(r.qd)+' kW)'],

@@ -107,7 +107,7 @@ footer .group{font:700 12px var(--body);letter-spacing:.14em;color:var(--blue);m
 @media (max-width:900px){.hrow{align-items:flex-start;flex-direction:column;gap:6px}.hnav{align-items:flex-start;width:100%}.util{display:flex}.tabs3{width:100%;flex-wrap:wrap}.tabs3 a{flex:1 1 30%;text-align:center;padding:12px 6px;font-size:13.5px}}
 
 /* ---- BIOFLEX additions ---- */
-.cost.three{grid-template-columns:repeat(3,1fr)}.bars.tri .bar{font-size:0}.bar.pe{background:#B9BFCC}.bar.pe b{color:var(--grey);font-family:var(--body)}
+.cost.three{grid-template-columns:repeat(3,1fr)}.cmpfig{background:var(--paper);padding:18px 18px 8px;margin-top:40px}.cmp{min-width:860px}.cmp td:first-child{color:var(--grey);width:24%}.cmp td:nth-child(2){background:var(--paper);font-weight:500}.cmp th:nth-child(2){color:var(--blue)}.cmp td b{font-size:inherit}.tinted .cmp th{border-bottom-color:var(--ink)}.bars.tri .bar{font-size:0}.bar.pe{background:#B9BFCC}.bar.pe b{color:var(--grey);font-family:var(--body)}
 .sysgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}.sysgrid a,.sysgrid div.s{display:grid;grid-template-columns:86px 1fr;gap:16px;align-items:center;background:var(--paper);padding:18px;text-decoration:none;color:var(--ink);border:1.5px solid var(--line)}.sysgrid a:hover{border-color:var(--blue)}.sysgrid img{max-height:120px;margin:0 auto}.sysgrid small{display:block;font:700 11.5px var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--blue)}.sysgrid b{display:block;font:700 20px var(--body);margin:2px 0 4px}.sysgrid span{font-size:14.5px;color:var(--grey)}
 .figs4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:34px}.figs4 figure{margin:0}.figs4 img{width:100%;aspect-ratio:4/3;object-fit:cover;background:#f2f3f5}.figs4 figcaption{margin-top:10px;font-size:14.5px;color:var(--grey)}.figs4 figcaption b{display:block;color:var(--ink);font-weight:700;font-size:16px}
 .tool{display:grid;grid-template-columns:minmax(300px,380px) 1fr;gap:44px;align-items:start;margin-top:36px}.tool>*{min-width:0}
@@ -117,10 +117,22 @@ footer .group{font:700 12px var(--body);letter-spacing:.14em;color:var(--blue);m
 #msg{color:#B3261E;font-weight:600;font-size:14.5px;min-height:1.4em;margin:12px 0 0}
 .res{display:grid;grid-template-columns:1.25fr 1fr 1fr;background:var(--blue);color:#fff}.res div{padding:22px 20px;border-left:1px solid rgba(255,255,255,.25)}.res div:first-child{border-left:0}.res b{display:block;font:700 clamp(26px,3.2vw,40px)/1 var(--body);letter-spacing:-.02em}.res span{display:block;margin-top:8px;font-size:13.5px;color:#D5DAF0}.res small{display:block;font:700 11.5px var(--body);letter-spacing:.12em;text-transform:uppercase;color:#C5CCEC;margin-bottom:8px}
 #out h3{font:700 19px var(--body);margin:34px 0 0}#out .scroll{margin-top:10px}#out .scroll table{min-width:560px;font-size:14.5px}#out tr.sel td{font-weight:600;background:var(--tint)}#out p.fine{margin-top:10px}
+.figbox{border:1.5px solid var(--line);margin-top:12px;padding:8px;background:#fff}.figbox svg{width:100%;height:auto;display:block}
+.defs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}.defs div{background:var(--tint);padding:14px 16px}.defs b{display:block;font:700 15px var(--body);color:var(--blue)}.defs span{display:block;font-size:14px;color:var(--grey);margin-top:4px}
+.nrow{display:grid;grid-template-columns:minmax(200px,1.1fr) 1.2fr 86px;gap:16px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}.nrow:first-child{border-top:2px solid var(--ink)}.nt b{display:block;font:700 15.5px var(--body)}.nt span{display:block;font-size:13.5px;color:var(--grey)}.nb{background:var(--tint);height:18px}.nb i{display:block;height:100%}.nb i.blue{background:var(--blue)}.nb i.mid{background:#6F7FC4}.nb i.steel{background:var(--steel)}.nrow em{font:700 18px var(--body);font-style:normal;text-align:right;color:var(--ink)}#need{margin-top:12px}
+@media (max-width:900px){.defs{grid-template-columns:1fr}.nrow{grid-template-columns:1fr 70px}.nb{grid-column:1/3;grid-row:2}}
 #notes{margin:14px 0 0;padding-left:18px;font-size:14.5px;color:var(--grey)}#notes li{margin-bottom:6px}
 .acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}.acts .dl{cursor:pointer;font-family:var(--body)}
 @media (max-width:900px){.cost.three,.sysgrid{grid-template-columns:1fr}.figs4{grid-template-columns:1fr 1fr}.tool{grid-template-columns:1fr}.res{grid-template-columns:1fr}.res div{border-left:0;border-top:1px solid rgba(255,255,255,.25)}.res div:first-child{border-top:0}}
-@media print{.hd,.form,.contact,footer,.acts,.crumb,.cta{display:none!important}section{padding:10px 0}.tool{display:block}body{font-size:12px}#out .scroll table{min-width:0}}
+.ponly{display:none}
+@page{size:letter;margin:0.55in 0.6in}
+@media print{*{-webkit-print-color-adjust:exact;print-color-adjust:exact}header.top,.form,.contact,footer,.acts,#msg,#out>p.fine:last-of-type{display:none!important}section{padding:0}.wrap{max-width:none;padding:0}.tool{display:block;margin:0}body{font-size:10pt;line-height:1.4}
+.ponly{display:block}.phead{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:3pt solid var(--blue);padding-bottom:8pt;margin-bottom:12pt}.phead img{height:0.5in}.phead div{text-align:right}.phead b{display:block;font:700 15pt var(--body);color:var(--blue)}.phead span{font-size:9pt;color:var(--grey)}
+.plabel{font:700 8pt var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin:0 0 2pt}#pin{font-size:9pt;margin-bottom:12pt}#pin td{padding:3pt 8pt 3pt 0}
+.res b{font-size:20pt}.res div{padding:10pt 12pt}.res span{font-size:8.5pt}#out h3{font-size:11.5pt;margin:14pt 0 0;break-after:avoid}#out .scroll{overflow:visible;margin-top:4pt}#out .scroll table{min-width:0;font-size:8.6pt}#out th{font-size:7.4pt}#out td,#out th{padding:4pt 8pt 4pt 0}
+.figbox{border:0.6pt solid var(--line);padding:4pt;width:74%;margin:6pt auto 0;break-inside:avoid}.defs{gap:8pt;margin-top:8pt}.defs div{padding:6pt 8pt}.defs b{font-size:9pt}.defs span{font-size:8pt}
+.nrow{padding:5pt 0;break-inside:avoid}.nt b{font-size:9.5pt}.nt span{font-size:8pt}.nrow em{font-size:11pt}.nb{height:10pt}#out p.fine,#notes{font-size:8pt;margin-top:4pt}table,.res,.defs{break-inside:avoid}
+.res{grid-template-columns:1.25fr 1fr 1fr!important}.res div{border-top:0!important;border-left:1px solid rgba(255,255,255,.25)!important}.res div:first-child{border-left:0!important}.defs{grid-template-columns:repeat(3,1fr)!important}.nrow{grid-template-columns:1.3fr 1fr 60pt!important}.nb{grid-column:auto!important;grid-row:auto!important}.pfoot{margin-top:14pt;border-top:0.6pt solid var(--line);padding-top:6pt;font-size:7.6pt;color:var(--grey)}.pfoot b{display:block;color:var(--ink);font-weight:600}}
 </style></head><body>
 <header class="top" id="top"><div class="hd"><div class="wrap hrow"><a class="brand" href="index.html"><img src="media/logo.png" alt="BRUGG Pipes"><span>A BRUGG GROUP COMPANY</span></a>
 <div class="hnav"><nav class="util" aria-label="More"><a href="https://www.bruggpipes.com/us/products/" target="_blank" rel="noopener">All products</a></nav>
@@ -146,15 +158,19 @@ footer .group{font:700 12px var(--body);letter-spacing:.14em;color:var(--blue);m
 <button class="btn solid" type="submit">Calculate</button>
 <p class="fine" style="margin-top:14px">Heat demand not known yet? Send us tank size, insulation, feed rate and feed temperature. BRUGG engineering calculates it for you.</p>
 </form>
-<div><p id="msg" role="alert"></p><div id="out" hidden>
+<div><p id="msg" role="alert"></p><div id="out" hidden><div class="ponly phead"><img src="media/logo.png" alt="BRUGG Pipes"><div><b>BIOFLEX Digester Heating: Sizing</b><span id="pmeta"></span></div></div><div class="ponly"><p class="plabel">Your input</p><table class="kv" id="pin"></table></div>
 <div class="res"><div><small>BIOFLEX to order</small><b id="h-len"></b><span id="h-sub"></span></div><div><small>Layout</small><b id="h-circ"></b><span id="h-circ-sub"></span></div><div><small>Brackets</small><b id="h-br"></b><span id="h-br-sub"></span></div></div>
+<h3>What it looks like in your digester</h3>
+<div class="figbox"><svg id="fig" viewBox="0 0 760 470" role="img" font-family="Inter,Arial,sans-serif"></svg></div>
+<div class="defs"><div><b>Loop</b><span>The pipe laid once around the tank wall. Its length is set by the digester diameter.</span></div><div><b>Circuit</b><span>One continuous coil of pipe with its own supply and return through the wall. A circuit makes one or more loops; no joints inside the tank.</span></div><div><b>Row</b><span>Loops sit above each other, 10 in apart, the lowest 3 ft above the floor. One bracket holds two rows.</span></div></div>
+<h3>How much pipe you really need</h3><div id="need"></div><p class="fine" id="needt"></p>
 <h3>Your BIOFLEX package</h3><div class="scroll"><table id="pkg"></table></div>
 <p class="fine">Brackets hold two loops each and are counted at one every 3.3 ft (1.0 m) of tank circumference, rounded up to full packs of 10. Optional items follow connection variant BGT 1.810 (connection inside the tank).</p>
 <h3>CALPEX to the heat source</h3><p class="fine" id="cpxt"></p><div class="scroll"><table id="cpx"></table></div>
 <h3>Design values</h3><div class="scroll"><table class="kv" id="kv"></table></div><ul id="notes"></ul>
 <h3>All layouts for this digester</h3><div class="scroll"><table id="alt"></table></div>
 <p class="fine">The tool picks the layout with the fewest circuits, which means the fewest wall penetrations and end connectors, and then the least pipe. A single coil stays below 492 ft (150 m).</p>
-<div class="acts"><a class="dl" id="mail" href="mailto:sales.bpna@brugg.com">Email this sizing to BRUGG for a quote</a><button type="button" class="dl" id="print">Print or save as PDF</button></div>
+<div class="ponly pfoot"><b>BRUGG Pipes · bruggpipes.com · sales.bpna@brugg.com · +1 815 927 7355</b><span>Budget sizing by the BRUGG design sheet for BIOFLEX digester heating. To be confirmed by BRUGG engineering before ordering. Subject to technical changes.</span></div><div class="acts"><a class="dl" id="mail" href="mailto:sales.bpna@brugg.com">Email this sizing to BRUGG for a quote</a><button type="button" class="dl" id="print">Print or save as PDF</button></div>
 <p class="fine">Method: BRUGG design sheet for BIOFLEX digester heating. One circuit is a single-pass heat exchanger in the substrate with a linear heat transfer value of 65 W/(m·K) (37.6 BTU/(h·ft·°F)) for BIOFLEX CNW 60/66. Loop diameter is the tank diameter minus 1.3 ft (0.4 m). The result is a budget sizing for a complete mix digester; it does not replace the design check by BRUGG engineering, and it does not include the pressure loss of the heating circuit. Nothing you enter is stored or sent.</p>
 </div></div></div></div></section>
 <section id="contact" class="contact"><div class="wrap"><p class="eyebrow" style="color:#fff">Contact</p><h2>Send us your digester data. We size it and price it.</h2><p class="lead">BRUGG Pipes supports your project with the heat transfer design, the layout on the tank wall, bracket drawings and installer training.</p>
@@ -198,7 +214,10 @@ function sizeBioflex(p){ // p: D,H (m), T,tin (C), q (kW), v (m/s), fluid, margi
   var pick=p.loops?opts[p.loops-1]:ok[0];
   var vol=Math.PI*p.D*p.D/4*p.H, rrk=pick.total/vol, rng=RRK[p.T>=46?'thermo':'meso'];
   var perRow=Math.ceil(Math.PI*p.D/SPACING), bRows=Math.ceil(pick.rows/2), br=perRow*bRows, packs=Math.ceil(br/10);
-  return {loop:loop,qd:qd,opts:opts,pick:pick,vol:vol,rrk:rrk,rrkRange:rng,rrkOk:rrk>=rng[0]&&rrk<=rng[1],rowsMax:rowsMax,
+  // pipe that is thermally needed for the heat required (no margin, no rounding to full loops)
+  var qmax=pick.m*CP[p.fluid]*(p.tin-p.T)/1000, share=p.q/pick.circuits/qmax;
+  var reqL=share<1?-CP[p.fluid]*pick.m/K_L*Math.log(1-share)*pick.circuits:null;
+  return {reqL:reqL,loop:loop,qd:qd,opts:opts,pick:pick,vol:vol,rrk:rrk,rrkRange:rng,rrkOk:rrk>=rng[0]&&rrk<=rng[1],rowsMax:rowsMax,
     qInst:pick.circuits*pick.qc,flow:pick.circuits*pick.m,
     brackets:{perRow:perRow,rows:bRows,count:br,packs:packs,ordered:packs*10},
     fittings:{ends:2*pick.circuits,fix:packs*10+12*pick.circuits},
@@ -228,6 +247,50 @@ var FT=3.28084, f0=function(x){return Math.round(x).toLocaleString('en-US')}, f1
 var toC=function(f){return (f-32)/1.8}, toF=function(c){return c*1.8+32};
 function el(t,c,txt){var e=document.createElement(t);if(c)e.className=c;if(txt!=null)e.textContent=txt;return e}
 function row(tb,cells,head){var tr=el('tr');cells.forEach(function(c){tr.appendChild(el(head?'th':'td',null,c))});tb.appendChild(tr);return tr}
+var NS='http://www.w3.org/2000/svg';
+function sv(t,a,txt){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);if(txt!=null)e.textContent=txt;return e}
+function draw(p,r){
+  var g=$('fig'),k=r.pick;while(g.firstChild)g.removeChild(g.firstChild);
+  var BL='#293D91',DK='#1B2A6B',ST='#8C93A3',LN='#C9CED8',INK='#16181D',GR='#4A5160',COL=[BL,'#6F7FC4',DK,'#9AA6DA'];
+  var cx=330,rx=215,ry=40,top=78,bot=372,xl=cx-rx,xr=cx+rx;
+  function add(t,a,txt){var e=sv(t,a,txt);g.appendChild(e);return e}
+  function txt(x,y,s,a){a=a||{};a.x=x;a.y=y;if(!a['font-size'])a['font-size']=13;if(!a.fill)a.fill=GR;return add('text',a,s)}
+  // tank
+  add('path',{d:'M'+xl+' '+top+' L'+xl+' '+bot+' A'+rx+' '+ry+' 0 0 0 '+xr+' '+bot+' L'+xr+' '+top,fill:'#EEF1F8',stroke:ST,'stroke-width':2});
+  add('ellipse',{cx:cx,cy:bot,rx:rx,ry:ry,fill:'none',stroke:LN,'stroke-width':1.5,'stroke-dasharray':'5 5'});
+  var lvl=top+26; add('ellipse',{cx:cx,cy:lvl,rx:rx,ry:ry,fill:'#DCE2F3',stroke:LN,'stroke-width':1.5});
+  add('ellipse',{cx:cx,cy:top,rx:rx,ry:ry,fill:'none',stroke:ST,'stroke-width':2});
+  txt(cx,lvl+5,'liquid level',{'text-anchor':'middle','font-size':12});
+  // diameter
+  add('line',{x1:xl,y1:26,x2:xr,y2:26,stroke:GR,'stroke-width':1});add('line',{x1:xl,y1:20,x2:xl,y2:32,stroke:GR});add('line',{x1:xr,y1:20,x2:xr,y2:32,stroke:GR});
+  txt(cx,20,'Digester Ø '+f0(p.D*FT)+' ft ('+f1(p.D)+' m)',{'text-anchor':'middle',fill:INK,'font-weight':600});
+  // rows
+  var rows=k.rows, y0=bot-34, avail=y0-(lvl+48), pitch=rows>1?Math.min(30,avail/(rows-1)):0, sw=rows>10?4:6;
+  function ell(y,c,front){return add('path',{d:'M'+xl+' '+y+' A'+rx+' '+ry+' 0 0 '+(front?0:1)+' '+xr+' '+y,fill:'none',stroke:c,'stroke-width':front?sw:Math.max(2,sw-3),'stroke-linecap':'round',opacity:front?1:.45})}
+  var i,c,n,y,yA,yB,col;
+  for(c=0;c<k.circuits;c++){ col=COL[c%COL.length];
+    for(n=0;n<k.loops;n++){ y=y0-(c*k.loops+n)*pitch; ell(y,col,false) } }
+  for(c=0;c<k.circuits;c++){ col=COL[c%COL.length]; yA=y0-(c*k.loops)*pitch; yB=y0-(c*k.loops+k.loops-1)*pitch;
+    for(n=0;n<k.loops;n++){ y=y0-(c*k.loops+n)*pitch; ell(y,col,true);
+      if(n<k.loops-1) add('path',{d:'M'+xr+' '+y+' q14 '+(-pitch/2)+' 0 '+(-pitch),fill:'none',stroke:col,'stroke-width':sw,'stroke-linecap':'round'}) }
+    // connections through the wall: supply at the first loop, return at the last loop of the circuit
+    var one=k.loops===1, ys=yA+(one?5:0), yr=yB-(one?5:0), lab=rows<=8||c===0||c===k.circuits-1;
+    add('line',{x1:xr,y1:ys,x2:xr+46,y2:ys,stroke:'#C8402F','stroke-width':3});add('path',{d:'M'+(xr+26)+' '+(ys-5)+' l-9 5 l9 5 z',fill:'#C8402F'});
+    add('line',{x1:xr,y1:yr,x2:xr+46,y2:yr,stroke:BL,'stroke-width':3});add('path',{d:'M'+(xr+30)+' '+(yr-5)+' l9 5 l-9 5 z',fill:BL});
+    if(lab){ txt(xr+52,(ys+yr)/2+4,'Circuit '+(c+1),{fill:INK,'font-weight':700,'font-size':13});
+      if(k.circuits<=3||c===0) txt(xr+52,(ys+yr)/2+20,k.loops+(k.loops>1?' loops, ':' loop, ')+f0(k.Lft)+' ft',{'font-size':12}) }
+    // brace on the left
+    add('path',{d:'M'+(xl-12)+' '+(yB-6)+' h-8 v'+(yA-yB+12)+' h8',fill:'none',stroke:col,'stroke-width':2});
+  }
+  // callouts
+  var yl=y0; add('line',{x1:cx-40,y1:yl+ry-1,x2:cx-70,y2:bot+ry+22,stroke:GR,'stroke-width':1});
+  txt(cx-74,bot+ry+38,'1 loop = pipe once around the wall = '+f0(r.loop*FT)+' ft ('+f1(r.loop)+' m)',{'text-anchor':'middle',fill:INK,'font-weight':600});
+  txt(xl-26,(y0+(y0-(rows-1)*pitch))/2-4,k.circuits+(k.circuits>1?' circuits':' circuit'),{'text-anchor':'end',fill:INK,'font-weight':700});
+  txt(xl-26,(y0+(y0-(rows-1)*pitch))/2+12,'= '+rows+(rows>1?' rows of pipe':' row of pipe'),{'text-anchor':'end','font-size':12});
+  txt(xr+52,top+6,'supply',{fill:'#C8402F','font-weight':700,'font-size':12});txt(xr+52,top+22,'return',{fill:BL,'font-weight':700,'font-size':12});
+  add('line',{x1:xr+100,y1:top+2,x2:xr+124,y2:top+2,stroke:'#C8402F','stroke-width':3});add('line',{x1:xr+100,y1:top+18,x2:xr+124,y2:top+18,stroke:BL,'stroke-width':3});
+  g.setAttribute('aria-label','Digester with '+k.circuits+' heating circuits of '+k.loops+' loops each');
+}
 function read(){
   var unit=$('qunit').value, q=parseFloat($('q').value), kw=unit==='kw'?q:unit==='mbh'?q*1000/3412.142:q/3412.142;
   var proc=$('proc').value, T=proc==='meso'?100:proc==='thermo'?125:parseFloat($('tproc').value);
@@ -255,6 +318,20 @@ function run(){
   $('h-circ-sub').textContent=(k.circuits>1?'heating circuits':'heating circuit')+' × '+(k.loops>1?'loops':'loop')+' around the wall';
   $('h-br').textContent=f0(r.brackets.ordered);
   $('h-br-sub').textContent='two-loop brackets, '+r.brackets.packs+' packs of 10';
+  draw(p,r);
+  var pin=$('pin');pin.textContent='';
+  [['Digester',f0(p.D*FT)+' ft inside diameter ('+f1(p.D)+' m), '+f0(p.H*FT)+' ft liquid depth ('+f1(p.H)+' m)'],['Process temperature',f0(p.TF)+' °F ('+f0(p.T)+' °C)'],['Heat into the digester',f0(p.q*3412.142)+' BTU/h ('+f0(p.q)+' kW), design margin '+Math.round(p.margin*100)+'%'],
+   ['Heating water',f0(p.tinF)+' °F supply ('+f0(p.tin)+' °C), '+(p.fluid==='glycol'?'water with 35% glycol':'water')+', '+f1(p.v*FT)+' ft/s ('+p.v+' m/s)'],['Route to the heat source',f0(p.route*FT)+' ft ('+f0(p.route)+' m)']].forEach(function(x){row(pin,x)});
+  $('pmeta').textContent=(p.name?p.name+' · ':'')+new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+  var need=$('need');need.textContent='';
+  var exact=k.total*FT, rows3=[['Thermally needed for your heat',r.reqL?r.reqL*FT:null,'Pipe that transfers '+f0(p.q*3412.142)+' BTU/h at your temperatures, without margin','steel'],
+    ['Full loops around the wall',exact,k.circuits+' × '+k.loops+(k.loops>1?' loops of ':' loop of ')+f0(r.loop*FT)+' ft, plus 6.6 ft per circuit for the two ends','mid'],
+    ['To order',k.totalFt,'Each coil rounded up to the next 10 ft: '+k.circuits+' × '+f0(k.Lft)+' ft','blue']];
+  rows3.forEach(function(x){ if(x[1]==null) return;
+    var d=el('div','nrow'), t=el('div','nt'); t.appendChild(el('b',null,x[0])); t.appendChild(el('span',null,x[2]));
+    var bw=el('div','nb'), b=el('i',x[3]); b.style.width=Math.max(4,Math.round(x[1]/k.totalFt*100))+'%'; bw.appendChild(b);
+    d.appendChild(t); d.appendChild(bw); d.appendChild(el('em',null,f0(x[1])+' ft')); need.appendChild(d)});
+  $('needt').textContent=r.reqL?'Why more than the thermal length? A loop always runs once around the whole wall, so the pipe comes in full loops. The extra surface is your reserve: this layout delivers '+f0(r.qInst*3412.142)+' BTU/h, '+Math.round((r.qInst/p.q-1)*100)+'% above the heat required.':'';
   var kv=$('kv');kv.textContent='';
   [['Heat required',f0(p.q*3412.142)+' BTU/h ('+f0(p.q)+' kW)'],
    ['Design heat incl. '+Math.round(p.margin*100)+'% margin',f0(r.qd*3412.142)+' BTU/h ('+f0(r.qd)+' kW)'],
