@@ -1,84 +1,86 @@
 {
- "name": "BIOFLEX",
- "order": 9,
- "category": "heating",
- "status": "live",
- "made_in_usa": false,
- "card_image": "/media/bioflex.png",
- "card_bullets": [
-  "Digester heating for biogas plants",
-  "2\" (DN 50), 316L stainless steel",
-  "No welds inside the digester",
-  "Sizing tool with CALPEX proposal"
- ],
- "legacy": true,
- "tagline": "BIOFLEX – Flexible Stainless Steel Heating Pipe for Digesters",
- "description": "",
- "hero_image": "/bioflex/media/hero.jpg",
- "key_figures": [
-  {
-   "value": "1,000+",
-   "label": "digesters equipped with BIOFLEX"
-  },
-  {
-   "value": "0 welds",
-   "label": "inside the digester: one continuous pipe per circuit"
-  },
-  {
-   "value": "+40%",
-   "label": "heat transfer area against smooth pipe"
-  },
-  {
-   "value": "2 in",
-   "label": "DN 50, AISI 316L stainless steel (1.4404)"
-  }
- ],
- "videos": [
-  {
-   "id": "product",
-   "title": "Product video",
-   "description": "The digester heating system, from the tank wall to the heat users.",
-   "duration": "7:58 min",
-   "file": "/bioflex/media/product.mp4",
-   "poster": "/bioflex/media/poster-product.jpg"
-  },
-  {
-   "id": "install",
-   "title": "BIOFLEX installation",
-   "description": "Supports, pipe, end fittings, pressure test",
-   "duration": "7:37 min",
-   "file": "/bioflex/media/install.mp4",
-   "poster": "/bioflex/media/poster-install.jpg",
-   "manual": "docs/installation-manual.pdf"
-  }
- ],
- "documents": [
-  {
-   "id": "docs/usp.pdf",
-   "section": "",
-   "title": "USP Page",
-   "description": "Six reasons to specify BIOFLEX",
-   "note": "1 page",
-   "file": "/bioflex/docs/usp.pdf",
-   "download_name": "1_BFX_USP_2026 Nov.pdf"
-  },
-  {
-   "id": "docs/brochure.pdf",
-   "section": "",
-   "title": "Brochure Biogas Technology",
-   "description": "System, connection variants, data sheets BGT 1.800 and 1.810, article numbers",
-   "note": "18 pages · BRUGG original, metric",
-   "file": "/bioflex/docs/brochure.pdf",
-   "download_name": "2_BFX_Brochure Biogas Technology_2025 Dec.pdf"
-  },
-  {
-   "id": "docs/installation-manual.pdf",
-   "section": "",
-   "title": "Installation Manual",
-   "description": "Pipe supports, pipe and end fittings in 20 steps, US units first",
-   "note": "9 pages",
-   "file": "/bioflex/docs/installation-manual.pdf",
-   "download_name": "8_BFX_Installation Manual_2026 Nov.pdf"
-  }
- ]
+  "name": "BIOFLEX",
+  "order": 9,
+  "category": "heating",
+  "status": "live",
+  "made_in_usa": false,
+  "card_image": "/media/bioflex.png",
+  "card_bullets": [
+    "Digester heating for biogas plants",
+    "2\" (DN 50), 316L stainless steel",
+    "No welds inside the digester",
+    "Sizing tool with CALPEX proposal"
+  ],
+  "legacy": true,
+  "tagline": "BIOFLEX – Flexible Stainless Steel Heating Pipe for Digesters",
+  "description": "",
+  "hero_image": "/bioflex/media/hero.jpg",
+  "key_figures": [
+    {
+      "value": "1,000+",
+      "label": "digesters equipped with BIOFLEX"
+    },
+    {
+      "value": "0 welds",
+      "label": "inside the digester: one continuous pipe per circuit"
+    },
+    {
+      "value": "+40%",
+      "label": "heat transfer area against smooth pipe"
+    },
+    {
+      "value": "2 in",
+      "label": "DN 50, AISI 316L stainless steel (1.4404)"
+    }
+  ],
+  "videos": [
+    {
+      "id": "product",
+      "title": "Product video",
+      "description": "The digester heating system, from the tank wall to the heat users.",
+      "duration": "7:58 min",
+      "file": "/bioflex/media/product.mp4",
+      "poster": "/bioflex/media/poster-product.jpg"
+    },
+    {
+      "id": "install",
+      "title": "BIOFLEX installation",
+      "description": "Supports, pipe, end fittings, pressure test",
+      "duration": "7:37 min",
+      "file": "/bioflex/media/install.mp4",
+      "poster": "/bioflex/media/poster-install.jpg",
+      "manual": "docs/installation-manual.pdf",
+      "library": "general"
+    }
+  ],
+  "documents": [
+    {
+      "id": "docs/usp.pdf",
+      "section": "",
+      "title": "USP Page",
+      "description": "Six reasons to specify BIOFLEX",
+      "note": "1 page",
+      "file": "/bioflex/docs/usp.pdf",
+      "download_name": "1_BFX_USP_2026 Nov.pdf"
+    },
+    {
+      "id": "docs/brochure.pdf",
+      "section": "",
+      "title": "Brochure Biogas Technology",
+      "description": "System, connection variants, data sheets BGT 1.800 and 1.810, article numbers",
+      "note": "18 pages · BRUGG original, metric",
+      "file": "/bioflex/docs/brochure.pdf",
+      "download_name": "2_BFX_Brochure Biogas Technology_2025 Dec.pdf"
+    },
+    {
+      "id": "docs/installation-manual.pdf",
+      "section": "",
+      "title": "Installation Manual",
+      "description": "Pipe supports, pipe and end fittings in 20 steps, US units first",
+      "note": "9 pages",
+      "file": "/bioflex/docs/installation-manual.pdf",
+      "download_name": "8_BFX_Installation Manual_2026 Nov.pdf",
+      "library": "general"
+    }
+  ]
 }

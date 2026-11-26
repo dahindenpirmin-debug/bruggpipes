@@ -50,7 +50,8 @@
       "duration": "13:29 min",
       "file": "/premant/media/install-pipe.mp4",
       "poster": "/premant/media/poster-install-pipe.jpg",
-      "manual": "docs/manual-installation.pdf"
+      "manual": "docs/manual-installation.pdf",
+      "library": "general"
     },
     {
       "id": "install-unlincon",
@@ -59,7 +60,8 @@
       "duration": "13:22 min",
       "file": "/premant/media/install-unlincon.mp4",
       "poster": "/premant/media/poster-install-unlincon.jpg",
-      "manual": "docs/manual-unlincon.pdf"
+      "manual": "docs/manual-unlincon.pdf",
+      "library": "joints"
     },
     {
       "id": "install-training",
@@ -68,7 +70,8 @@
       "duration": "26:22 min",
       "file": "/premant/media/install-training.mp4",
       "poster": "/premant/media/poster-install-training.jpg",
-      "manual": "docs/manual-unlincon.pdf"
+      "manual": "",
+      "library": "general"
     }
   ],
   "documents": [
@@ -169,7 +172,8 @@
       "description": "Unloading, trench, laying, welding, joints, expansion pads, backfill, final checks",
       "note": "8 pages · draft",
       "file": "/premant/docs/manual-installation.pdf",
-      "download_name": "8_PRE_Installation Manual_2026 Nov.pdf"
+      "download_name": "8_PRE_Installation Manual_2026 Nov.pdf",
+      "library": "general"
     },
     {
       "id": "docs/manual-unlincon.pdf",
@@ -178,7 +182,8 @@
       "description": "Non-crosslinked shrink joint casing, original manual",
       "note": "German / English",
       "file": "/premant/docs/manual-unlincon.pdf",
-      "download_name": "8_PRE_Installation Manual UNLINCON_2026 Mar.pdf"
+      "download_name": "8_PRE_Installation Manual UNLINCON_2026 Mar.pdf",
+      "library": "joints"
     },
     {
       "id": "docs/manual-unlincon-en.pdf",
@@ -187,7 +192,8 @@
       "description": "Same manual in English only, US letter layout",
       "note": "12 pages",
       "file": "/premant/docs/manual-unlincon-en.pdf",
-      "download_name": "8_PRE_Installation Manual UNLINCON English_2026 Nov.pdf"
+      "download_name": "8_PRE_Installation Manual UNLINCON English_2026 Nov.pdf",
+      "library": "joints"
     }
   ]
 }

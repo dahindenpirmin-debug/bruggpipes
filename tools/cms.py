@@ -71,10 +71,34 @@ def build_extra():
     for n,(slug,A) in enumerate(sorted(ACADEMY.items(),key=lambda kv:(kv[1].get('order') or 99,kv[0])),1):
         M=items(A,'modules'); D=items(A,'documents')
         cards+=f'<a class="card wide" href="{slug}/"><div class="pic"><img src="{e(A.get("cover") or "/media/logo.png")}" alt="{e(A["title"])}"></div><div class="txt"><span class="no">{n}</span><h3>{e(A["title"])}</h3><span class="tag">{e(A.get("audience") or "Course")}</span><ul><li>{e(A.get("description"))}</li><li>{len(M)} video modules'+(f' · {len(D)} documents' if D else '')+'</li></ul><span class="go">Open course</span></div></a>'
+    # installation library: every installation video and manual of the live product groups, by category
+    CATS=[('general','General installation','Unloading, trench, laying and commissioning: the whole job for each system.'),('connections','End connections and fittings','Connecting the pipe ends to the building or plant pipework.'),('joints','Joints, branches and casings','Straight joints, T-branches, elbows and their insulation shells in the trench.'),('tools','Tools','Laying, unwinding and service tools.')]
+    lib={k:[] for k,_,_ in CATS}
+    for slug,G in sorted(GROUPS.items(),key=lambda kv:(kv[1].get('order') or 99,kv[0])):
+        if G.get('status')!='live': continue
+        V=items(G,'videos'); D=items(G,'documents'); byid={d['id']:d for d in D}; used=set()
+        for v in V:
+            if v.get('library') in lib:
+                d=byid.get(v.get('manual') or ''); used.add(d['id']) if d and d.get('library')==v['library'] else None
+                lib[v['library']].append((G['name'],slug,v.get('title'),v.get('description'),v,d))
+        for d in D:
+            if d.get('library') in lib and d['id'] not in used: lib[d['library']].append((G['name'],slug,d.get('title'),d.get('description'),None,d))
+    def _row(name,slug,title,desc,v,d):
+        t=re.sub(r'^Installation Manual[\s,]*','',title or ''); t=(t[:1].upper()+t[1:]) if t else 'Installation manual'
+        if not v and 'manual' not in t.lower() and 'nload' not in t: t+=' (manual)'
+        o=f'<li><span class="tag">{e(name)}</span><div><b>{e(t)}</b><span>{e(desc)}</span></div><p class="act">'
+        if v: o+=f'<a class="dl sm" href="/{slug}/?v={e(v["id"])}#installation">Video'+(f' · {e(v.get("duration"))}' if v.get('duration') else '')+'</a>'
+        if d: n=e(d.get('download_name') or os.path.basename(d['file'])); o+=f'<a class="dl sm" href="{e(d["file"])}" target="_blank" rel="noopener" download="{n}">Manual (PDF)'+(f' · {e(d.get("note"))}' if d.get('note') and 'page' in d['note'] else '')+'</a>'
+        return o+'</p></li>'
+    nlib=sum(len(x) for x in lib.values())
+    libhtml='<style>.lib{list-style:none;margin:18px 0 0;padding:0;border-top:2px solid var(--ink)}.lib li{display:grid;grid-template-columns:150px 1fr auto;gap:18px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}.lib .tag{justify-self:start}.lib b{display:block;font:700 16.5px var(--body)}.lib div span{font-size:14.5px;color:var(--grey)}.lib .act{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;margin:0}.libcat{margin-top:44px}.libcat h3{font:700 22px var(--body);margin:0 0 4px}.libcat>p{color:var(--grey);margin:0;font-size:15px}.chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.chips a{font:700 13px var(--body);padding:8px 12px;border:1.5px solid var(--blue);color:var(--blue);text-decoration:none}.chips a:hover{background:var(--blue);color:#fff}@media (max-width:760px){.lib li{grid-template-columns:1fr;gap:8px}.lib .act{justify-content:flex-start}}</style>'
+    libhtml+='<div class="chips">'+''.join(f'<a href="#lib-{k}">{e(t)} ({len(lib[k])})</a>' for k,t,_ in CATS if lib[k])+'</div>'
+    for k,t,sub in CATS:
+        if lib[k]: libhtml+=f'<div class="libcat" id="lib-{k}"><h3>{e(t)}</h3><p>{e(sub)}</p><ul class="lib">'+''.join(_row(*x) for x in lib[k])+'</ul></div>'
     body='''<div class="wrap intro"><p class="eyebrow">BRUGG Pipes Academy</p><h1>Training for planners, engineers and installers</h1><p class="sub">Online courses on pre-insulated pipe systems. Free to use, at your own pace.</p></div></header>
 <main>
-<section id="courses" style="padding-top:20px"><div class="wrap"><p class="eyebrow">Courses</p><h2>Pick a course.</h2><div class="grid">'''+cards+'''</div><p class="note">On-site and live online training for your crew: ask us at sales.bpna@brugg.com.</p></div></section>'''
-    open(SITE+'/academy/index.html','w',encoding='utf-8').write(page('BRUGG Pipes Academy','../',[('All products','../'),('Courses','#courses'),('Configurator','../configurator/'),('Contact','https://www.bruggpipes.com/us/contact/')],body,'Course content is general training material and does not replace project engineering or local codes.','BRUGG Pipes Academy: online courses on pre-insulated pipe systems.'))
+<section id="courses" style="padding-top:20px"><div class="wrap"><p class="eyebrow">Courses</p><h2>Pick a course.</h2><div class="grid">'''+cards+'''</div><p class="note">On-site and live online training for your crew: ask us at sales.bpna@brugg.com.</p></div></section>'''+(f'<section id="installation" class="tinted"><div class="wrap"><p class="eyebrow">Installation library</p><h2>Every installation manual and video, by task.</h2><p class="lead">{nlib} manuals and videos for all BRUGG Pipes systems on this site. Pick the task, then the product.</p>{libhtml}</div></section>' if nlib else '')
+    open(SITE+'/academy/index.html','w',encoding='utf-8').write(page('BRUGG Pipes Academy','../',[('All products','../'),('Courses','#courses'),('Installation library','#installation'),('Configurator','../configurator/'),('Contact','https://www.bruggpipes.com/us/contact/')],body,'Course content is general training material and does not replace project engineering or local codes.','BRUGG Pipes Academy: online courses on pre-insulated pipe systems.'))
     for slug,A in ACADEMY.items():
         M=items(A,'modules'); D=items(A,'documents'); os.makedirs(f'{SITE}/academy/{slug}',exist_ok=True)
         if A.get('legacy') and os.path.exists(f'{SRC}/{slug.split("-")[0]}.html'):

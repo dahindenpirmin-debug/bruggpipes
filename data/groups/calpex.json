@@ -1,300 +1,322 @@
 {
- "name": "CALPEX PUR-KING",
- "order": 4,
- "category": "heating",
- "status": "live",
- "made_in_usa": true,
- "card_image": "/media/calpex.png",
- "card_bullets": [
-  "Operating temperature 176 °F (short term 203 °F)",
-  "Operating pressure 87 psi",
-  "0.75\" to 5.5\"",
-  "Up to 2\" NSF 61 certified"
- ],
- "legacy": true,
- "tagline": "CALPEX – Flexible Pre-Insulated PEX Pipe for District Heating and Cooling",
- "description": "",
- "hero_image": "/calpex/media/hero.jpg",
- "key_figures": [
-  {
-   "value": "203 °F",
-   "label": "maximum operating temperature (95 °C)"
-  },
-  {
-   "value": "100 psi",
-   "label": "at 180 °F, ASTM SDR 9; 80 psi at 200 °F"
-  },
-  {
-   "value": "4,315 ft",
-   "label": "longest single coil (1,315 m), 3.07 in jacket on a double drop trailer"
-  },
-  {
-   "value": "¾\" to 2\"",
-   "label": "ASTM SDR 9; metric SDR 11 from 25 to 140 mm. UNO single and DUO twin pipe"
-  }
- ],
- "videos": [
-  {
-   "id": "product",
-   "title": "Product video",
-   "description": "The whole case in under four minutes.",
-   "duration": "",
-   "file": "/calpex/media/product.mp4",
-   "poster": "/calpex/media/poster-product.jpg"
-  },
-  {
-   "id": "install-01",
-   "title": "General Installation",
-   "description": "Laying, pipe ends, fittings, connecting socket, wall entry, pressure test",
-   "duration": "9:42 min",
-   "file": "/calpex/media/install-01.mp4",
-   "poster": "/calpex/media/poster-install-01.jpg",
-   "manual": "docs/manual-01.pdf"
-  },
-  {
-   "id": "install-02",
-   "title": "Connecting Socket",
-   "description": "Straight joint with shrink sleeve pipe and PUR foam",
-   "duration": "3:22 min",
-   "file": "/calpex/media/install-02.mp4",
-   "poster": "/calpex/media/poster-install-02.jpg",
-   "manual": "docs/manual-02.pdf"
-  },
-  {
-   "id": "install-03",
-   "title": "T-, I- and L-Shell 76-126 mm",
-   "description": "Clip shell for T-joints, straight joints and elbows",
-   "duration": "2:57 min",
-   "file": "/calpex/media/install-03.mp4",
-   "poster": "/calpex/media/poster-install-03.jpg",
-   "manual": "docs/manual-03.pdf"
-  },
-  {
-   "id": "install-04",
-   "title": "Big T-, I- and L-Shell 76-202 mm",
-   "description": "Clip shell for larger T-joints, straight joints and elbows",
-   "duration": "2:41 min",
-   "file": "/calpex/media/install-04.mp4",
-   "poster": "/calpex/media/poster-install-04.jpg",
-   "manual": "docs/manual-04.pdf"
-  },
-  {
-   "id": "install-05",
-   "title": "PE T-Shell 225",
-   "description": "Heat-shrink T-shroud with butyl seal and two-component foam",
-   "duration": "3:59 min",
-   "file": "/calpex/media/install-05.mp4",
-   "poster": "/calpex/media/poster-install-05.jpg",
-   "manual": "docs/manual-05.pdf"
-  },
-  {
-   "id": "install-06",
-   "title": "Laying Tool",
-   "description": "Straightening curved pipe ends in the trench",
-   "duration": "1:33 min",
-   "file": "/calpex/media/install-06.mp4",
-   "poster": "/calpex/media/poster-install-06.jpg",
-   "manual": "docs/manual-06.pdf"
-  },
-  {
-   "id": "install-07",
-   "title": "Unwinding Device",
-   "description": "Assembly and safe unrolling of CALPEX coils",
-   "duration": "2:55 min",
-   "file": "/calpex/media/install-07.mp4",
-   "poster": "/calpex/media/poster-install-07.jpg",
-   "manual": "docs/manual-07.pdf"
-  },
-  {
-   "id": "install-08",
-   "title": "Connecting Chamber",
-   "description": "Distribution chamber with protective slab",
-   "duration": "2:43 min",
-   "file": "/calpex/media/install-08.mp4",
-   "poster": "/calpex/media/poster-install-08.jpg",
-   "manual": "docs/manual-08.pdf"
-  },
-  {
-   "id": "install-09",
-   "title": "Squeeze-Off Tool",
-   "description": "Temporarily shutting off PEX carrier pipes",
-   "duration": "2:29 min",
-   "file": "/calpex/media/install-09.mp4",
-   "poster": "/calpex/media/poster-install-09.jpg",
-   "manual": "docs/manual-09.pdf"
-  },
-  {
-   "id": "install-10",
-   "title": "Hydraulic Press Tool 125-160 mm",
-   "description": "Sliding sleeve joints for large carrier pipes",
-   "duration": "3:25 min",
-   "file": "/calpex/media/install-10.mp4",
-   "poster": "/calpex/media/poster-install-10.jpg",
-   "manual": "docs/manual-10.pdf"
-  },
-  {
-   "id": "install-11",
-   "title": "Electrofusion Coupler for PEX-a",
-   "description": "Welding CALPEX carrier pipes 75 to 160 mm",
-   "duration": "5:08 min",
-   "file": "/calpex/media/install-11.mp4",
-   "poster": "/calpex/media/poster-install-11.jpg",
-   "manual": "docs/manual-11.pdf"
-  }
- ],
- "documents": [
-  {
-   "id": "docs/usp.pdf",
-   "section": "CALPEX PUR-KING (CPX)",
-   "title": "USP Page",
-   "description": "Six reasons to specify CALPEX",
-   "note": "1 page",
-   "file": "/calpex/docs/usp.pdf",
-   "download_name": "1_CPX_USP_2026 Nov.pdf"
-  },
-  {
-   "id": "docs/usp-cost-calculation.pdf",
-   "section": "CALPEX PUR-KING (CPX)",
-   "title": "USP 1.1 Cost Calculation",
-   "description": "Trench and labor against rigid welded pipe, step by step",
-   "note": "2 pages",
-   "file": "/calpex/docs/usp-cost-calculation.pdf",
-   "download_name": "1.1_CPX_USP Cost Calculation_2026 Nov.pdf"
-  },
-  {
-   "id": "docs/product-information.pdf",
-   "section": "CALPEX PUR-KING (CPX)",
-   "title": "Product Information",
-   "description": "System, operating limits, range, coils and trucks",
-   "note": "4 pages",
-   "file": "/calpex/docs/product-information.pdf",
-   "download_name": "2_CPX_Product Information_2026 Nov.pdf"
-  },
-  {
-   "id": "docs/technical-data-sheet.pdf",
-   "section": "CALPEX PUR-KING (CPX)",
-   "title": "Technical Data Sheet",
-   "description": "Dimensions, bending radii, weights, coil sizes, trench",
-   "note": "5 pages · revision Nov 2026",
-   "file": "/calpex/docs/technical-data-sheet.pdf",
-   "download_name": "3_CPX_Technical Data Sheet_2026 Nov.pdf"
-  },
-  {
-   "id": "docs/guide-specification.pdf",
-   "section": "CALPEX PUR-KING (CPX)",
-   "title": "Guide Specification",
-   "description": "Section 33 61 13 in CSI three-part format for the USA and Canada",
-   "note": "8 pages · Word file on request",
-   "file": "/calpex/docs/guide-specification.pdf",
-   "download_name": "4_CPX_Guide Specification_2026 Nov.pdf"
-  },
-  {
-   "id": "docs/submittal-cover-sheet.pdf",
-   "section": "CALPEX PUR-KING (CPX)",
-   "title": "Submittal Cover Sheet",
-   "description": "Fillable cover sheet for the submittal package",
-   "note": "1 page",
-   "file": "/calpex/docs/submittal-cover-sheet.pdf",
-   "download_name": "6_CPX_Submittal Cover Sheet_2026 Nov.pdf"
-  },
-  {
-   "id": "docs/manual-01.pdf",
-   "section": "CALPEX PUR-KING (CPX)",
-   "title": "Installation Manual",
-   "description": "Laying, pipe ends, fittings, connecting socket, wall entry, pressure test",
-   "note": "11 pages",
-   "file": "/calpex/docs/manual-01.pdf",
-   "download_name": "8_CPX_Installation Manual_2026 Nov.pdf"
-  },
-  {
-   "id": "docs/manual-02.pdf",
-   "section": "Accessories and tools (ACC)",
-   "title": "Installation Manual Connecting Socket",
-   "description": "Straight joint with shrink sleeve pipe and PUR foam",
-   "note": "3 pages",
-   "file": "/calpex/docs/manual-02.pdf",
-   "download_name": "8_ACC_Installation Manual Connecting Socket_2026 Nov.pdf"
-  },
-  {
-   "id": "docs/manual-03.pdf",
-   "section": "Accessories and tools (ACC)",
-   "title": "Installation Manual T-, I- and L-Shell 76-126 mm",
-   "description": "Clip shell for T-joints, straight joints and elbows",
-   "note": "3 pages",
-   "file": "/calpex/docs/manual-03.pdf",
-   "download_name": "8_ACC_Installation Manual T-, I- and L-Shell 76-126 mm_2026 Nov.pdf"
-  },
-  {
-   "id": "docs/manual-04.pdf",
-   "section": "Accessories and tools (ACC)",
-   "title": "Installation Manual Big T-, I- and L-Shell 76-202 mm",
-   "description": "Clip shell for larger T-joints, straight joints and elbows",
-   "note": "3 pages",
-   "file": "/calpex/docs/manual-04.pdf",
-   "download_name": "8_ACC_Installation Manual Big T-, I- and L-Shell 76-202 mm_2026 Nov.pdf"
-  },
-  {
-   "id": "docs/manual-05.pdf",
-   "section": "Accessories and tools (ACC)",
-   "title": "Installation Manual PE T-Shell 225",
-   "description": "Heat-shrink T-shroud with butyl seal and two-component foam",
-   "note": "5 pages",
-   "file": "/calpex/docs/manual-05.pdf",
-   "download_name": "8_ACC_Installation Manual PE T-Shell 225_2026 Nov.pdf"
-  },
-  {
-   "id": "docs/manual-06.pdf",
-   "section": "Accessories and tools (ACC)",
-   "title": "Installation Manual Laying Tool",
-   "description": "Straightening curved pipe ends in the trench",
-   "note": "2 pages",
-   "file": "/calpex/docs/manual-06.pdf",
-   "download_name": "8_ACC_Installation Manual Laying Tool_2026 Nov.pdf"
-  },
-  {
-   "id": "docs/manual-07.pdf",
-   "section": "Accessories and tools (ACC)",
-   "title": "Installation Manual Unwinding Device",
-   "description": "Assembly and safe unrolling of CALPEX coils",
-   "note": "4 pages",
-   "file": "/calpex/docs/manual-07.pdf",
-   "download_name": "8_ACC_Installation Manual Unwinding Device_2026 Nov.pdf"
-  },
-  {
-   "id": "docs/manual-08.pdf",
-   "section": "Accessories and tools (ACC)",
-   "title": "Installation Manual Connecting Chamber",
-   "description": "Distribution chamber with protective slab",
-   "note": "3 pages",
-   "file": "/calpex/docs/manual-08.pdf",
-   "download_name": "8_ACC_Installation Manual Connecting Chamber_2026 Nov.pdf"
-  },
-  {
-   "id": "docs/manual-09.pdf",
-   "section": "Accessories and tools (ACC)",
-   "title": "Installation Manual Squeeze-Off Tool",
-   "description": "Temporarily shutting off PEX carrier pipes",
-   "note": "3 pages",
-   "file": "/calpex/docs/manual-09.pdf",
-   "download_name": "8_ACC_Installation Manual Squeeze-Off Tool_2026 Nov.pdf"
-  },
-  {
-   "id": "docs/manual-10.pdf",
-   "section": "Accessories and tools (ACC)",
-   "title": "Installation Manual Hydraulic Press Tool 125-160 mm",
-   "description": "Sliding sleeve joints for large carrier pipes",
-   "note": "4 pages",
-   "file": "/calpex/docs/manual-10.pdf",
-   "download_name": "8_ACC_Installation Manual Hydraulic Press Tool 125-160 mm_2026 Nov.pdf"
-  },
-  {
-   "id": "docs/manual-11.pdf",
-   "section": "Accessories and tools (ACC)",
-   "title": "Installation Manual Electrofusion Coupler for PEX-a",
-   "description": "Welding CALPEX carrier pipes 75 to 160 mm",
-   "note": "6 pages",
-   "file": "/calpex/docs/manual-11.pdf",
-   "download_name": "8_ACC_Installation Manual Electrofusion Coupler for PEX-a_2026 Nov.pdf"
-  }
- ]
+  "name": "CALPEX PUR-KING",
+  "order": 4,
+  "category": "heating",
+  "status": "live",
+  "made_in_usa": true,
+  "card_image": "/media/calpex.png",
+  "card_bullets": [
+    "Operating temperature 176 °F (short term 203 °F)",
+    "Operating pressure 87 psi",
+    "0.75\" to 5.5\"",
+    "Up to 2\" NSF 61 certified"
+  ],
+  "legacy": true,
+  "tagline": "CALPEX – Flexible Pre-Insulated PEX Pipe for District Heating and Cooling",
+  "description": "",
+  "hero_image": "/calpex/media/hero.jpg",
+  "key_figures": [
+    {
+      "value": "203 °F",
+      "label": "maximum operating temperature (95 °C)"
+    },
+    {
+      "value": "100 psi",
+      "label": "at 180 °F, ASTM SDR 9; 80 psi at 200 °F"
+    },
+    {
+      "value": "4,315 ft",
+      "label": "longest single coil (1,315 m), 3.07 in jacket on a double drop trailer"
+    },
+    {
+      "value": "¾\" to 2\"",
+      "label": "ASTM SDR 9; metric SDR 11 from 25 to 140 mm. UNO single and DUO twin pipe"
+    }
+  ],
+  "videos": [
+    {
+      "id": "product",
+      "title": "Product video",
+      "description": "The whole case in under four minutes.",
+      "duration": "",
+      "file": "/calpex/media/product.mp4",
+      "poster": "/calpex/media/poster-product.jpg"
+    },
+    {
+      "id": "install-01",
+      "title": "General Installation",
+      "description": "Laying, pipe ends, fittings, connecting socket, wall entry, pressure test",
+      "duration": "9:42 min",
+      "file": "/calpex/media/install-01.mp4",
+      "poster": "/calpex/media/poster-install-01.jpg",
+      "manual": "docs/manual-01.pdf",
+      "library": "general"
+    },
+    {
+      "id": "install-02",
+      "title": "Connecting Socket",
+      "description": "Straight joint with shrink sleeve pipe and PUR foam",
+      "duration": "3:22 min",
+      "file": "/calpex/media/install-02.mp4",
+      "poster": "/calpex/media/poster-install-02.jpg",
+      "manual": "docs/manual-02.pdf",
+      "library": "joints"
+    },
+    {
+      "id": "install-03",
+      "title": "T-, I- and L-Shell 76-126 mm",
+      "description": "Clip shell for T-joints, straight joints and elbows",
+      "duration": "2:57 min",
+      "file": "/calpex/media/install-03.mp4",
+      "poster": "/calpex/media/poster-install-03.jpg",
+      "manual": "docs/manual-03.pdf",
+      "library": "joints"
+    },
+    {
+      "id": "install-04",
+      "title": "Big T-, I- and L-Shell 76-202 mm",
+      "description": "Clip shell for larger T-joints, straight joints and elbows",
+      "duration": "2:41 min",
+      "file": "/calpex/media/install-04.mp4",
+      "poster": "/calpex/media/poster-install-04.jpg",
+      "manual": "docs/manual-04.pdf",
+      "library": "joints"
+    },
+    {
+      "id": "install-05",
+      "title": "PE T-Shell 225",
+      "description": "Heat-shrink T-shroud with butyl seal and two-component foam",
+      "duration": "3:59 min",
+      "file": "/calpex/media/install-05.mp4",
+      "poster": "/calpex/media/poster-install-05.jpg",
+      "manual": "docs/manual-05.pdf",
+      "library": "joints"
+    },
+    {
+      "id": "install-06",
+      "title": "Laying Tool",
+      "description": "Straightening curved pipe ends in the trench",
+      "duration": "1:33 min",
+      "file": "/calpex/media/install-06.mp4",
+      "poster": "/calpex/media/poster-install-06.jpg",
+      "manual": "docs/manual-06.pdf",
+      "library": "tools"
+    },
+    {
+      "id": "install-07",
+      "title": "Unwinding Device",
+      "description": "Assembly and safe unrolling of CALPEX coils",
+      "duration": "2:55 min",
+      "file": "/calpex/media/install-07.mp4",
+      "poster": "/calpex/media/poster-install-07.jpg",
+      "manual": "docs/manual-07.pdf",
+      "library": "tools"
+    },
+    {
+      "id": "install-08",
+      "title": "Connecting Chamber",
+      "description": "Distribution chamber with protective slab",
+      "duration": "2:43 min",
+      "file": "/calpex/media/install-08.mp4",
+      "poster": "/calpex/media/poster-install-08.jpg",
+      "manual": "docs/manual-08.pdf",
+      "library": "joints"
+    },
+    {
+      "id": "install-09",
+      "title": "Squeeze-Off Tool",
+      "description": "Temporarily shutting off PEX carrier pipes",
+      "duration": "2:29 min",
+      "file": "/calpex/media/install-09.mp4",
+      "poster": "/calpex/media/poster-install-09.jpg",
+      "manual": "docs/manual-09.pdf",
+      "library": "tools"
+    },
+    {
+      "id": "install-10",
+      "title": "Hydraulic Press Tool 125-160 mm",
+      "description": "Sliding sleeve joints for large carrier pipes",
+      "duration": "3:25 min",
+      "file": "/calpex/media/install-10.mp4",
+      "poster": "/calpex/media/poster-install-10.jpg",
+      "manual": "docs/manual-10.pdf",
+      "library": "connections"
+    },
+    {
+      "id": "install-11",
+      "title": "Electrofusion Coupler for PEX-a",
+      "description": "Welding CALPEX carrier pipes 75 to 160 mm",
+      "duration": "5:08 min",
+      "file": "/calpex/media/install-11.mp4",
+      "poster": "/calpex/media/poster-install-11.jpg",
+      "manual": "docs/manual-11.pdf",
+      "library": "connections"
+    }
+  ],
+  "documents": [
+    {
+      "id": "docs/usp.pdf",
+      "section": "CALPEX PUR-KING (CPX)",
+      "title": "USP Page",
+      "description": "Six reasons to specify CALPEX",
+      "note": "1 page",
+      "file": "/calpex/docs/usp.pdf",
+      "download_name": "1_CPX_USP_2026 Nov.pdf"
+    },
+    {
+      "id": "docs/usp-cost-calculation.pdf",
+      "section": "CALPEX PUR-KING (CPX)",
+      "title": "USP 1.1 Cost Calculation",
+      "description": "Trench and labor against rigid welded pipe, step by step",
+      "note": "2 pages",
+      "file": "/calpex/docs/usp-cost-calculation.pdf",
+      "download_name": "1.1_CPX_USP Cost Calculation_2026 Nov.pdf"
+    },
+    {
+      "id": "docs/product-information.pdf",
+      "section": "CALPEX PUR-KING (CPX)",
+      "title": "Product Information",
+      "description": "System, operating limits, range, coils and trucks",
+      "note": "4 pages",
+      "file": "/calpex/docs/product-information.pdf",
+      "download_name": "2_CPX_Product Information_2026 Nov.pdf"
+    },
+    {
+      "id": "docs/technical-data-sheet.pdf",
+      "section": "CALPEX PUR-KING (CPX)",
+      "title": "Technical Data Sheet",
+      "description": "Dimensions, bending radii, weights, coil sizes, trench",
+      "note": "5 pages · revision Nov 2026",
+      "file": "/calpex/docs/technical-data-sheet.pdf",
+      "download_name": "3_CPX_Technical Data Sheet_2026 Nov.pdf"
+    },
+    {
+      "id": "docs/guide-specification.pdf",
+      "section": "CALPEX PUR-KING (CPX)",
+      "title": "Guide Specification",
+      "description": "Section 33 61 13 in CSI three-part format for the USA and Canada",
+      "note": "8 pages · Word file on request",
+      "file": "/calpex/docs/guide-specification.pdf",
+      "download_name": "4_CPX_Guide Specification_2026 Nov.pdf"
+    },
+    {
+      "id": "docs/submittal-cover-sheet.pdf",
+      "section": "CALPEX PUR-KING (CPX)",
+      "title": "Submittal Cover Sheet",
+      "description": "Fillable cover sheet for the submittal package",
+      "note": "1 page",
+      "file": "/calpex/docs/submittal-cover-sheet.pdf",
+      "download_name": "6_CPX_Submittal Cover Sheet_2026 Nov.pdf"
+    },
+    {
+      "id": "docs/manual-01.pdf",
+      "section": "CALPEX PUR-KING (CPX)",
+      "title": "Installation Manual",
+      "description": "Laying, pipe ends, fittings, connecting socket, wall entry, pressure test",
+      "note": "11 pages",
+      "file": "/calpex/docs/manual-01.pdf",
+      "download_name": "8_CPX_Installation Manual_2026 Nov.pdf",
+      "library": "general"
+    },
+    {
+      "id": "docs/manual-02.pdf",
+      "section": "Accessories and tools (ACC)",
+      "title": "Installation Manual Connecting Socket",
+      "description": "Straight joint with shrink sleeve pipe and PUR foam",
+      "note": "3 pages",
+      "file": "/calpex/docs/manual-02.pdf",
+      "download_name": "8_ACC_Installation Manual Connecting Socket_2026 Nov.pdf",
+      "library": "joints"
+    },
+    {
+      "id": "docs/manual-03.pdf",
+      "section": "Accessories and tools (ACC)",
+      "title": "Installation Manual T-, I- and L-Shell 76-126 mm",
+      "description": "Clip shell for T-joints, straight joints and elbows",
+      "note": "3 pages",
+      "file": "/calpex/docs/manual-03.pdf",
+      "download_name": "8_ACC_Installation Manual T-, I- and L-Shell 76-126 mm_2026 Nov.pdf",
+      "library": "joints"
+    },
+    {
+      "id": "docs/manual-04.pdf",
+      "section": "Accessories and tools (ACC)",
+      "title": "Installation Manual Big T-, I- and L-Shell 76-202 mm",
+      "description": "Clip shell for larger T-joints, straight joints and elbows",
+      "note": "3 pages",
+      "file": "/calpex/docs/manual-04.pdf",
+      "download_name": "8_ACC_Installation Manual Big T-, I- and L-Shell 76-202 mm_2026 Nov.pdf",
+      "library": "joints"
+    },
+    {
+      "id": "docs/manual-05.pdf",
+      "section": "Accessories and tools (ACC)",
+      "title": "Installation Manual PE T-Shell 225",
+      "description": "Heat-shrink T-shroud with butyl seal and two-component foam",
+      "note": "5 pages",
+      "file": "/calpex/docs/manual-05.pdf",
+      "download_name": "8_ACC_Installation Manual PE T-Shell 225_2026 Nov.pdf",
+      "library": "joints"
+    },
+    {
+      "id": "docs/manual-06.pdf",
+      "section": "Accessories and tools (ACC)",
+      "title": "Installation Manual Laying Tool",
+      "description": "Straightening curved pipe ends in the trench",
+      "note": "2 pages",
+      "file": "/calpex/docs/manual-06.pdf",
+      "download_name": "8_ACC_Installation Manual Laying Tool_2026 Nov.pdf",
+      "library": "tools"
+    },
+    {
+      "id": "docs/manual-07.pdf",
+      "section": "Accessories and tools (ACC)",
+      "title": "Installation Manual Unwinding Device",
+      "description": "Assembly and safe unrolling of CALPEX coils",
+      "note": "4 pages",
+      "file": "/calpex/docs/manual-07.pdf",
+      "download_name": "8_ACC_Installation Manual Unwinding Device_2026 Nov.pdf",
+      "library": "tools"
+    },
+    {
+      "id": "docs/manual-08.pdf",
+      "section": "Accessories and tools (ACC)",
+      "title": "Installation Manual Connecting Chamber",
+      "description": "Distribution chamber with protective slab",
+      "note": "3 pages",
+      "file": "/calpex/docs/manual-08.pdf",
+      "download_name": "8_ACC_Installation Manual Connecting Chamber_2026 Nov.pdf",
+      "library": "joints"
+    },
+    {
+      "id": "docs/manual-09.pdf",
+      "section": "Accessories and tools (ACC)",
+      "title": "Installation Manual Squeeze-Off Tool",
+      "description": "Temporarily shutting off PEX carrier pipes",
+      "note": "3 pages",
+      "file": "/calpex/docs/manual-09.pdf",
+      "download_name": "8_ACC_Installation Manual Squeeze-Off Tool_2026 Nov.pdf",
+      "library": "tools"
+    },
+    {
+      "id": "docs/manual-10.pdf",
+      "section": "Accessories and tools (ACC)",
+      "title": "Installation Manual Hydraulic Press Tool 125-160 mm",
+      "description": "Sliding sleeve joints for large carrier pipes",
+      "note": "4 pages",
+      "file": "/calpex/docs/manual-10.pdf",
+      "download_name": "8_ACC_Installation Manual Hydraulic Press Tool 125-160 mm_2026 Nov.pdf",
+      "library": "connections"
+    },
+    {
+      "id": "docs/manual-11.pdf",
+      "section": "Accessories and tools (ACC)",
+      "title": "Installation Manual Electrofusion Coupler for PEX-a",
+      "description": "Welding CALPEX carrier pipes 75 to 160 mm",
+      "note": "6 pages",
+      "file": "/calpex/docs/manual-11.pdf",
+      "download_name": "8_ACC_Installation Manual Electrofusion Coupler for PEX-a_2026 Nov.pdf",
+      "library": "connections"
+    }
+  ]
 }
