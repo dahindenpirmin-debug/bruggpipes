@@ -30,7 +30,7 @@ os.makedirs(SITE+'/data',exist_ok=True); os.makedirs(SITE+'/configurator',exist_
 json.dump(out,open(SITE+'/data/products.json','w',encoding='utf-8'),ensure_ascii=False,separators=(',',':'))
 
 _body='''<div class="wrap"><p class="crumb"><a href="../">Products</a> / <b>Configurator</b></p>
-<div class="intro" style="padding-top:22px;padding-bottom:30px"><p class="eyebrow">North America</p><h1>Configurator</h1><p class="sub">From your route and operating data to pipe sizes, fittings, truck loads and a project summary.</p></div></div></header>
+<div class="intro" style="padding-top:22px;padding-bottom:30px"><p class="eyebrow">North America</p><h1>Configurator</h1><p class="sub">From your route and operating data to pipe sizes, fittings, truck loads and a project summary.</p><p class="sub" style="margin-top:10px;font-size:15px">Heating a biogas digester? Use the <a href="../bioflex/sizing.html" style="color:inherit;font-weight:700">BIOFLEX digester sizing tool</a>.</p></div></div></header>
 <main>
 <section class="cfg" id="cfg"><div class="wrap">
 <div class="unitbar"><span id="unitlabel">Units</span><div class="seg" role="group" aria-labelledby="unitlabel"><button type="button" id="u-us" aria-pressed="true">Imperial (°F, ft, MBH, psi)</button><button type="button" id="u-si" aria-pressed="false">Metric (°C, m, kW, bar)</button></div></div>

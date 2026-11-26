@@ -125,6 +125,7 @@ for slug,G in sorted(GROUPS.items(),key=lambda kv:(kv[1].get('order') or 99,kv[0
     if V: more.append(f'<a href="{slug}/#{"video" if legacy else "videos"}">Videos</a>')
     more.append(f'<a href="{slug}/#range">Sizes</a>' if legacy else '')
     if D: more.append(f'<a href="{slug}/#documents">Downloads</a>')
+    if os.path.exists(f'{SRC}/{slug}-sizing.html'): more.insert(0,f'<a href="{slug}/sizing.html">Sizing tool</a>'); more=[m for m in more if '#range' not in m]
     cards.append(f'<article class="card"><a class="pic" href="{slug}/" tabindex="-1" aria-hidden="true"><img src="{e(G.get("card_image") or "/media/logo.png")}" alt="">{usa}</a>'
       f'<div class="txt">{tag}<h3><a href="{slug}/">{e(G["name"])}</a></h3><p class="line">{e(line)}</p><ul>'+''.join(f'<li>{e(b)}</li>' for b in (G.get('card_bullets') or []))+'</ul></div>'
       f'<div class="foot"><a class="go" href="{slug}/">Open product page</a><p class="more">{"".join(more)}</p></div></article>')
