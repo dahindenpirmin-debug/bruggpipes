@@ -54,7 +54,7 @@ collections:
       - { label: Name, name: name, widget: string }
       - { label: Position on the overview, name: order, widget: number, value_type: int, min: 1, default: 20 }
       - { label: Category, name: category, widget: select, options: [ { label: Heating, value: heating }, { label: Cooling and cold water, value: cooling } ], default: heating }
-      - { label: Status, name: status, widget: select, options: [ { label: 'Live: page is online', value: live }, { label: 'In preparation: card only', value: preparation } ], default: preparation }
+      - { label: Status, name: status, widget: select, options: [ { label: 'Live: page is online', value: live }, { label: 'In preparation: hidden', value: preparation } ], default: preparation }
       - { label: Made in USA badge, name: made_in_usa, widget: boolean, default: false }
       - { label: Picture on the overview card, name: card_image, widget: image, required: false }
       - { label: Lines on the overview card, name: card_bullets, widget: list, field: { label: Line, name: line, widget: string }, required: false }

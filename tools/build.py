@@ -111,6 +111,7 @@ SOC=''
 heat=[];cool=[]
 for slug,G in sorted(GROUPS.items(),key=lambda kv:(kv[1].get('order') or 99,kv[0])):
     live=G.get('status')=='live'; cat=G.get('category')=='cooling'
+    if not live: continue   # products without a page are not shown
     usa='<img class="usa" src="media/usa.png" alt="Made in USA">' if G.get('made_in_usa') else ''
     img=f'<img src="{e(G.get("card_image") or "/media/logo.png")}" alt="{e(G["name"])} pipe">'
     tag='<span class="tag">Cooling and cold water</span>' if cat else '<span class="tag heat">Heating</span>'
@@ -121,10 +122,10 @@ body=f'''<div class="wrap intro"><p class="eyebrow">North America</p><h1>Distric
 <p class="sub">Pre-insulated pipe systems for North America. Pick a product to open its page with data, videos and documents, or let the configurator size your line.</p><div class="cta"><a class="btn solid" href="configurator/">Open the configurator</a><a class="btn" href="https://www.bruggpipes.com/us/contact/" target="_blank" rel="noopener">Talk to sales</a></div></div></header>
 <main>
 <section id="heating" style="padding-top:20px"><div class="wrap"><p class="eyebrow">Heating</p><h2>Systems for local and district heating.</h2><div class="grid">{''.join(heat)}</div></div></section>
-<section id="cooling" class="tinted"><div class="wrap"><p class="eyebrow">Cooling and cold water</p><h2>Systems for cooling and cold water.</h2><div class="grid">{''.join(cool)}</div></div></section>
+{('<section id="cooling" class="tinted"><div class="wrap"><p class="eyebrow">Cooling and cold water</p><h2>Systems for cooling and cold water.</h2><div class="grid">'+''.join(cool)+'</div></div></section>') if cool else ''}
 <section id="configurator-teaser" style="padding-bottom:0"><div class="wrap split" style="grid-template-columns:1.4fr 1fr"><div><p class="eyebrow">Configurator</p><h2>Size your line in five steps.</h2><p class="lead">Enter temperatures, heat load and route length in US units. The configurator shows the suitable BRUGG Pipes systems with velocity and pressure loss for every size and prepares your request for a quote.</p></div><div><a class="btn solid" href="configurator/">Open the configurator</a></div></div></section>
 <section id="cad"><div class="wrap split" style="grid-template-columns:1.4fr 1fr"><div><p class="eyebrow">3D CAD and BIM</p><h2>Models for your drawings, straight from the BRUGG Pipes BIM library.</h2><p class="lead">3D CAD models and BIM objects of BRUGG Pipes products for download in your CAD format. The library opens in English in a new tab; a free account with your business email is required.</p></div><div><a class="btn solid" href="https://brugg.partcommunity.com/3d-cad-models/sso/?languageIso=en" target="_blank" rel="noopener">Open the CAD / BIM library</a></div></div></section>'''
-open(f'{SITE}/index.html','w',encoding='utf-8').write(page('BRUGG Pipes North America: Product Overview','',[('Heating','#heating'),('Cooling','#cooling'),('Configurator','configurator/'),('Academy','academy/'),('CAD / BIM','#cad'),('Contact','https://www.bruggpipes.com/us/contact/')],body,'Values as on the BRUGG Pipes product overview. Subject to technical changes.','BRUGG Pipes North America: pre-insulated pipe systems for district heating and cooling, with data, videos and documents.'))
+open(f'{SITE}/index.html','w',encoding='utf-8').write(page('BRUGG Pipes North America: Product Overview','',[('Heating','#heating')]+([('Cooling','#cooling')] if cool else [])+[('Configurator','configurator/'),('Academy','academy/'),('CAD / BIM','#cad'),('Contact','https://www.bruggpipes.com/us/contact/')],body,'Values as on the BRUGG Pipes product overview. Subject to technical changes.','BRUGG Pipes North America: pre-insulated pipe systems for district heating and cooling, with data, videos and documents.'))
 
 exec(open(ROOT+'/tools/cms.py',encoding='utf-8').read())
 # ---------- helpers on product pages ----------
