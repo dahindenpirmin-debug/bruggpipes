@@ -23,7 +23,7 @@ for p,P in DATA['products'].items():
             if s['material']=='corrugated': z['f']=FCOR[str(int(idmm))]
             lim=dict(s['limits']); lim.update(s.get('rowLimits',{}).get(r[0],{})); z['lim']=lim
             sizes.append(z)
-        out['series'].append({'product':p,'productName':P['name'],'type':P['type'],'id':s['id'],'name':s['name'],'pipes':s['pipes'],'material':s['material'],
+        out['series'].append({'product':p,'productName':P['name'],'code':P['code'],'type':P['type'],'id':s['id'],'name':s['name'],'pipes':s['pipes'],'material':s['material'],
           'pByT':s.get('pressureByTempF'),'note':s.get('note',''),'source':P['source'],'page':f'../{p}/#range','sizes':sizes})
 out['shipping']=DATA['shipping']; out['accessories']={k:[x for x in v if not x.get('img') or exists(x['img']) or x.update(img='') is None] for k,v in DATA['accessories'].items() if k!='_rule'}; out['accRule']=DATA['accessories']['_rule']
 os.makedirs(SITE+'/data',exist_ok=True); os.makedirs(SITE+'/configurator',exist_ok=True)
@@ -85,11 +85,11 @@ _body='''<div class="wrap"><p class="crumb"><a href="../">Products</a> / <b>Conf
 
 <div id="s6" class="step" hidden><h2>Project summary</h2><p class="hint">Check the summary, then send it to BRUGG Pipes. We answer with an offer.</p>
 <div id="sumhtml" class="sum"></div>
-<div class="cfgnav"><button class="btn" type="button" data-back>Previous</button><span class="right"><a class="btn" href="./">Start over</a><button class="btn" type="button" id="print">Print or save as PDF</button><button class="btn" type="button" id="copy">Copy as text</button><a class="btn solid" id="mail" href="mailto:sales.bpna@brugg.com">Email request to BRUGG Pipes</a></span></div>
+<div class="cfgnav"><button class="btn" type="button" data-back>Previous</button><span class="right"><a class="btn" href="./">Start over</a><a class="btn" id="mail" href="mailto:sales.bpna@brugg.com">Plain-text email</a><button class="btn" type="button" id="copyhtml">Copy formatted email</button><button class="btn solid" type="button" id="pdf">Download PDF</button><button class="btn solid" type="button" id="eml">Email draft with PDF</button></span></div>
 <p class="hint" id="copied" aria-live="polite"></p><pre id="summary" hidden></pre></div>
 </div></section>'''
 _h=page('BRUGG Pipes Configurator: North America','../',[('All products','../'),('Configurator','./'),('Academy','../academy/'),('CAD / BIM',CAD),('Contact','https://www.bruggpipes.com/us/contact/')],_body,
  'Velocity and pressure loss are estimates for water and do not replace project engineering by BRUGG Pipes. Product values from the Technical Data Sheets. Subject to technical changes.',
  'BRUGG Pipes configurator for North America: suitable pre-insulated pipe systems with velocity and pressure loss in US units.')
-_h=_h.replace('<link rel="stylesheet" href="../assets/site.css">','<link rel="stylesheet" href="../assets/site.css"><link rel="stylesheet" href="configurator.css">').replace('<script src="../assets/site.js" defer></script>','<script src="configurator-calc.js" defer></script><script src="configurator.js" defer></script>')
+_h=_h.replace('<link rel="stylesheet" href="../assets/site.css">','<link rel="stylesheet" href="../assets/site.css"><link rel="stylesheet" href="configurator.css">').replace('<script src="../assets/site.js" defer></script>','<script src="configurator-calc.js" defer></script><script src="configurator-export.js" defer></script><script src="configurator.js" defer></script>')
 open(SITE+'/configurator/index.html','w',encoding='utf-8').write(_h)

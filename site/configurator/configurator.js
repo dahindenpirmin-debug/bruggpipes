@@ -231,8 +231,8 @@
   // ---- summary ----
   function table(head, rows, cls) { var sc = el('div', 'scroll'), tb = el('table', cls || ''), tr = el('tr'); head.forEach(function (h) { tr.appendChild(el('th', h[1] || '', h[0])); }); if (head.length) tb.appendChild(tr); rows.forEach(function (r) { var x = el('tr'); r.forEach(function (c, i) { x.appendChild(el('td', head[i] && head[i][1] || '', c)); }); tb.appendChild(x); }); sc.appendChild(tb); return sc; }
   function summary() {
-    var s = st.specs, c = st.contact, p = plan(), L = [], H = $('sumhtml'); H.textContent = '';
-    function sec(title, head, rows, cls) { H.appendChild(el('h3', '', title)); H.appendChild(table(head, rows, cls)); L.push(''); L.push(title.toUpperCase()); rows.forEach(function (r) { L.push((head.length ? '- ' : '') + r.filter(function (x) { return x !== ''; }).join(head.length ? ' | ' : ': ')); }); }
+    var s = st.specs, c = st.contact, p = plan(), L = [], M = [], H = $('sumhtml'); H.textContent = '';
+    function sec(title, head, rows, cls) { M.push({ title: title, head: head, rows: rows, kv: cls === 'kv' }); H.appendChild(el('h3', '', title)); H.appendChild(table(head, rows, cls)); L.push(''); L.push(title.toUpperCase()); rows.forEach(function (r) { L.push((head.length ? '- ' : '') + r.filter(function (x) { return x !== ''; }).join(head.length ? ' | ' : ': ')); }); }
     L.push('BRUGG Pipes configurator: project summary');
     sec('Project', [], [['Contact', c.fn + ' ' + c.ln + ', ' + c.co], ['Email', c.em + (c.ph ? ' · ' + c.ph : '')]].concat(c.pr ? [['Project', c.pr]] : []).concat([['Delivery', dest() + ', ' + st.country], ['Medium', st.medium], ['Supply / return', dT(s.tin) + ' / ' + dT(s.tout)]]).concat(s.tpeak != null ? [['Peak temperature', dT(s.tpeak)]] : []).concat(s.pmax != null ? [['Max. operating pressure', dp(s.pmax)]] : []).concat([['Total heat load', dP(s.total)], ['Flow at the source', dQ(s.fl[0].q)]]), 'kv');
     if (p) {
@@ -246,7 +246,11 @@
       L.push(''); L.push('No system selected: please propose.');
     }
     if (st.notes) { sec('Notes', [], [['Notes', st.notes]], 'kv'); }
-    H.appendChild(el('p', 'note', 'Sizes, quantities and transport are a proposal based on the entered values. Velocity and pressure loss are estimates for water. BRUGG Pipes engineering confirms the design with the offer.'));
+    var note = 'Sizes, quantities and transport are a proposal based on the entered values. Velocity and pressure loss are estimates for water in straight pipe. BRUGG Pipes engineering confirms the design with the offer.';
+    H.appendChild(el('p', 'note', note));
+    var d = new Date(), mon = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][d.getMonth()];
+    st.model = { title: c.pr || 'Project summary', sub: c.co + (p ? ' · ' + p.ser.name : '') + ' · ' + dest(), date: mon + ' ' + d.getDate() + ', ' + d.getFullYear(), secs: M, note: note,
+      file: '1_' + (p ? p.ser.code : 'CFG') + '_Project Summary_' + d.getFullYear() + ' ' + mon, subject: 'Request for a quote' + (c.pr ? ': ' + c.pr : '') + ' (' + c.co + ')' };
     return L.join('\n');
   }
 
@@ -285,8 +289,11 @@
     });
     Array.prototype.forEach.call($('progress').children, function (li, k) { function go() { if (li.className === 'done') show(k + 1); } li.addEventListener('click', go); li.addEventListener('keydown', function (ev) { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); go(); } }); });
     document.querySelectorAll('[data-back]').forEach(function (b) { b.addEventListener('click', function () { show(cur - 1); }); });
-    $('print').addEventListener('click', function () { window.print(); });
-    $('copy').addEventListener('click', function () { var t = $('summary').textContent; (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(function () { $('copied').textContent = 'Summary copied.'; }).catch(function () { $('copied').textContent = 'Copying is blocked in this browser. Use "Print or save as PDF".'; }); });
+    function busy(b, on, msg) { b.disabled = on; b.setAttribute('aria-busy', on ? 'true' : 'false'); if (msg != null) $('copied').textContent = msg; }
+    function oops() { $('copied').textContent = 'That did not work in this browser. Please use the plain-text email.'; }
+    $('pdf').addEventListener('click', function () { var b = this; busy(b, true, 'Preparing the PDF ...'); CFG_EXPORT.pdf(st.model).then(function (blob) { CFG_EXPORT.save(blob, st.model.file + '.pdf'); busy(b, false, 'PDF saved: ' + st.model.file + '.pdf'); }).catch(function () { busy(b, false); oops(); }); });
+    $('eml').addEventListener('click', function () { var b = this; busy(b, true, 'Preparing the email draft ...'); CFG_EXPORT.pdf(st.model).then(function (blob) { return CFG_EXPORT.eml(st.model, blob); }).then(function (m) { CFG_EXPORT.save(m, 'BRUGG Pipes request ' + st.model.file.replace(/^1_/, '') + '.eml'); busy(b, false, 'Email draft saved. Open the file: it starts a new email to sales.bpna@brugg.com with the summary and the PDF attached. Check it and send it.'); }).catch(function () { busy(b, false); oops(); }); });
+    $('copyhtml').addEventListener('click', function () { try { var h = CFG_EXPORT.html(st.model, ''), t = CFG_EXPORT.text(st.model); navigator.clipboard.write([new ClipboardItem({ 'text/html': new Blob([h], { type: 'text/html' }), 'text/plain': new Blob([t], { type: 'text/plain' }) })]).then(function () { $('copied').textContent = 'Formatted summary copied. Paste it into your email to sales.bpna@brugg.com.'; }).catch(oops); } catch (e) { oops(); } });
   }
   fetch('../data/products.json', { credentials: 'omit' }).then(function (r) { if (!r.ok) throw new Error('data'); return r.json(); }).then(function (d) { DATA = d; init(); }).catch(function () { fail('The product data could not be loaded. Please reload the page or write to sales.bpna@brugg.com.'); });
 })();
