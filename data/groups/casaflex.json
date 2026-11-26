@@ -1,174 +1,183 @@
 {
- "name": "CASAFLEX",
- "order": 3,
- "category": "heating",
- "status": "live",
- "made_in_usa": false,
- "card_image": "/media/casaflex.jpg",
- "card_bullets": [
-  "Operating temperature 302 °F",
-  "Operating pressure 362 psi",
-  "¾\" to 4\" (DN 20–100)",
-  "Leak detection"
- ],
- "legacy": true,
- "tagline": "CASAFLEX – Flexible Pipe for District Energy and Steam Condensate",
- "description": "",
- "hero_image": "/casaflex/media/hero.jpg",
- "key_figures": [
-  {
-   "value": "302 °F",
-   "label": "continuous operating temperature (150 °C), peaks to 356 °F"
-  },
-  {
-   "value": "362 psi",
-   "label": "operating pressure, PN 25 (25 bar); PN 16 at 232 psi"
-  },
-  {
-   "value": "1,509 ft",
-   "label": "longest single coil (460 m, ¾\")"
-  },
-  {
-   "value": "¾\" to 4\"",
-   "label": "UNO single pipe; DUO twin pipe 2 × ¾\" to 2 × 2\""
-  }
- ],
- "videos": [
-  {
-   "id": "product",
-   "title": "Product video",
-   "description": "The whole case in under four minutes.",
-   "duration": "",
-   "file": "/casaflex/media/product.mp4",
-   "poster": "/casaflex/media/poster-product.jpg"
-  },
-  {
-   "id": "install-uno-pn16",
-   "title": "UNO PN 16",
-   "description": "¾\" to 3\" · 232 psi",
-   "duration": "6:54 min",
-   "file": "/casaflex/media/install-uno-pn16.mp4",
-   "poster": "/casaflex/media/poster-install-uno-pn16.jpg",
-   "manual": "docs/manual-uno-pn16.pdf"
-  },
-  {
-   "id": "install-uno-pn25",
-   "title": "UNO PN 25",
-   "description": "¾\" to 3\" · 362 psi",
-   "duration": "9:03 min",
-   "file": "/casaflex/media/install-uno-pn25.mp4",
-   "poster": "/casaflex/media/poster-install-uno-pn25.jpg",
-   "manual": "docs/manual-uno-pn25.pdf"
-  },
-  {
-   "id": "install-uno-dn100",
-   "title": "UNO DN 100",
-   "description": "4\" · 232 psi",
-   "duration": "4:32 min",
-   "file": "/casaflex/media/install-uno-dn100.mp4",
-   "poster": "/casaflex/media/poster-install-uno-dn100.jpg",
-   "manual": "docs/manual-uno-dn100.pdf"
-  },
-  {
-   "id": "install-duo",
-   "title": "DUO",
-   "description": "2 × ¾\" to 2 × 2\" · 232 psi",
-   "duration": "4:29 min",
-   "file": "/casaflex/media/install-duo.mp4",
-   "poster": "/casaflex/media/poster-install-duo.jpg",
-   "manual": "docs/manual-duo.pdf"
-  }
- ],
- "documents": [
-  {
-   "id": "docs/usp.pdf",
-   "section": "",
-   "title": "USP Page",
-   "description": "Six reasons to specify CASAFLEX",
-   "note": "1 page",
-   "file": "/casaflex/docs/usp.pdf",
-   "download_name": "1_CFL_USP_2026 Nov.pdf"
-  },
-  {
-   "id": "docs/usp-cost-calculation.pdf",
-   "section": "",
-   "title": "USP 1.1 Cost Calculation",
-   "description": "Trench and labor against rigid welded pipe, step by step",
-   "note": "2 pages",
-   "file": "/casaflex/docs/usp-cost-calculation.pdf",
-   "download_name": "1.1_CFL_USP Cost Calculation_2026 Nov.pdf"
-  },
-  {
-   "id": "docs/product-information.pdf",
-   "section": "",
-   "title": "Product Information",
-   "description": "System, operating limits, range and connections",
-   "note": "4 pages",
-   "file": "/casaflex/docs/product-information.pdf",
-   "download_name": "2_CFL_Product Information_2026 Nov.pdf"
-  },
-  {
-   "id": "docs/technical-data-sheet.pdf",
-   "section": "",
-   "title": "Technical Data Sheet",
-   "description": "Dimensions, bending radii, coil lengths, heat loss, trench",
-   "note": "4 pages",
-   "file": "/casaflex/docs/technical-data-sheet.pdf",
-   "download_name": "3_CFL_Technical Data Sheet_2026 Nov.pdf"
-  },
-  {
-   "id": "docs/guide-specification.pdf",
-   "section": "",
-   "title": "Guide Specification",
-   "description": "Section 33 61 13 in CSI three-part format, editable for your project manual",
-   "note": "7 pages · Word file on request",
-   "file": "/casaflex/docs/guide-specification.pdf",
-   "download_name": "4_CFL_Guide Specification_2026 Nov.pdf"
-  },
-  {
-   "id": "docs/submittal-cover-sheet.pdf",
-   "section": "",
-   "title": "Submittal Cover Sheet",
-   "description": "Fillable cover sheet for the submittal package",
-   "note": "1 page",
-   "file": "/casaflex/docs/submittal-cover-sheet.pdf",
-   "download_name": "6_CFL_Submittal Cover Sheet_2026 Nov.pdf"
-  },
-  {
-   "id": "docs/manual-uno-pn16.pdf",
-   "section": "",
-   "title": "Installation Manual UNO PN 16",
-   "description": "¾\" to 3\" (DN 20 to DN 80), 232 psi",
-   "note": "German / English",
-   "file": "/casaflex/docs/manual-uno-pn16.pdf",
-   "download_name": "8_CFL_Installation Manual UNO PN 16_2026 Jan.pdf"
-  },
-  {
-   "id": "docs/manual-uno-pn25.pdf",
-   "section": "",
-   "title": "Installation Manual UNO PN 25",
-   "description": "¾\" to 3\" (DN 20 to DN 80), 362 psi",
-   "note": "German / English",
-   "file": "/casaflex/docs/manual-uno-pn25.pdf",
-   "download_name": "8_CFL_Installation Manual UNO PN 25_2026 Jan.pdf"
-  },
-  {
-   "id": "docs/manual-uno-dn100.pdf",
-   "section": "",
-   "title": "Installation Manual UNO DN 100",
-   "description": "4\" (DN 100), 232 psi",
-   "note": "German / English",
-   "file": "/casaflex/docs/manual-uno-dn100.pdf",
-   "download_name": "8_CFL_Installation Manual UNO DN 100_2026 Jan.pdf"
-  },
-  {
-   "id": "docs/manual-duo.pdf",
-   "section": "",
-   "title": "Installation Manual DUO",
-   "description": "2 × ¾\" to 2 × 2\" (DN 20 to DN 50), 232 psi",
-   "note": "German / English",
-   "file": "/casaflex/docs/manual-duo.pdf",
-   "download_name": "8_CFL_Installation Manual DUO_2024 Aug.pdf"
-  }
- ]
+  "name": "CASAFLEX",
+  "order": 3,
+  "category": "heating",
+  "status": "live",
+  "made_in_usa": false,
+  "card_image": "/media/casaflex.jpg",
+  "card_bullets": [
+    "Operating temperature 302 °F",
+    "Operating pressure 362 psi",
+    "¾\" to 4\" (DN 20–100)",
+    "Leak detection"
+  ],
+  "legacy": true,
+  "tagline": "CASAFLEX – Flexible Pipe for District Energy and Steam Condensate",
+  "description": "",
+  "hero_image": "/casaflex/media/hero.jpg",
+  "key_figures": [
+    {
+      "value": "302 °F",
+      "label": "continuous operating temperature (150 °C), peaks to 356 °F"
+    },
+    {
+      "value": "362 psi",
+      "label": "operating pressure, PN 25 (25 bar); PN 16 at 232 psi"
+    },
+    {
+      "value": "1,509 ft",
+      "label": "longest single coil (460 m, ¾\")"
+    },
+    {
+      "value": "¾\" to 4\"",
+      "label": "UNO single pipe; DUO twin pipe 2 × ¾\" to 2 × 2\""
+    }
+  ],
+  "videos": [
+    {
+      "id": "product",
+      "title": "Product video",
+      "description": "The whole case in under four minutes.",
+      "duration": "",
+      "file": "/casaflex/media/product.mp4",
+      "poster": "/casaflex/media/poster-product.jpg"
+    },
+    {
+      "id": "install-uno-pn16",
+      "title": "UNO PN 16",
+      "description": "¾\" to 3\" · 232 psi",
+      "duration": "6:54 min",
+      "file": "/casaflex/media/install-uno-pn16.mp4",
+      "poster": "/casaflex/media/poster-install-uno-pn16.jpg",
+      "manual": "docs/manual-uno-pn16.pdf"
+    },
+    {
+      "id": "install-uno-pn25",
+      "title": "UNO PN 25",
+      "description": "¾\" to 3\" · 362 psi",
+      "duration": "9:03 min",
+      "file": "/casaflex/media/install-uno-pn25.mp4",
+      "poster": "/casaflex/media/poster-install-uno-pn25.jpg",
+      "manual": "docs/manual-uno-pn25.pdf"
+    },
+    {
+      "id": "install-uno-dn100",
+      "title": "UNO DN 100",
+      "description": "4\" · 232 psi",
+      "duration": "4:32 min",
+      "file": "/casaflex/media/install-uno-dn100.mp4",
+      "poster": "/casaflex/media/poster-install-uno-dn100.jpg",
+      "manual": "docs/manual-uno-dn100.pdf"
+    },
+    {
+      "id": "install-duo",
+      "title": "DUO",
+      "description": "2 × ¾\" to 2 × 2\" · 232 psi",
+      "duration": "4:29 min",
+      "file": "/casaflex/media/install-duo.mp4",
+      "poster": "/casaflex/media/poster-install-duo.jpg",
+      "manual": "docs/manual-duo.pdf"
+    }
+  ],
+  "documents": [
+    {
+      "id": "docs/usp.pdf",
+      "section": "",
+      "title": "USP Page",
+      "description": "Six reasons to specify CASAFLEX",
+      "note": "1 page",
+      "file": "/casaflex/docs/usp.pdf",
+      "download_name": "1_CFL_USP_2026 Nov.pdf"
+    },
+    {
+      "id": "docs/usp-cost-calculation.pdf",
+      "section": "",
+      "title": "USP 1.1 Cost Calculation",
+      "description": "Trench and labor against rigid welded pipe, step by step",
+      "note": "2 pages",
+      "file": "/casaflex/docs/usp-cost-calculation.pdf",
+      "download_name": "1.1_CFL_USP Cost Calculation_2026 Nov.pdf"
+    },
+    {
+      "id": "docs/product-information.pdf",
+      "section": "",
+      "title": "Product Information",
+      "description": "System, operating limits, range and connections",
+      "note": "4 pages",
+      "file": "/casaflex/docs/product-information.pdf",
+      "download_name": "2_CFL_Product Information_2026 Nov.pdf"
+    },
+    {
+      "id": "docs/technical-data-sheet.pdf",
+      "section": "",
+      "title": "Technical Data Sheet",
+      "description": "Dimensions, bending radii, coil lengths, heat loss, trench",
+      "note": "4 pages",
+      "file": "/casaflex/docs/technical-data-sheet.pdf",
+      "download_name": "3_CFL_Technical Data Sheet_2026 Nov.pdf"
+    },
+    {
+      "id": "docs/guide-specification.pdf",
+      "section": "",
+      "title": "Guide Specification",
+      "description": "Section 33 61 13 in CSI three-part format, editable for your project manual",
+      "note": "7 pages",
+      "file": "/casaflex/docs/guide-specification.pdf",
+      "download_name": "4_CFL_Guide Specification_2026 Nov.pdf"
+    },
+    {
+      "id": "docs/guide-specification-word",
+      "section": "",
+      "title": "Guide Specification (Word)",
+      "description": "Editable version to copy into your project specification.",
+      "note": "",
+      "file": "/casaflex/docs/guide-specification.docx",
+      "download_name": "4_CFL_Guide Specification_2026 Nov.docx"
+    },
+    {
+      "id": "docs/submittal-cover-sheet.pdf",
+      "section": "",
+      "title": "Submittal Cover Sheet",
+      "description": "Fillable cover sheet for the submittal package",
+      "note": "1 page",
+      "file": "/casaflex/docs/submittal-cover-sheet.pdf",
+      "download_name": "6_CFL_Submittal Cover Sheet_2026 Nov.pdf"
+    },
+    {
+      "id": "docs/manual-uno-pn16.pdf",
+      "section": "",
+      "title": "Installation Manual UNO PN 16",
+      "description": "¾\" to 3\" (DN 20 to DN 80), 232 psi",
+      "note": "German / English",
+      "file": "/casaflex/docs/manual-uno-pn16.pdf",
+      "download_name": "8_CFL_Installation Manual UNO PN 16_2026 Jan.pdf"
+    },
+    {
+      "id": "docs/manual-uno-pn25.pdf",
+      "section": "",
+      "title": "Installation Manual UNO PN 25",
+      "description": "¾\" to 3\" (DN 20 to DN 80), 362 psi",
+      "note": "German / English",
+      "file": "/casaflex/docs/manual-uno-pn25.pdf",
+      "download_name": "8_CFL_Installation Manual UNO PN 25_2026 Jan.pdf"
+    },
+    {
+      "id": "docs/manual-uno-dn100.pdf",
+      "section": "",
+      "title": "Installation Manual UNO DN 100",
+      "description": "4\" (DN 100), 232 psi",
+      "note": "German / English",
+      "file": "/casaflex/docs/manual-uno-dn100.pdf",
+      "download_name": "8_CFL_Installation Manual UNO DN 100_2026 Jan.pdf"
+    },
+    {
+      "id": "docs/manual-duo.pdf",
+      "section": "",
+      "title": "Installation Manual DUO",
+      "description": "2 × ¾\" to 2 × 2\" (DN 20 to DN 50), 232 psi",
+      "note": "German / English",
+      "file": "/casaflex/docs/manual-duo.pdf",
+      "download_name": "8_CFL_Installation Manual DUO_2024 Aug.pdf"
+    }
+  ]
 }

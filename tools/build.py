@@ -280,7 +280,7 @@ for p,t in TITLE.items():
     h=h.replace(' oncontextmenu="return false"','')
     js=[]
     h=re.sub(r'<script>(.*?)</script>',lambda m:(js.append(m.group(1)),'')[1],h,flags=re.S)
-    h=re.sub(r'<li>(?:(?!</li>).)*guide-specification\.docx(?:(?!</li>).)*</li>','',h,flags=re.S)
+    if not os.path.exists(f'{SITE}/{p}/docs/guide-specification.docx'): h=re.sub(r'<li>(?:(?!</li>).)*guide-specification\.docx(?:(?!</li>).)*</li>','',h,flags=re.S)
     js.append('''(function(){var q=new URLSearchParams(location.search).get('v');if(!q)return;var t=document.querySelector('.tab[data-v="'+q.replace(/[^a-z0-9-]/g,'')+'"]');if(t)t.click();})();''')
     open(f'{SITE}/{p}/product.js','w',encoding='utf-8').write('"use strict";\n'+'\n'.join(js))
     h=h.replace('src="media/logo.png"','src="/media/logo.png"')

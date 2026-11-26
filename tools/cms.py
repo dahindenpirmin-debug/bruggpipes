@@ -32,7 +32,7 @@ def apply_group(h,G,p):
     if D: h=re.sub(r'(<h2>Everything you need, one file each\.</h2>).*?(<p id="dlmsg")',lambda m:m.group(1)+doc_lists(D)+m.group(2),h,count=1,flags=re.S)
     if inst:
         tabs=''.join(f'<button type="button" class="tab{" on" if i==0 else ""}" id="tab-{e(x["id"])}" data-v="{e(x["id"])}" data-src="{e(x["file"])}" data-poster="{e(x.get("poster"))}" aria-pressed="{"true" if i==0 else "false"}"><b>{e(x.get("title"))}</b><span>{e(x.get("description"))}</span><em>{e(x.get("duration"))}</em></button>' for i,x in enumerate(inst))
-        h=re.sub(r'(<div class="tabs" role="group" aria-label="[^"]*">).*?(</div><div class="mlinks">)',lambda m:m.group(1)+tabs+m.group(2),h,count=1,flags=re.S)
+        h=re.sub(r'(<div class="tabs" role="group" aria-label="[^"]*">).*?(</div>\s*<div class="mlinks">)',lambda m:m.group(1)+tabs+m.group(2),h,count=1,flags=re.S)
         h=re.sub(r'(<video id="instvideo"[^>]*?) poster="[^"]*" src="[^"]*"',lambda m:f'{m.group(1)} poster="{e(inst[0].get("poster"))}" src="{e(inst[0]["file"])}"',h,count=1)
     for x in V:
         h=h.replace(f'"media/{x["id"]}.mp4"','"'+e(x['file'])+'"').replace(f'"media/poster-{x["id"]}.jpg"','"'+e(x.get('poster'))+'"')
