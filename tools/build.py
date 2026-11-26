@@ -37,17 +37,22 @@ extra='''
 /* ---- site pages: overview and sub-product pages ---- */
 .crumb a{color:var(--grey)}.util a.ext:after{content:" \\2197"}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px}
-.card{display:grid;grid-template-columns:116px 1fr;gap:18px;padding:22px 20px 20px;border:1.5px solid var(--line);text-decoration:none;color:var(--ink);background:var(--paper);position:relative;transition:border-color .15s,box-shadow .15s}
-a.card:hover{border-color:var(--blue);box-shadow:0 18px 40px -26px rgba(27,42,107,.6)}
-.card .pic{position:relative;display:flex;align-items:flex-end;justify-content:center;min-height:150px}.card .pic>img:first-child{max-height:168px;width:auto;max-width:116px;object-fit:contain}
-.card .usa{position:absolute;left:-6px;top:-4px;width:40px}
-.card .no{position:absolute;right:16px;top:16px;min-width:24px;height:24px;padding:0 5px;background:var(--blue);color:#fff;font:700 12px/24px var(--body);text-align:center}
-.card h3{font:700 20px/1.2 var(--body);color:var(--blue);margin:0 34px 6px 0}
+.card{display:flex;flex-direction:column;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);text-decoration:none;position:relative;transition:border-color .15s,box-shadow .15s,transform .15s}
+.card:hover{border-color:var(--blue);box-shadow:0 22px 44px -28px rgba(27,42,107,.65);transform:translateY(-2px)}
+.card .pic{position:relative;display:flex;align-items:flex-end;justify-content:center;height:210px;padding:18px 18px 0;background:var(--tint);overflow:hidden}
+.card .pic>img:first-child{height:100%;width:auto;max-width:100%;object-fit:contain;object-position:bottom;mix-blend-mode:multiply}
+.card .usa{position:absolute;left:14px;top:14px;width:44px}
+.card .txt{padding:20px 22px 0;flex:1}
+.card h3{font:700 22px/1.2 var(--body);margin:10px 0 6px}.card h3 a{color:var(--blue);text-decoration:none}
+.card .line{font-size:14.5px;line-height:1.45;color:var(--ink);font-weight:500;margin:0;min-height:42px}
 .tag{display:inline-block;font:700 10.5px var(--body);letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;color:var(--blue);background:var(--tint)}.tag.heat{color:#C8402F;background:#FBEDEA}
-.card ul{list-style:none;margin:12px 0 14px;padding:0;font-size:14.5px;color:var(--grey);font-weight:400}.card li{padding:1.5px 0}
-.go{font:700 13.5px var(--body);color:var(--blue)}a.card .go:after{content:" \\2192"}
-.card.off{background:#FAFBFD}.card.off .go{color:#8C93A3;font-weight:600}
-.card.wide{grid-template-columns:1fr;gap:14px;align-content:start}.card.wide .pic>img:first-child{max-width:none;max-height:none;width:100%;aspect-ratio:16/9;object-fit:cover;border:1px solid var(--line)}.card.wide .pic{min-height:0;display:block}.card.wide .no{top:auto;position:static;float:right;margin-left:10px}.card.wide h3{margin-right:0}
+.card ul{list-style:none;margin:14px 0 0;padding:0;font-size:14px;color:var(--grey);font-weight:400}.card li{padding:7px 0;border-top:1px solid var(--line)}
+.card .foot{padding:18px 22px 20px;margin-top:auto}
+.go{display:block;font:700 14px var(--body);color:#fff;background:var(--blue);padding:12px 16px;text-align:center;text-decoration:none}.go:after{content:" \\2192"}.go:hover{background:#1B2A6B}
+.card .more{display:flex;gap:18px;justify-content:center;margin:12px 0 0;font-size:13px;font-weight:600}.card .more a{color:var(--blue);text-decoration:none;border-bottom:1px solid transparent}.card .more a:hover{border-bottom-color:var(--blue)}
+.card.help{background:var(--blue);border-color:var(--blue);color:#fff;padding:26px 22px 20px;justify-content:flex-start}.card.help .eyebrow{color:#fff;opacity:.8;margin:0 0 10px}.card.help h3{color:#fff;font-size:24px;margin:0 0 12px}.card.help p{font-size:15px;line-height:1.5;margin:0}.card.help .go{margin-top:auto;background:#fff;color:var(--blue)}
+.card .no{min-width:24px;height:24px;padding:0 5px;background:var(--blue);color:#fff;font:700 12px/24px var(--body);text-align:center}
+.card.wide{padding:22px 20px 20px;gap:14px}.card.wide .pic{height:auto;padding:0;background:none;display:block}.card.wide .pic>img:first-child{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border:1px solid var(--line);mix-blend-mode:normal}.card.wide .txt{padding:0}.card.wide .no{float:right;margin-left:10px}.card.wide h3{color:var(--blue)}.card.wide .go{margin-top:14px}
 .subp{border-top:1px solid var(--line);padding:64px 0}.subp:first-of-type{border-top:0}
 .subhead{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:start}
 .facts{list-style:none;margin:0;padding:0;font-size:15.5px}.facts li{display:grid;grid-template-columns:44% 1fr;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}.facts li span{color:var(--grey)}.facts li b{font-weight:600}
@@ -108,24 +113,29 @@ def page(title,root,tabs,body,footline,desc):
 
 SOC=''
 # ---------- root overview ----------
-heat=[];cool=[]
+cards=[]
 for slug,G in sorted(GROUPS.items(),key=lambda kv:(kv[1].get('order') or 99,kv[0])):
-    live=G.get('status')=='live'; cat=G.get('category')=='cooling'
-    if not live: continue   # products without a page are not shown
+    if G.get('status')!='live': continue   # products without a page are not shown
+    cat=G.get('category')=='cooling'; legacy=bool(G.get('legacy'))
     usa='<img class="usa" src="media/usa.png" alt="Made in USA">' if G.get('made_in_usa') else ''
-    img=f'<img src="{e(G.get("card_image") or "/media/logo.png")}" alt="{e(G["name"])} pipe">'
     tag='<span class="tag">Cooling and cold water</span>' if cat else '<span class="tag heat">Heating</span>'
-    inner=f'<div class="pic">{img}{usa}</div><div class="txt"><span class="no">{len(heat)+len(cool)+1}</span><h3>{e(G["name"])}</h3>{tag}<ul>'+''.join(f'<li>{e(b)}</li>' for b in (G.get('card_bullets') or []))+'</ul>'
-    c=(f'<a class="card" href="{slug}/">{inner}<span class="go">'+('Open product page')+'</span></div></a>') if live else f'<div class="card off">{inner}<span class="go">Product page in preparation</span></div></div>'
-    (cool if cat else heat).append(c)
+    line=re.sub(r'^'+re.escape(G['name'].split()[0])+r'[^\u2013-]*\s[\u2013-]\s','',G.get('tagline') or '')
+    V=items(G,'videos'); D=items(G,'documents')
+    more=[]
+    if V: more.append(f'<a href="{slug}/#{"video" if legacy else "videos"}">Videos</a>')
+    more.append(f'<a href="{slug}/#range">Sizes</a>' if legacy else '')
+    if D: more.append(f'<a href="{slug}/#documents">Downloads</a>')
+    cards.append(f'<article class="card"><a class="pic" href="{slug}/" tabindex="-1" aria-hidden="true"><img src="{e(G.get("card_image") or "/media/logo.png")}" alt="">{usa}</a>'
+      f'<div class="txt">{tag}<h3><a href="{slug}/">{e(G["name"])}</a></h3><p class="line">{e(line)}</p><ul>'+''.join(f'<li>{e(b)}</li>' for b in (G.get('card_bullets') or []))+'</ul></div>'
+      f'<div class="foot"><a class="go" href="{slug}/">Open product page</a><p class="more">{"".join(more)}</p></div></article>')
+if len(cards)%3==2: cards.append('<a class="card help" href="configurator/"><p class="eyebrow">Configurator</p><h3>Not sure which system fits?</h3><p>Enter temperatures, heat load and route. The configurator proposes system, sizes, fittings and transport.</p><span class="go">Open the configurator</span></a>')
 body=f'''<div class="wrap intro"><p class="eyebrow">North America</p><h1>District Heating and Cooling Solutions</h1>
 <p class="sub">Pre-insulated pipe systems for North America. Pick a product to open its page with data, videos and documents, or let the configurator size your line.</p><div class="cta"><a class="btn solid" href="configurator/">Open the configurator</a><a class="btn" href="https://www.bruggpipes.com/us/contact/" target="_blank" rel="noopener">Talk to sales</a></div></div></header>
 <main>
-<section id="heating" style="padding-top:20px"><div class="wrap"><p class="eyebrow">Heating</p><h2>Systems for local and district heating.</h2><div class="grid">{''.join(heat)}</div></div></section>
-{('<section id="cooling" class="tinted"><div class="wrap"><p class="eyebrow">Cooling and cold water</p><h2>Systems for cooling and cold water.</h2><div class="grid">'+''.join(cool)+'</div></div></section>') if cool else ''}
+<section id="products" style="padding-top:20px"><div class="wrap"><p class="eyebrow">Products</p><h2>Pre-insulated pipe systems.</h2><div class="grid">{''.join(cards)}</div></div></section>
 <section id="configurator-teaser" style="padding-bottom:0"><div class="wrap split" style="grid-template-columns:1.4fr 1fr"><div><p class="eyebrow">Configurator</p><h2>Size your line in five steps.</h2><p class="lead">Enter temperatures, heat load and route length in US units. The configurator shows the suitable BRUGG Pipes systems with velocity and pressure loss for every size and prepares your request for a quote.</p></div><div><a class="btn solid" href="configurator/">Open the configurator</a></div></div></section>
 <section id="cad"><div class="wrap split" style="grid-template-columns:1.4fr 1fr"><div><p class="eyebrow">3D CAD and BIM</p><h2>Models for your drawings, straight from the BRUGG Pipes BIM library.</h2><p class="lead">3D CAD models and BIM objects of BRUGG Pipes products for download in your CAD format. The library opens in English in a new tab; a free account with your business email is required.</p></div><div><a class="btn solid" href="https://brugg.partcommunity.com/3d-cad-models/sso/?languageIso=en" target="_blank" rel="noopener">Open the CAD / BIM library</a></div></div></section>'''
-open(f'{SITE}/index.html','w',encoding='utf-8').write(page('BRUGG Pipes North America: Product Overview','',[('Heating','#heating')]+([('Cooling','#cooling')] if cool else [])+[('Configurator','configurator/'),('Academy','academy/'),('CAD / BIM','#cad'),('Contact','https://www.bruggpipes.com/us/contact/')],body,'Values as on the BRUGG Pipes product overview. Subject to technical changes.','BRUGG Pipes North America: pre-insulated pipe systems for district heating and cooling, with data, videos and documents.'))
+open(f'{SITE}/index.html','w',encoding='utf-8').write(page('BRUGG Pipes North America: Product Overview','',[('Products','#products'),('Configurator','configurator/'),('Academy','academy/'),('CAD / BIM','#cad'),('Contact','https://www.bruggpipes.com/us/contact/')],body,'Values as on the BRUGG Pipes product overview. Subject to technical changes.','BRUGG Pipes North America: pre-insulated pipe systems for district heating and cooling, with data, videos and documents.'))
 
 exec(open(ROOT+'/tools/cms.py',encoding='utf-8').read())
 # ---------- helpers on product pages ----------
