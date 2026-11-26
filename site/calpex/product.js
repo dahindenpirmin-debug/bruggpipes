@@ -5,7 +5,7 @@ var v=document.getElementById('instvideo');
 document.querySelectorAll('.tab').forEach(function(t){t.addEventListener('click',function(){
  document.querySelectorAll('.tab').forEach(function(o){o.classList.remove('on');o.setAttribute('aria-pressed','false')});
  t.classList.add('on');t.setAttribute('aria-pressed','true');
- v.pause();v.poster='media/poster-'+t.dataset.v+'.jpg';v.src='media/'+t.dataset.v+'.mp4';v.load();
+ v.pause();v.poster=t.dataset.poster;v.src=t.dataset.src;v.load();
 })});
 var msg=document.getElementById('dlmsg');
 var dlp=(window.claude&&window.claude.use)?window.claude.use('downloads').catch(function(){return null}):Promise.resolve(null);

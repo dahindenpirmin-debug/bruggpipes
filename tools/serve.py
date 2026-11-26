@@ -3,7 +3,6 @@ import http.server,re,os,sys
 ROOT=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 t=open(ROOT+'/netlify.toml').read().split('[[headers]]')[1]
 H=dict(re.findall(r'^\s*([A-Za-z-]+) = "(.*)"$',t,re.M)); H.pop('Strict-Transport-Security',None)
-H['Content-Security-Policy']=H['Content-Security-Policy'].replace('; upgrade-insecure-requests','')
 class S(http.server.SimpleHTTPRequestHandler):
     def __init__(s,*a,**k): super().__init__(*a,directory=ROOT+'/site',**k)
     def end_headers(s):

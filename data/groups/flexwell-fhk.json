@@ -1,0 +1,21 @@
+{
+ "name": "FLEXWELL FHK",
+ "order": 2,
+ "category": "heating",
+ "status": "preparation",
+ "made_in_usa": false,
+ "card_image": "/media/fhk.png",
+ "card_bullets": [
+  "Operating temperature 302 °F",
+  "Operating pressure 362 psi",
+  "1\" to 6\" (DN 25–150)",
+  "Leak detection"
+ ],
+ "legacy": false,
+ "tagline": "",
+ "description": "",
+ "hero_image": "",
+ "key_figures": [],
+ "videos": [],
+ "documents": []
+}

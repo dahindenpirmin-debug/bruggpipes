@@ -9,6 +9,20 @@ def render_table(s):
         return f'<td><b>{esc(c)}</b></td>' if first else f'<td>{esc(c)}</td>'
     st=' style="min-width:520px"' if len(s['columns'])<=3 else ''
     return f'<table{st}><tr>'+''.join(f'<th>{esc(c)}</th>' for c in s['columns'])+'</tr>'+''.join('<tr>'+''.join(td(c,i==0) for i,c in enumerate(r))+'</tr>' for r in s['rows'])+'</table>'
+def _load(d): return {f[:-5]:json.load(open(f'{ROOT}/data/{d}/{f}',encoding='utf-8')) for f in sorted(os.listdir(f'{ROOT}/data/{d}')) if f.endswith('.json')}
+GROUPS=_load('groups'); ACADEMY=_load('academy')
+CSP="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; font-src 'self'; connect-src 'self'; form-action 'none'; base-uri 'none'; object-src 'none'"
+CSPMETA='<meta http-equiv="Content-Security-Policy" content="'+CSP+'">'
+def sl(x): return re.sub(r'[^a-z0-9]+','-',str(x).lower()).strip('-')
+def items(G,key):
+    out=[]
+    for i,x in enumerate(G.get(key) or []):
+        if not isinstance(x,dict) or not x.get('file'): continue
+        x=dict(x); x['id']=x.get('id') or (sl(x.get('title') or os.path.basename(x['file']))+'-'+str(i)); out.append(x)
+    return out
+def e(x): return html.escape(str(x or ''))
+class _V(dict):
+    def __missing__(s,k): return ('','','','')
 TABLES={p:{s['title']:render_table(s) for s in P['series']} for p,P in DATA['products'].items()}
 def rd(p): return open(f'{SRC}/{p}.html',encoding='utf-8').read()
 base=rd('casaflex')
@@ -54,7 +68,7 @@ def page(title,root,tabs,body,footline,desc):
     util=f'<a href="{root}">All products</a><a class="ext" href="https://brugg.partcommunity.com/3d-cad-models/sso/?languageIso=en" target="_blank" rel="noopener">CAD / BIM library</a><a class="ext" href="https://www.bruggpipes.com/us/" target="_blank" rel="noopener">bruggpipes.com</a>'
     t=''.join(f'<a href="{h}"'+(' target="_blank" rel="noopener"' if h.startswith('http') else '')+f'>{l}</a>' for l,h in tabs)
     return f'''<!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="en"><head><meta charset="utf-8">{CSPMETA}<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{title}</title><meta name="description" content="{html.escape(desc)}">
 <link rel="icon" href="{root}media/logo.png"><link rel="stylesheet" href="{root}assets/site.css"></head><body>
 <header class="top" id="top"><div class="hd"><div class="wrap hrow"><a class="brand" href="{root}"><img src="{root}media/logo.png" alt="BRUGG Pipes"><span>A BRUGG GROUP COMPANY</span></a>
@@ -69,25 +83,25 @@ def page(title,root,tabs,body,footline,desc):
 </body></html>'''
 
 # ---------- root overview ----------
-ov=rd('overview')
-cards=re.findall(r'(<a class="card".*?</a>|<div class="card off">.*?</div></div>)',re.search(r'<div class="grid">(.*)</div></main>',ov,re.S).group(1),re.S)
-LINK={'PREMANT':'premant/','CASAFLEX':'casaflex/','CALPEX PUR-KING':'calpex/','ARMOPEX':'armopex/'}
 heat=[];cool=[]
-for c in cards:
-    name=re.search(r'<h2>(.*?)</h2>',c).group(1)
-    c=c.replace('<h2>','<h3>').replace('</h2>','</h3>').replace('class="pic"','class="pic"')
-    if name in LINK:
-        c=re.sub(r'<a class="card" href="[^"]*" target="_blank" rel="noopener">',f'<a class="card" href="{LINK[name]}">',c).replace('Open product page','View sub-products')
-    (heat if 'tag heat' in c else cool).append(c)
+for slug,G in sorted(GROUPS.items(),key=lambda kv:(kv[1].get('order') or 99,kv[0])):
+    live=G.get('status')=='live'; cat=G.get('category')=='cooling'
+    usa='<img class="usa" src="media/usa.png" alt="Made in USA">' if G.get('made_in_usa') else ''
+    img=f'<img src="{e(G.get("card_image") or "/media/logo.png")}" alt="{e(G["name"])} pipe">'
+    tag='<span class="tag">Cooling and cold water</span>' if cat else '<span class="tag heat">Heating</span>'
+    inner=f'<div class="pic">{img}{usa}</div><div class="txt"><span class="no">{len(heat)+len(cool)+1}</span><h3>{e(G["name"])}</h3>{tag}<ul>'+''.join(f'<li>{e(b)}</li>' for b in (G.get('card_bullets') or []))+'</ul>'
+    c=(f'<a class="card" href="{slug}/">{inner}<span class="go">'+('View sub-products' if G.get('legacy') else 'Open product page')+'</span></div></a>') if live else f'<div class="card off">{inner}<span class="go">Product page in preparation</span></div></div>'
+    (cool if cat else heat).append(c)
 body=f'''<div class="wrap intro"><p class="eyebrow">North America</p><h1>District Heating and Cooling Solutions</h1>
-<p class="sub">Eight pre-insulated pipe systems. Pick a product to see its sub-products with data, videos and documents.</p></div></header>
+<p class="sub">Pre-insulated pipe systems for North America. Pick a product to see its sub-products with data, videos and documents.</p></div></header>
 <main>
-<section id="heating" style="padding-top:20px"><div class="wrap"><p class="eyebrow">Heating</p><h2>Five systems for local and district heating.</h2><div class="grid">{''.join(heat)}</div></div></section>
-<section id="cooling" class="tinted"><div class="wrap"><p class="eyebrow">Cooling and cold water</p><h2>Three systems for cooling and cold water.</h2><div class="grid">{''.join(cool)}</div></div></section>
+<section id="heating" style="padding-top:20px"><div class="wrap"><p class="eyebrow">Heating</p><h2>Systems for local and district heating.</h2><div class="grid">{''.join(heat)}</div></div></section>
+<section id="cooling" class="tinted"><div class="wrap"><p class="eyebrow">Cooling and cold water</p><h2>Systems for cooling and cold water.</h2><div class="grid">{''.join(cool)}</div></div></section>
 <section id="configurator-teaser" style="padding-bottom:0"><div class="wrap split" style="grid-template-columns:1.4fr 1fr"><div><p class="eyebrow">Configurator</p><h2>Size your line in five steps.</h2><p class="lead">Enter temperatures, heat load and route length in US units. The configurator shows the suitable BRUGG Pipes systems with velocity and pressure loss for every size and prepares your request for a quote.</p></div><div><a class="btn solid" href="configurator/">Open the configurator</a></div></div></section>
 <section id="cad"><div class="wrap split" style="grid-template-columns:1.4fr 1fr"><div><p class="eyebrow">3D CAD and BIM</p><h2>Models for your drawings, straight from the BRUGG Pipes BIM library.</h2><p class="lead">3D CAD models and BIM objects of BRUGG Pipes products for download in your CAD format. The library opens in English in a new tab; a free account with your business email is required.</p></div><div><a class="btn solid" href="https://brugg.partcommunity.com/3d-cad-models/sso/?languageIso=en" target="_blank" rel="noopener">Open the CAD / BIM library</a></div></div></section>'''
-open(f'{SITE}/index.html','w',encoding='utf-8').write(page('BRUGG Pipes North America: Product Overview','',[('Heating','#heating'),('Cooling','#cooling'),('Configurator','configurator/'),('CAD / BIM','#cad'),('Contact','https://www.bruggpipes.com/us/contact/')],body,'Values as on the BRUGG Pipes product overview. Subject to technical changes.','BRUGG Pipes North America: pre-insulated pipe systems for district heating and cooling, with data, videos and documents.'))
+open(f'{SITE}/index.html','w',encoding='utf-8').write(page('BRUGG Pipes North America: Product Overview','',[('Heating','#heating'),('Cooling','#cooling'),('Configurator','configurator/'),('Academy','academy/'),('CAD / BIM','#cad'),('Contact','https://www.bruggpipes.com/us/contact/')],body,'Values as on the BRUGG Pipes product overview. Subject to technical changes.','BRUGG Pipes North America: pre-insulated pipe systems for district heating and cooling, with data, videos and documents.'))
 
+exec(open(ROOT+'/tools/cms.py',encoding='utf-8').read())
 # ---------- helpers on product pages ----------
 def info(p):
     h=rd(p); d={}
@@ -99,16 +113,22 @@ def info(p):
     assert set(d['tables'])==set(TABLES[p]),p
     d['tables']=dict(TABLES[p])
     d['fine']=re.findall(r'<p class="fine">(.*?)</p>',rng,re.S)
-    d['vid']={v:(html.unescape(b),html.unescape(s),e,m) for v,m,b,s,e in re.findall(r'<button type="button" class="tab[^"]*"(?: id="[^"]*")? data-v="([^"]+)"(?: data-m="([^"]*)")?[^>]*><b>(.*?)</b><span>(.*?)</span><em>(.*?)</em>',h,re.S)}
-    d['name']=dict(re.findall(r'data-file="(docs/[^"]+)" data-name="([^"]+)"',h))
+    G=GROUPS[p]; d['G']=G; d['V']={x['id']:x for x in items(G,'videos')}; d['D']={x['id']:x for x in items(G,'documents')}
+    d['vid']=_V({k:(x.get('title',''),x.get('description',''),x.get('duration',''),os.path.basename(x.get('manual') or '')[:-4]) for k,x in d['V'].items()})
+    d['name']={}
     return d
 def dl(d,f,label,solid=False):
-    f='docs/'+f
-    return f'<a class="dl{" solid" if solid else ""}" href="{f}" download="{html.escape(d["name"].get(f,os.path.basename(f)))}">{label}</a>'
+    x=d['D'].get('docs/'+f)
+    if not x: return ''
+    return f'<a class="dl{" solid" if solid else ""}" href="{e(x["file"])}" download="{e(x.get("download_name") or os.path.basename(x["file"]))}">{label}</a>'
 def vid(d,v,cap=None):
-    b,s,e,m=d['vid'][v]
-    return f'<figure><div class="videobox"><video controls preload="none" poster="media/poster-{v}.jpg" src="media/{v}.mp4"></video></div><figcaption><b>{cap or b}</b>{s} · {e}</figcaption></figure>'
-def vids(d,*vs): return f'<div class="vids{" one" if len(vs)==1 else ""}">'+''.join(vid(d,v) for v in vs)+'</div>'
+    x=d['V'].get(v)
+    if not x: return ''
+    dur=(' · '+e(x['duration'])) if x.get('duration') else ''
+    return f'<figure><div class="videobox"><video controls preload="none" poster="{e(x.get("poster"))}" src="{e(x["file"])}"></video></div><figcaption><b>{cap or e(x.get("title"))}</b>{e(x.get("description"))}{dur}</figcaption></figure>'
+def vids(d,*vs):
+    f=[y for y in (vid(d,v) for v in vs) if y]
+    return (f'<div class="vids{" one" if len(f)==1 else ""}">'+''.join(f)+'</div>') if f else ''
 def facts(*kv): return '<ul class="facts">'+''.join(f'<li><span>{k}</span><b>{v}</b></li>' for k,v in kv)+'</ul>'
 def table(tb,keep=None):
     if keep:
@@ -127,7 +147,7 @@ def subpage(p,title,h1,crumbname,intro_count,cards,sections,d,alt):
 <main>
 <section id="products"><div class="wrap"><p class="eyebrow">{crumbname} family</p><h2>{intro_count}</h2><div class="grid">{''.join(cards)}</div></div></section>
 {''.join(sections)}'''
-    tabs=[('Sub-products','#products'),('Configurator','../configurator/'),('Product page','product.html'),('Installation','product.html#installation'),('Downloads','product.html#documents'),('Contact','https://www.bruggpipes.com/us/contact/')]
+    tabs=[('Sub-products','#products'),('Configurator','../configurator/'),('Academy','../academy/'),('Product page','product.html'),('Installation','product.html#installation'),('Downloads','product.html#documents'),('Contact','https://www.bruggpipes.com/us/contact/')]
     open(f'{SITE}/{p}/index.html','w',encoding='utf-8').write(page(title,'../',tabs,body,d['foot'],f'{crumbname} by BRUGG Pipes: sub-products with data, videos and documents.'))
 FULL='<a class="dl" href="product.html">Full product page</a>'
 
@@ -191,14 +211,14 @@ cards.append(card(5,'installation','media/poster-install-01.jpg','General instal
 cards.append(card(6,'accessories','media/poster-install-02.jpg','Accessories and tools','10 items',['Connecting socket, shells, chamber','Laying, unwinding, press and squeeze-off tools','One video and one manual each'],wide=True))
 secs.append(sec('installation','Video and manual','General installation','Laying, pipe ends, fittings, connecting socket, wall entry and pressure test. Installation is done by trained personnel; BRUGG offers training on site or online.',
    facts(('Installation video',d['vid']['install-01'][2]),('Installation Manual','11 pages')),vids(d,'install-01'),dl(d,'manual-01.pdf','Installation Manual (PDF)',True)+'<a class="dl" href="product.html#installation">All installation content</a>'))
-acc=''
-for v,(b,s,e,m) in d['vid'].items():
-    if v=='install-01': continue
-    acc+=f'<article><img src="media/poster-{v}.jpg" alt="{html.escape(b)}" loading="lazy"><div><h4>{b}</h4><p>{s} · {e}</p><div class="links"><button type="button" class="dl" data-play="{v}" data-target="accplayer" data-title="{html.escape(b)}" data-dur="{e}">Watch video</button>{dl(d,m+".pdf","Manual (PDF)")}</div></div></article>'
-first=[v for v in d['vid'] if v!='install-01'][0]
+acc=''; _acc=[x for k,x in d['V'].items() if k not in ('install-01','product')]
+for x in _acc:
+    m=os.path.basename(x.get('manual') or '')
+    acc+=f'<article><img src="{e(x.get("poster"))}" alt="{e(x.get("title"))}" loading="lazy"><div><h4>{e(x.get("title"))}</h4><p>{e(x.get("description"))} · {e(x.get("duration"))}</p><div class="links"><button type="button" class="dl" data-play="{e(x["file"])}" data-poster="{e(x.get("poster"))}" data-target="accplayer" data-title="{e(x.get("title"))}" data-dur="{e(x.get("duration"))}">Watch video</button>{dl(d,m,"Manual (PDF)") if m else ""}</div></div></article>'
+_f=_acc[0] if _acc else {'file':'','poster':'','title':'','duration':''}
 secs.append(sec('accessories','Accessories and tools','Joints, shells, chamber and tools','Ten accessories and tools for CALPEX, each with a narrated step-by-step video and its own installation manual.',
-   facts(('Items','10'),('Per item','1 video, 1 installation manual (PDF)')),
-   f'<div class="player"><div class="videobox"><video id="accplayer" controls preload="none" poster="media/poster-{first}.jpg" src="media/{first}.mp4"></video></div><p id="accplayer-cap"><b>{d["vid"][first][0]}</b> · {d["vid"][first][2]}</p></div><div class="acc">{acc}</div>',FULL))
+   facts(('Items',str(len(_acc))),('Per item','1 video, 1 installation manual (PDF)')),
+   f'<div class="player"><div class="videobox"><video id="accplayer" controls preload="none" poster="{e(_f.get("poster"))}" src="{e(_f["file"])}"></video></div><p id="accplayer-cap"><b>{e(_f.get("title"))}</b> · {e(_f.get("duration"))}</p></div><div class="acc">{acc}</div>',FULL))
 subpage('calpex','CALPEX by BRUGG Pipes: Sub-products','CALPEX – Flexible Pre-Insulated PEX Pipe for District Heating and Cooling','CALPEX','Four pipe series, general installation and ten accessories.',cards,secs,d,'CALPEX PUR-KING coil on site')
 
 # ---------- ARMOPEX ----------
@@ -222,6 +242,7 @@ subpage('armopex','ARMOPEX by BRUGG Pipes: Sub-products','ARMOPEX – Flexible P
 TITLE={'casaflex':'CASAFLEX by BRUGG Pipes','premant':'PREMANT by BRUGG Pipes','calpex':'CALPEX by BRUGG Pipes','armopex':'ARMOPEX by BRUGG Pipes'}
 for p,t in TITLE.items():
     h=rd(p); N=p.upper()
+    h=h.replace('<meta charset="utf-8">','<meta charset="utf-8">'+CSPMETA,1)
     h=re.sub(r'<title>.*?</title>',f'<title>{t}</title><link rel="icon" href="../media/logo.png">',h,count=1)
     h=h.replace('<a class="brand" href="#top">','<a class="brand" href="../">')
     h=h.replace('<a href="https://www.bruggpipes.com/us/products/" target="_blank" rel="noopener">All products</a>',f'<a href="../">All products</a><a href="./">{N} sub-products</a><a href="https://brugg.partcommunity.com/3d-cad-models/sso/?languageIso=en" target="_blank" rel="noopener">CAD / BIM library</a>')
@@ -229,6 +250,7 @@ for p,t in TITLE.items():
     h=re.sub(r'(<a class="dl[^"]*" href="[^"]+" target="_blank" rel="noopener")( data-file="[^"]+" data-name="([^"]+)")',lambda m:f'{m.group(1)} download="{m.group(3)}"{m.group(2)}',h)
     for t,tb in re.findall(r'<h3 class="sub"[^>]*>(.*?)</h3><div class="scroll">(<table[^>]*>.*?</table>)</div>',h,re.S):
         if html.unescape(t) in TABLES[p]: h=h.replace(tb,TABLES[p][html.unescape(t)])
+    h=apply_group(h,GROUPS[p],p)
     h=h.replace(' oncontextmenu="return false"','')
     js=[]
     h=re.sub(r'<script>(.*?)</script>',lambda m:(js.append(m.group(1)),'')[1],h,flags=re.S)
@@ -241,4 +263,5 @@ for p,t in TITLE.items():
     h=h.replace('<a href="https://www.bruggpipes.com/us/t-c/">Terms and conditions</a></p>','<a href="https://www.bruggpipes.com/us/t-c/">Terms and conditions</a></p>'+SOC)
     open(f'{SITE}/{p}/product.html','w',encoding='utf-8').write(h)
 exec(open(ROOT+'/tools/configurator.py',encoding='utf-8').read())
+build_extra()
 print('built')

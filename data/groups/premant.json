@@ -1,0 +1,184 @@
+{
+ "name": "PREMANT",
+ "order": 1,
+ "category": "heating",
+ "status": "live",
+ "made_in_usa": false,
+ "card_image": "/media/premant.png",
+ "card_bullets": [
+  "Operating temperature 250 °F",
+  "Operating pressure 362 psi",
+  "DN 20–1000",
+  "EN 253 pre-insulated pipe",
+  "Leak detection"
+ ],
+ "legacy": true,
+ "tagline": "Rigid district heating pipe from a top manufacturer.",
+ "description": "",
+ "hero_image": "/premant/media/hero.jpg",
+ "key_figures": [
+  {
+   "value": "291 °F",
+   "label": "continuous operating temperature (144 °C); DUO 266 °F (130 °C)"
+  },
+  {
+   "value": "362 psi",
+   "label": "operating pressure (25 bar)*"
+  },
+  {
+   "value": "¾\" to 40\"",
+   "label": "UNO single pipe (DN 20 to DN 1000); DUO twin pipe 2 × ¾\" to 2 × 8\""
+  },
+  {
+   "value": "52 ft",
+   "label": "longest standard pipe length (16 m); also 20 and 39 ft"
+  }
+ ],
+ "videos": [
+  {
+   "id": "product",
+   "title": "Product video",
+   "description": "The whole case in four minutes.",
+   "duration": "",
+   "file": "/premant/media/product.mp4",
+   "poster": "/premant/media/poster-product.jpg"
+  },
+  {
+   "id": "install-pipe",
+   "title": "Pipe installation",
+   "description": "From the truck to the backfilled trench, ten steps",
+   "duration": "13:29 min",
+   "file": "/premant/media/install-pipe.mp4",
+   "poster": "/premant/media/poster-install-pipe.jpg",
+   "manual": "docs/manual-installation.pdf"
+  },
+  {
+   "id": "install-unlincon",
+   "title": "UNLINCON joint casing",
+   "description": "Shrink joint casing, step by step",
+   "duration": "13:22 min",
+   "file": "/premant/media/install-unlincon.mp4",
+   "poster": "/premant/media/poster-install-unlincon.jpg",
+   "manual": "docs/manual-unlincon.pdf"
+  },
+  {
+   "id": "install-training",
+   "title": "Planning and installation",
+   "description": "Online training: statics in depth, handling, trench",
+   "duration": "26:22 min",
+   "file": "/premant/media/install-training.mp4",
+   "poster": "/premant/media/poster-install-training.jpg",
+   "manual": "docs/manual-unlincon.pdf"
+  }
+ ],
+ "documents": [
+  {
+   "id": "docs/usp.pdf",
+   "section": "",
+   "title": "USP Page",
+   "description": "Six reasons to specify PREMANT",
+   "note": "1 page",
+   "file": "/premant/docs/usp.pdf",
+   "download_name": "1_PRE_USP_2026 Nov.pdf"
+  },
+  {
+   "id": "docs/product-information.pdf",
+   "section": "",
+   "title": "Product Information",
+   "description": "Manufacturer and services, system, operating limits, UNO and DUO range",
+   "note": "5 pages",
+   "file": "/premant/docs/product-information.pdf",
+   "download_name": "2_PRE_Product Information_2026 Nov.pdf"
+  },
+  {
+   "id": "docs/technical-data-sheet.pdf",
+   "section": "",
+   "title": "Technical Data Sheet",
+   "description": "Design, dimensions UNO and DUO, heat loss, design values, trench",
+   "note": "6 pages · draft",
+   "file": "/premant/docs/technical-data-sheet.pdf",
+   "download_name": "3_PRE_Technical Data Sheet_2026 Nov.pdf"
+  },
+  {
+   "id": "docs/technical-data-sheet-joints.pdf",
+   "section": "",
+   "title": "Technical Data Sheet Joints",
+   "description": "UNLINCON, LINCON, INDUCON, EWELCON: design, sizes, technical data",
+   "note": "4 pages · draft",
+   "file": "/premant/docs/technical-data-sheet-joints.pdf",
+   "download_name": "3_PRE_Technical Data Sheet Joints_2026 Nov.pdf"
+  },
+  {
+   "id": "docs/inducon-brochure.pdf",
+   "section": "",
+   "title": "INDUCON brochure",
+   "description": "Contactless induction welding for PE joint casings",
+   "note": "4 pages",
+   "file": "/premant/docs/inducon-brochure.pdf",
+   "download_name": "2_PRE_INDUCON Brochure_2025 Feb.pdf"
+  },
+  {
+   "id": "docs/catalog-uno.pdf",
+   "section": "",
+   "title": "Catalog PREMANT UNO",
+   "description": "Complete catalog: pipes, fittings, joints, accessories, planning and installation; metric",
+   "note": "70 pages",
+   "file": "/premant/docs/catalog-uno.pdf",
+   "download_name": "3_PRE_Catalog UNO_2026 Jun.pdf"
+  },
+  {
+   "id": "docs/catalog-duo.pdf",
+   "section": "",
+   "title": "Catalog PREMANT DUO",
+   "description": "Complete catalog for the twin pipe system; metric",
+   "note": "30 pages",
+   "file": "/premant/docs/catalog-duo.pdf",
+   "download_name": "3_PRE_Catalog DUO_2018 Feb.pdf"
+  },
+  {
+   "id": "docs/guide-specification.pdf",
+   "section": "",
+   "title": "Guide Specification",
+   "description": "Section 33 61 13, three-part format, for the Engineer of Record",
+   "note": "4 pages · draft",
+   "file": "/premant/docs/guide-specification.pdf",
+   "download_name": "4_PRE_Guide Specification_2026 Nov.pdf"
+  },
+  {
+   "id": "docs/submittal-cover-sheet.pdf",
+   "section": "",
+   "title": "Submittal Cover Sheet",
+   "description": "Cover sheet for the submittal package",
+   "note": "1 page",
+   "file": "/premant/docs/submittal-cover-sheet.pdf",
+   "download_name": "6_PRE_Submittal Cover Sheet_2026 Nov.pdf"
+  },
+  {
+   "id": "docs/manual-installation.pdf",
+   "section": "",
+   "title": "Installation Manual",
+   "description": "Unloading, trench, laying, welding, joints, expansion pads, backfill, final checks",
+   "note": "8 pages · draft",
+   "file": "/premant/docs/manual-installation.pdf",
+   "download_name": "8_PRE_Installation Manual_2026 Nov.pdf"
+  },
+  {
+   "id": "docs/manual-unlincon.pdf",
+   "section": "",
+   "title": "Installation Manual UNLINCON",
+   "description": "Non-crosslinked shrink joint casing, original manual",
+   "note": "German / English",
+   "file": "/premant/docs/manual-unlincon.pdf",
+   "download_name": "8_PRE_Installation Manual UNLINCON_2026 Mar.pdf"
+  },
+  {
+   "id": "docs/manual-unlincon-en.pdf",
+   "section": "",
+   "title": "Installation Manual UNLINCON, English edition",
+   "description": "Same manual in English only, US letter layout",
+   "note": "12 pages",
+   "file": "/premant/docs/manual-unlincon-en.pdf",
+   "download_name": "8_PRE_Installation Manual UNLINCON English_2026 Nov.pdf"
+  }
+ ]
+}

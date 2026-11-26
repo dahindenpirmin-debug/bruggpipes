@@ -1,0 +1,22 @@
+{
+ "name": "CITIFLEX",
+ "order": 7,
+ "category": "cooling",
+ "status": "preparation",
+ "made_in_usa": true,
+ "card_image": "/media/citiflex.png",
+ "card_bullets": [
+  "Operating temperature −40 to 140 °F",
+  "Operating pressure 362 psi",
+  "1\" and 2\"",
+  "AWWA certified",
+  "Heat trace channel"
+ ],
+ "legacy": false,
+ "tagline": "",
+ "description": "",
+ "hero_image": "",
+ "key_figures": [],
+ "videos": [],
+ "documents": []
+}

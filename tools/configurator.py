@@ -82,7 +82,7 @@ _body='''<div class="wrap"><p class="crumb"><a href="../">Products</a> / <b>Conf
 <div class="nav"><button class="btn" type="button" data-back>Previous</button><span class="right"><button class="btn" type="button" id="print">Print or save as PDF</button><button class="btn" type="button" id="copy">Copy summary</button><a class="btn solid" id="mail" href="mailto:sales.bpna@brugg.com">Email request to BRUGG Pipes</a></span></div>
 <p class="hint" id="copied" aria-live="polite"></p></div>
 </div></section>'''
-_h=page('BRUGG Pipes Configurator: North America','../',[('All products','../'),('Configurator','./'),('CAD / BIM',CAD),('Contact','https://www.bruggpipes.com/us/contact/')],_body,
+_h=page('BRUGG Pipes Configurator: North America','../',[('All products','../'),('Configurator','./'),('Academy','../academy/'),('CAD / BIM',CAD),('Contact','https://www.bruggpipes.com/us/contact/')],_body,
  'Velocity and pressure loss are estimates for water and do not replace project engineering by BRUGG Pipes. Product values from the Technical Data Sheets. Subject to technical changes.',
  'BRUGG Pipes configurator for North America: suitable pre-insulated pipe systems with velocity and pressure loss in US units.')
 _h=_h.replace('<link rel="stylesheet" href="../assets/site.css">','<link rel="stylesheet" href="../assets/site.css"><link rel="stylesheet" href="configurator.css">').replace('<script src="../assets/site.js" defer></script>','<script src="configurator.js" defer></script>')

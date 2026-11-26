@@ -1,0 +1,115 @@
+# Decap CMS: content manager for the BRUGG Pipes North America site.
+# Login with a GitHub account that has write access to the repository. Every save is a commit; Netlify then rebuilds the site.
+backend:
+  name: github
+  repo: dahindenpirmin-debug/bruggpipes
+  branch: main
+  commit_messages:
+    create: 'Content: create {{collection}} "{{slug}}"'
+    update: 'Content: update {{collection}} "{{slug}}"'
+    delete: 'Content: delete {{collection}} "{{slug}}"'
+    uploadMedia: 'Content: upload "{{path}}"'
+    deleteMedia: 'Content: delete "{{path}}"'
+site_url: https://bruggpipes-us.netlify.app
+display_url: https://bruggpipes-us.netlify.app
+logo_url: /media/logo.png
+media_folder: site/uploads
+public_folder: /uploads
+slug:
+  encoding: ascii
+  clean_accents: true
+
+video_fields: &video_fields
+  - { label: Title, name: title, widget: string }
+  - { label: Description, name: description, widget: string, required: false }
+  - { label: Duration, name: duration, widget: string, required: false, hint: 'For example 6:54 min' }
+  - { label: Video file (MP4), name: file, widget: file, hint: '720p, H.264. Keep each file below about 25 MB so it loads quickly.' }
+  - { label: Preview image, name: poster, widget: image, required: false }
+  - { label: Internal ID, name: id, widget: hidden }
+  - { label: Manual, name: manual, widget: hidden }
+document_fields: &document_fields
+  - { label: Title, name: title, widget: string }
+  - { label: Description, name: description, widget: string, required: false }
+  - { label: Note, name: note, widget: string, required: false, hint: 'For example 4 pages, or draft' }
+  - { label: Group heading, name: section, widget: string, required: false, hint: 'Optional. Documents with the same heading are listed together.' }
+  - { label: File, name: file, widget: file }
+  - { label: File name for the download, name: download_name, widget: string, required: false, hint: '[Stage]_[Code]_[Document]_[Year Month].pdf, for example 3_CPX_Technical Data Sheet_2026 Nov.pdf' }
+  - { label: Internal ID, name: id, widget: hidden }
+
+collections:
+  - name: groups
+    label: Product groups
+    label_singular: Product group
+    description: 'One entry per product group: card on the overview, videos and documents. A new group gets its own page as soon as its status is "live".'
+    folder: data/groups
+    extension: json
+    format: json
+    create: true
+    delete: false
+    slug: '{{slug}}'
+    identifier_field: name
+    summary: '{{name}} ({{status}})'
+    sortable_fields: [order, name]
+    fields:
+      - { label: Name, name: name, widget: string }
+      - { label: Position on the overview, name: order, widget: number, value_type: int, min: 1, default: 20 }
+      - { label: Category, name: category, widget: select, options: [ { label: Heating, value: heating }, { label: Cooling and cold water, value: cooling } ], default: heating }
+      - { label: Status, name: status, widget: select, options: [ { label: 'Live: page is online', value: live }, { label: 'In preparation: card only', value: preparation } ], default: preparation }
+      - { label: Made in USA badge, name: made_in_usa, widget: boolean, default: false }
+      - { label: Picture on the overview card, name: card_image, widget: image, required: false }
+      - { label: Lines on the overview card, name: card_bullets, widget: list, field: { label: Line, name: line, widget: string }, required: false }
+      - { label: Headline of the page, name: tagline, widget: string, required: false }
+      - { label: Short description, name: description, widget: text, required: false }
+      - { label: Large picture of the page, name: hero_image, widget: image, required: false }
+      - label: Key figures
+        name: key_figures
+        widget: list
+        required: false
+        max: 4
+        summary: '{{fields.value}}: {{fields.label}}'
+        fields:
+          - { label: Value, name: value, widget: string }
+          - { label: Explanation, name: label, widget: string }
+      - label: Videos
+        name: videos
+        widget: list
+        required: false
+        summary: '{{fields.title}}'
+        fields: *video_fields
+      - label: Data sheets and documents
+        name: documents
+        widget: list
+        required: false
+        summary: '{{fields.title}}'
+        fields: *document_fields
+      - { label: Hand-built page, name: legacy, widget: hidden, default: false }
+  - name: academy
+    label: Academy courses
+    label_singular: Course
+    folder: data/academy
+    extension: json
+    format: json
+    create: true
+    delete: false
+    slug: '{{slug}}'
+    identifier_field: title
+    summary: '{{title}}'
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Position, name: order, widget: number, value_type: int, min: 1, default: 20 }
+      - { label: For whom, name: audience, widget: string, required: false }
+      - { label: Description, name: description, widget: text, required: false }
+      - { label: Cover picture, name: cover, widget: image, required: false }
+      - label: Video modules
+        name: modules
+        widget: list
+        required: false
+        summary: '{{fields.title}}'
+        fields: *video_fields
+      - label: Documents
+        name: documents
+        widget: list
+        required: false
+        summary: '{{fields.title}}'
+        fields: *document_fields
+      - { label: Hand-built page, name: legacy, widget: hidden, default: false }

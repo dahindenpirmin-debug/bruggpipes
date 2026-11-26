@@ -1,0 +1,164 @@
+{
+ "name": "ARMOPEX",
+ "order": 5,
+ "category": "heating",
+ "status": "live",
+ "made_in_usa": true,
+ "card_image": "/media/armopex.jpg",
+ "card_bullets": [
+  "Operating temperature 203 °F (short term 239 °F)",
+  "Operating pressure 174 psi",
+  "1.25\" to 5\" (DN 20–125)"
+ ],
+ "legacy": true,
+ "tagline": "ARMOPEX – Flexible Pipe for Medium-Pressure District Heating",
+ "description": "",
+ "hero_image": "/armopex/media/hero.jpg",
+ "key_figures": [
+  {
+   "value": "174 psi",
+   "label": "maximum operating pressure (12 bar)"
+  },
+  {
+   "value": "185 °F",
+   "label": "maximum continuous operating temperature (85 °C)"
+  },
+  {
+   "value": "239 °F",
+   "label": "peak operating temperature for 100 h (115 °C)"
+  },
+  {
+   "value": "1,400 ft",
+   "label": "longest single coil (427 m, size 40/91)"
+  }
+ ],
+ "videos": [
+  {
+   "id": "product",
+   "title": "Product video",
+   "description": "The whole case in under three minutes.",
+   "duration": "",
+   "file": "/armopex/media/product.mp4",
+   "poster": "/armopex/media/poster-product.jpg"
+  },
+  {
+   "id": "install-en",
+   "title": "Screw fitting",
+   "description": "English narration",
+   "duration": "5:45 min",
+   "file": "/armopex/media/install-en.mp4",
+   "poster": "/armopex/media/poster-install-en.jpg",
+   "manual": ""
+  },
+  {
+   "id": "install-uk",
+   "title": "Screw fitting",
+   "description": "Ukrainian narration, detailed",
+   "duration": "15:44 min",
+   "file": "/armopex/media/install-uk.mp4",
+   "poster": "/armopex/media/poster-install-uk.jpg",
+   "manual": ""
+  }
+ ],
+ "documents": [
+  {
+   "id": "docs/usp.pdf",
+   "section": "",
+   "title": "USP Page",
+   "description": "Six reasons to specify ARMOPEX",
+   "note": "1 page",
+   "file": "/armopex/docs/usp.pdf",
+   "download_name": "1_APX_USP_2026 Nov.pdf"
+  },
+  {
+   "id": "docs/usp-cost-calculation.pdf",
+   "section": "",
+   "title": "USP 1.1 Cost Calculation",
+   "description": "Trench and labor against rigid welded pipe, step by step",
+   "note": "2 pages",
+   "file": "/armopex/docs/usp-cost-calculation.pdf",
+   "download_name": "1.1_APX_USP Cost Calculation_2026 Nov.pdf"
+  },
+  {
+   "id": "docs/product-information.pdf",
+   "section": "",
+   "title": "Product Information",
+   "description": "System, benefits, operating limits and range",
+   "note": "4 pages",
+   "file": "/armopex/docs/product-information.pdf",
+   "download_name": "2_APX_Product Information_2026 Nov.pdf"
+  },
+  {
+   "id": "docs/technical-data-sheet.pdf",
+   "section": "",
+   "title": "Technical Data Sheet",
+   "description": "Dimensions, materials, trench profile and wall penetrations",
+   "note": "3 pages",
+   "file": "/armopex/docs/technical-data-sheet.pdf",
+   "download_name": "3_APX_Technical Data Sheet_2026 Nov.pdf"
+  },
+  {
+   "id": "docs/catalog.pdf",
+   "section": "",
+   "title": "Catalog",
+   "description": "BRUGG catalog APX, metric units. For US projects the Technical Data Sheet governs.",
+   "note": "21 pages",
+   "file": "/armopex/docs/catalog.pdf",
+   "download_name": "3_APX_Catalog_2026 May.pdf"
+  },
+  {
+   "id": "docs/fittings-and-accessories-data.pdf",
+   "section": "",
+   "title": "Fittings and Accessories Data",
+   "description": "Clamp connectors, house entry bends, joints, end caps and wall seals",
+   "note": "3 pages",
+   "file": "/armopex/docs/fittings-and-accessories-data.pdf",
+   "download_name": "6_APX_Fittings and Accessories Data_2026 Nov.pdf"
+  },
+  {
+   "id": "docs/submittal-cover-sheet.pdf",
+   "section": "",
+   "title": "Submittal Cover Sheet",
+   "description": "Cover sheet for the submittal package",
+   "note": "1 page",
+   "file": "/armopex/docs/submittal-cover-sheet.pdf",
+   "download_name": "6_APX_Submittal Cover Sheet_2026 Nov.pdf"
+  },
+  {
+   "id": "docs/submittal-package-template.pdf",
+   "section": "",
+   "title": "Submittal Package Template",
+   "description": "Cover sheet, data sheet, fittings data and installation manual in one file",
+   "note": "26 pages",
+   "file": "/armopex/docs/submittal-package-template.pdf",
+   "download_name": "6_APX_Submittal Package Template_2026 Nov.pdf"
+  },
+  {
+   "id": "docs/unloading-and-storage.pdf",
+   "section": "",
+   "title": "Unloading and Storage",
+   "description": "Coil sizes and weights, unloading, storage and uncoiling",
+   "note": "1 page",
+   "file": "/armopex/docs/unloading-and-storage.pdf",
+   "download_name": "7_APX_Unloading and Storage_2026 Nov.pdf"
+  },
+  {
+   "id": "docs/installation-manual.pdf",
+   "section": "",
+   "title": "Installation Manual",
+   "description": "US edition: trench, laying and the screw fitting in 18 steps",
+   "note": "14 pages",
+   "file": "/armopex/docs/installation-manual.pdf",
+   "download_name": "8_APX_Installation Manual_2026 Nov.pdf"
+  },
+  {
+   "id": "docs/installation-manual-original.pdf",
+   "section": "",
+   "title": "Installation Manual, factory original",
+   "description": "Original BRUGG manual, metric units",
+   "note": "German / English / French / Italian",
+   "file": "/armopex/docs/installation-manual-original.pdf",
+   "download_name": "8_APX_Installation Manual Original_2026 Aug.pdf"
+  }
+ ]
+}

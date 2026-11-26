@@ -1,29 +1,47 @@
-# BRUGG Pipes North America: product site and configurator
+# BRUGG Pipes North America: product site, configurator and Academy
 
-Static site, published by Netlify from the `main` branch. Publish directory: `site/`. Netlify runs no build step.
+Static site, published by Netlify from the `main` branch. Netlify runs `python3 tools/build.py` and publishes `site/`.
 
 ## Structure
 
-- `site/index.html`: overview of all eight products
-- `site/<product>/index.html`: sub-product overview (PREMANT, CASAFLEX, CALPEX, ARMOPEX)
-- `site/<product>/product.html`: full product page
+- `site/index.html`: overview of all product groups
+- `site/<group>/index.html`: sub-product overview (PREMANT, CASAFLEX, CALPEX, ARMOPEX) or the page of a group created in the admin area
+- `site/<group>/product.html`: full product page of the four hand-built groups
 - `site/configurator/`: configurator for North America (US units)
-- `site/data/products.json`: data the configurator reads (generated)
-- `data/products.json`: **master data** for tables and configurator (from the Technical Data Sheets; metric values govern)
-- `src/`: page sources of the product pages and the overview
-- `tools/build.py`: writes the pages and the configurator data from `data/` and `src/`
+- `site/academy/`: Academy with online courses
+- `site/admin/`: content manager (Decap CMS 3.18, self-hosted, MIT license)
+- `site/uploads/`: files uploaded in the content manager
+- `data/groups/*.json`: one file per product group (card, key figures, videos, documents)
+- `data/academy/*.json`: one file per course
+- `data/products.json`: range tables and configurator data (from the Technical Data Sheets; metric values govern)
+- `src/`: page sources of the hand-built pages
+- `tools/build.py`, `tools/cms.py`, `tools/configurator.py`: write all pages from `data/` and `src/`
 
-## Changing values
+## Editing content
 
-1. Edit `data/products.json`.
-2. Run `python3 tools/build.py`.
-3. Commit and push; Netlify publishes `site/`.
+Open `/admin/` on the live site and log in with a GitHub account that has write access to this repository.
 
-`python3 tools/serve.py` serves the site on http://127.0.0.1:8765 with the same security headers as Netlify.
+- **Product groups**: change card texts, key figures, videos, data sheets and documents; replace a file by uploading the new one in the same entry. A new group gets its own page when its status is "live".
+- **Academy courses**: change modules and documents, add courses.
+
+Every save is a commit to `main`; Netlify rebuilds and publishes within about a minute. Range tables and configurator values are changed in `data/products.json`.
+
+### One-time setup of the login
+
+1. GitHub: Settings > Developer settings > OAuth Apps > New OAuth App. Homepage URL: the site address. Authorization callback URL: `https://api.netlify.com/auth/done`.
+2. Netlify: project `bruggpipes-us` > Project configuration > Access & security > OAuth > Install provider > GitHub, with the Client ID and Client secret of that OAuth App.
+
+Only accounts with write access to the repository can save. The client secret is stored at Netlify only, never in this repository.
+
+## Local
+
+`python3 tools/build.py` builds; `python3 tools/serve.py` serves on http://127.0.0.1:8765 with the same headers as Netlify.
 
 ## Security
 
 - No server code, no database, no forms posted to a server, no cookies, no tracking, no third-party scripts or fonts.
-- The configurator calculates in the browser. Nothing a visitor enters is stored or transmitted; the request is handed to the visitor's own mail program.
-- Security headers in `netlify.toml`: Content-Security-Policy (scripts only from this site, no inline scripts, no framing, no form targets), HSTS, `X-Content-Type-Options`, `X-Frame-Options`, Referrer-Policy, Permissions-Policy.
-- All scripts are separate files; pages contain no inline scripts or inline event handlers.
+- The configurator calculates in the browser. Nothing a visitor enters is stored or transmitted.
+- Every public page carries a strict Content-Security-Policy (scripts only from this site, no inline scripts). The admin area has its own policy, limited to GitHub and Netlify for login and saving.
+- Headers in `netlify.toml`: HSTS, `X-Content-Type-Options`, `X-Frame-Options: DENY`, Referrer-Policy, Permissions-Policy.
+- Text from the data files is escaped when pages are built.
+- The admin area changes nothing without a GitHub login with write access; all changes are visible and reversible in the commit history.

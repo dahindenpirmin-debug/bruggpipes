@@ -1,0 +1,20 @@
+{
+ "name": "COOLFLEX",
+ "order": 8,
+ "category": "cooling",
+ "status": "preparation",
+ "made_in_usa": true,
+ "card_image": "/media/coolflex.png",
+ "card_bullets": [
+  "Operating temperature −40 to 140 °F",
+  "Operating pressure 100–200 psi",
+  "1\" to 4\" (DN 20–125)"
+ ],
+ "legacy": false,
+ "tagline": "",
+ "description": "",
+ "hero_image": "",
+ "key_figures": [],
+ "videos": [],
+ "documents": []
+}
