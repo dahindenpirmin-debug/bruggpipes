@@ -2721,5 +2721,248 @@
    "steel": 0.045
   },
   "cpKJkgK": 4.186
+ },
+ "shipping": {
+  "source": "CALPEX Product Information, November 16, 2026 (Coil & Truck Loading Guide North America, Aug 2026). Max. per truck = full utilisation; trailer dimensions and payloads vary by carrier and state.",
+  "trailers": [
+   "53 ft flatbed / Conestoga",
+   "40 ft hot shot",
+   "53 ft step deck",
+   "48 ft double drop"
+  ],
+  "standardTrailer": 2,
+  "byJacketIn": {
+   "3.07": [
+    [
+     2850,
+     27600
+    ],
+    [
+     3435,
+     19800
+    ],
+    [
+     3925,
+     27480
+    ],
+    [
+     4315,
+     15000
+    ]
+   ],
+   "3.66": [
+    [
+     1650,
+     16800
+    ],
+    [
+     2175,
+     12600
+    ],
+    [
+     2600,
+     17400
+    ],
+    [
+     2875,
+     9700
+    ]
+   ],
+   "4.45": [
+    [
+     1200,
+     11820
+    ],
+    [
+     1560,
+     9720
+    ],
+    [
+     1915,
+     12480
+    ],
+    [
+     2150,
+     7000
+    ]
+   ],
+   "5.03": [
+    [
+     800,
+     8400
+    ],
+    [
+     1225,
+     7000
+    ],
+    [
+     1375,
+     9800
+    ],
+    [
+     1515,
+     5360
+    ]
+   ],
+   "5.63": [
+    [
+     400,
+     4200
+    ],
+    [
+     730,
+     4080
+    ],
+    [
+     825,
+     5840
+    ],
+    [
+     1150,
+     4060
+    ]
+   ],
+   "6.42": [
+    [
+     350,
+     3600
+    ],
+    [
+     475,
+     2400
+    ],
+    [
+     550,
+     3800
+    ],
+    [
+     795,
+     2700
+    ]
+   ],
+   "7.20": [
+    [
+     140,
+     1440
+    ],
+    [
+     250,
+     2040
+    ],
+    [
+     305,
+     2000
+    ],
+    [
+     500,
+     1680
+    ]
+   ]
+  },
+  "products": {
+   "calpex": {
+    "mode": "truck",
+    "origin": "Joliet, IL (USA)",
+    "note": "Coils are wound to order for the trailer."
+   },
+   "armopex": {
+    "mode": "truck",
+    "origin": "BRUGG Pipes, North America",
+    "note": "Truck count uses the CALPEX loading guide for the same jacket diameter; to be confirmed for ARMOPEX."
+   },
+   "casaflex": {
+    "mode": "container",
+    "origin": "Switzerland",
+    "note": "Ships in 40' High Cube containers; one coil holds up to the maximum coil length of the size. BRUGG Pipes prepares the container plan."
+   },
+   "premant": {
+    "mode": "request",
+    "origin": "Europe",
+    "note": "Pipe lengths of 20, 39 or 52 ft; BRUGG Pipes prepares the loading plan."
+   }
+  }
+ },
+ "accessories": {
+  "_rule": "Proposal for a building-to-building route: every section ends in a building at both ends. Per pipe line and section: 2 end connections and 2 building entries; one straight joint for every additional coil or pipe length. Buried branches (T-joints) on request.",
+  "calpex": [
+   {
+    "key": "end",
+    "name": "End connection fitting",
+    "text": "Press fitting or clamp-type screw fitting (HELA Serie 8000) on the PEX-a carrier pipe",
+    "img": "/calpex/media/fitting.jpg"
+   },
+   {
+    "key": "entry",
+    "name": "Building entry: wall seal and end cap",
+    "text": "Wall entry and end cap for each pipe end, see the General Installation manual",
+    "img": ""
+   },
+   {
+    "key": "joint",
+    "name": "Straight joint: coupling with connecting socket",
+    "text": "Joins two coils; shrink sleeve pipe and PUR foam",
+    "img": "/calpex/media/poster-install-02.jpg"
+   }
+  ],
+  "armopex": [
+   {
+    "key": "end",
+    "name": "Clamp connector, weld end or male thread",
+    "text": "Steel insert, brass clamp and stainless steel bolts; installed without special tools",
+    "img": "/armopex/media/fit-weld.png"
+   },
+   {
+    "key": "entry",
+    "name": "Building entry: 90° house entry bend, wall seal and end cap",
+    "text": "For each pipe end",
+    "img": ""
+   },
+   {
+    "key": "joint",
+    "name": "Straight joint: clamp coupling",
+    "text": "Joins two coils",
+    "img": "/armopex/media/fit-coupling.png"
+   }
+  ],
+  "casaflex": [
+   {
+    "key": "end",
+    "name": "CASAFLEX connection fitting",
+    "text": "Bolted fitting with graphite seal; PN 16 or PN 25, no welding on the corrugated pipe",
+    "img": "/casaflex/media/fitting.jpg"
+   },
+   {
+    "key": "entry",
+    "name": "Building entry: wall seal and end cap",
+    "text": "For each pipe end",
+    "img": ""
+   },
+   {
+    "key": "joint",
+    "name": "Straight joint",
+    "text": "Joins two coils; PUR foam set up to 266 °F (130 °C), above that consult BRUGG",
+    "img": ""
+   }
+  ],
+  "premant": [
+   {
+    "key": "end",
+    "name": "End of line: fitting and end sleeve",
+    "text": "At each pipe end in the building",
+    "img": "/premant/media/weld.jpg"
+   },
+   {
+    "key": "entry",
+    "name": "Building entry: wall seal",
+    "text": "For each pipe end",
+    "img": ""
+   },
+   {
+    "key": "joint",
+    "name": "Field joint: UNLINCON shrink joint casing",
+    "text": "One joint casing per weld between pipe lengths (39 ft / 12 m lengths assumed); INDUCON welded casing for groundwater",
+    "img": "/premant/media/casing.jpg"
+   }
+  ]
  }
 }

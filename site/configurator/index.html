@@ -5,11 +5,12 @@
 <header class="top" id="top"><div class="hd"><div class="wrap hrow"><a class="brand" href="../"><img src="/media/logo.png" alt="BRUGG Pipes"><span>A BRUGG GROUP COMPANY</span></a>
 <div class="hnav"><nav class="util" aria-label="Contact"><a href="tel:+18159277355">+1 815 927 7355</a><a href="mailto:sales.bpna@brugg.com">sales.bpna@brugg.com</a><a href="https://www.bruggpipes.com/us/" target="_blank" rel="noopener">bruggpipes.com</a></nav><nav class="tabs3" aria-label="Main"><a href="../">Products</a><a href="../configurator/" class="on" aria-current="page">Configurator</a><a href="../academy/">Academy</a><a href="https://brugg.partcommunity.com/3d-cad-models/sso/?languageIso=en" class="ext" target="_blank" rel="noopener">CAD / BIM library</a><a href="https://www.bruggpipes.com/us/contact/" class="ext" target="_blank" rel="noopener">Contact</a></nav></div></div></div>
 <div class="wrap"><p class="crumb"><a href="../">Products</a> / <b>Configurator</b></p>
-<div class="intro" style="padding-top:22px;padding-bottom:30px"><p class="eyebrow">North America</p><h1>Configurator</h1><p class="sub">Five steps from your operating data to a request for a quote. You see the suitable pipe systems with velocity and pressure loss for every size. US units throughout, metric in parentheses.</p></div></div></header>
+<div class="intro" style="padding-top:22px;padding-bottom:30px"><p class="eyebrow">North America</p><h1>Configurator</h1><p class="sub">From your route and operating data to pipe sizes, fittings, truck loads and a project summary.</p></div></div></header>
 
 <main>
 <section class="cfg" id="cfg"><div class="wrap">
-<ol class="steps5" id="progress" aria-label="Progress"><li class="on"><small>Step 1</small>Use case</li><li><small>Step 2</small>Specifications</li><li><small>Step 3</small>Products</li><li><small>Step 4</small>Supplementary materials</li><li><small>Step 5</small>Contact information</li></ol>
+<div class="unitbar"><span id="unitlabel">Units</span><div class="seg" role="group" aria-labelledby="unitlabel"><button type="button" id="u-us" aria-pressed="true">Imperial (°F, ft, MBH, psi)</button><button type="button" id="u-si" aria-pressed="false">Metric (°C, m, kW, bar)</button></div></div>
+<ol class="steps5" id="progress" aria-label="Progress"><li class="on"><small>Step 1</small>Use case</li><li><small>Step 2</small>Route and data</li><li><small>Step 3</small>Pipe system</li><li><small>Step 4</small>Fittings and transport</li><li><small>Step 5</small>Contact</li></ol>
 <noscript><p class="msg err">The configurator needs JavaScript. You can also send your data to sales.bpna@brugg.com.</p></noscript>
 <p class="msg err" id="err" role="alert" hidden></p>
 
@@ -24,44 +25,48 @@
 <label><input type="radio" name="medium" value="Other"><b>Other</b><span>Let us discuss available options</span></label></div>
 <div class="cfgnav"><span></span><button class="btn solid" type="submit">Next</button></div></form>
 
-<form id="s2" class="step" novalidate hidden><h2>Specifications</h2><p class="hint">These values are required to select the products that fit your requirements.</p>
-<h3>Temperature</h3><div class="row3">
-<label>Supply temperature<span class="unit"><input id="tin" type="number" placeholder="e.g. 180" inputmode="decimal" step="any" min="-40" max="400" required><i>°F</i></span></label>
-<label>Return temperature<span class="unit"><input id="tout" type="number" placeholder="e.g. 140" inputmode="decimal" step="any" min="-40" max="400" required><i>°F</i></span></label>
-<label>Peak temperature <em>(optional)</em><span class="unit"><input id="tpeak" type="number" inputmode="decimal" step="any" min="-40" max="400"><i>°F</i></span></label></div>
-<h3>Length and load</h3><div class="row3">
-<label>Route length<span class="unit"><input id="len" type="number" placeholder="e.g. 400" inputmode="decimal" step="any" min="1" max="100000" required><i>ft</i></span></label>
-<label>Heat load<span class="unit"><input id="load" type="number" placeholder="e.g. 1700" inputmode="decimal" step="any" min="1" max="10000000" required><i>MBH</i></span></label>
-<label>Max. operating pressure <em>(optional)</em><span class="unit"><input id="pmax" type="number" inputmode="decimal" step="any" min="0" max="1000"><i>psi</i></span></label></div>
-<p class="hint">1 MBH = 1,000 BTU/h. Route length is the trench length; single pipes need supply and return, twin pipes carry both in one jacket.</p>
+<form id="s2" class="step" novalidate hidden><h2>Route and operating data</h2><p class="hint">These values select the systems and sizes that fit your project.</p>
+<h3>Temperature and pressure</h3><div class="row4">
+<label>Supply temperature<span class="unit"><input id="tin" type="number" inputmode="decimal" step="any" required><i data-u="T"></i></span></label>
+<label>Return temperature<span class="unit"><input id="tout" type="number" inputmode="decimal" step="any" required><i data-u="T"></i></span></label>
+<label>Peak temperature <em>(optional)</em><span class="unit"><input id="tpeak" type="number" inputmode="decimal" step="any"><i data-u="T"></i></span></label>
+<label>Max. operating pressure <em>(optional)</em><span class="unit"><input id="pmax" type="number" inputmode="decimal" step="any"><i data-u="p"></i></span></label></div>
+<h3>Route</h3><p class="hint">Enter the route section by section, from the heat source to each building. Every section is a supply and a return line. A section carries the load of its own building and of every building behind it.</p>
+<div class="row2"><label>Name of the heat source<input id="source" type="text" maxlength="40" value="Boiler room"></label><span></span></div>
+<div class="scroll"><table class="route" id="route"><thead><tr><th>From</th><th>To (building)</th><th>Trench length, <span data-u="L"></span></th><th>Heat load of this building, <span data-u="P"></span></th><th></th></tr></thead><tbody></tbody></table></div>
+<p><button class="dl" type="button" id="addsec">Add a section</button></p>
+<p class="hint" id="loadhint"></p>
 <p class="calcline" id="flow" aria-live="polite"></p>
 <div class="cfgnav"><button class="btn" type="button" data-back>Previous</button><button class="btn solid" type="submit">Next</button></div></form>
 
-<form id="s3" class="step" novalidate hidden><h2>Suitable products</h2><p class="calcline" id="recap"></p><p class="hint" id="s3hint">Select the sizes you would like an offer for.</p>
-<div id="products"></div><div id="unsuitable"></div>
+<form id="s3" class="step" novalidate hidden><h2>Pipe system</h2><p class="calcline" id="recap"></p><p class="hint" id="s3hint">Choose a system. The configurator proposes a size for every section; you can change it.</p>
+<div id="systems" class="systems" role="radiogroup" aria-label="Pipe system"></div>
+<div id="detail"></div><div id="unsuitable"></div>
 <p class="note" id="method"></p>
 <div class="cfgnav"><button class="btn" type="button" data-back>Previous</button><button class="btn solid" type="submit">Next</button></div></form>
 
-<form id="s4" class="step" novalidate hidden><h2>Supplementary materials</h2><p class="hint">We include suitable fittings and accessories in our offer.</p>
-<div class="row2"><label>Building entrances<span class="unit"><input id="entr" type="number" inputmode="numeric" step="1" min="0" max="999" value="0"><i>pcs</i></span></label><span></span></div>
-<label>Notes for BRUGG Pipes <em>(optional)</em><textarea id="notes" rows="4" maxlength="800"></textarea></label>
+<form id="s4" class="step" novalidate hidden><h2>Fittings and transport</h2><p class="hint" id="s4hint"></p>
+<h3>Fittings and building entries</h3><div id="fittings"></div>
+<h3>Transport</h3><div class="row3"><label>Delivery city<input id="dcity" type="text" maxlength="60" autocomplete="address-level2"></label><label>State or province<input id="dstate" type="text" maxlength="40" autocomplete="address-level1"></label><label>ZIP or postal code <em>(optional)</em><input id="dzip" type="text" maxlength="12" autocomplete="postal-code"></label></div>
+<div id="transport"></div>
+<label style="margin-top:22px">Notes for BRUGG Pipes <em>(optional)</em><textarea id="notes" rows="3" maxlength="800"></textarea></label>
 <div class="cfgnav"><button class="btn" type="button" data-back>Previous</button><button class="btn solid" type="submit">Next</button></div></form>
 
 <form id="s5" class="step" novalidate hidden><h2>Contact information</h2>
 <div class="row2"><label>First name<input id="fn" type="text" maxlength="60" autocomplete="given-name" required></label><label>Last name<input id="ln" type="text" maxlength="60" autocomplete="family-name" required></label></div>
 <div class="row2"><label>Company<input id="co" type="text" maxlength="100" autocomplete="organization" required></label><label>Project name <em>(optional)</em><input id="pr" type="text" maxlength="100"></label></div>
-<div class="row3"><label>Email<input id="em" type="email" maxlength="120" autocomplete="email" required></label><label>Phone <em>(optional)</em><input id="ph" type="tel" maxlength="30" autocomplete="tel"></label><label>State or province <em>(optional)</em><input id="st" type="text" maxlength="40" autocomplete="address-level1"></label></div>
+<div class="row2"><label>Email<input id="em" type="email" maxlength="120" autocomplete="email" required></label><label>Phone <em>(optional)</em><input id="ph" type="tel" maxlength="30" autocomplete="tel"></label></div>
 <p class="msg ok">Nothing you enter is stored or sent by this page. Your request leaves your device only when you send the email from your own mail program.</p>
-<div class="cfgnav"><button class="btn" type="button" data-back>Previous</button><button class="btn solid" type="submit">Review request</button></div></form>
+<div class="cfgnav"><button class="btn" type="button" data-back>Previous</button><button class="btn solid" type="submit">Project summary</button></div></form>
 
-<div id="s6" class="step" hidden><h2>Your request</h2><p class="hint">Check the summary, then send it to BRUGG Pipes. We answer with an offer.</p>
-<pre id="summary" tabindex="0"></pre>
-<div class="cfgnav"><button class="btn" type="button" data-back>Previous</button><span class="right"><a class="btn" href="./">Start over</a><button class="btn" type="button" id="print">Print or save as PDF</button><button class="btn" type="button" id="copy">Copy summary</button><a class="btn solid" id="mail" href="mailto:sales.bpna@brugg.com">Email request to BRUGG Pipes</a></span></div>
-<p class="hint" id="copied" aria-live="polite"></p></div>
+<div id="s6" class="step" hidden><h2>Project summary</h2><p class="hint">Check the summary, then send it to BRUGG Pipes. We answer with an offer.</p>
+<div id="sumhtml" class="sum"></div>
+<div class="cfgnav"><button class="btn" type="button" data-back>Previous</button><span class="right"><a class="btn" href="./">Start over</a><button class="btn" type="button" id="print">Print or save as PDF</button><button class="btn" type="button" id="copy">Copy as text</button><a class="btn solid" id="mail" href="mailto:sales.bpna@brugg.com">Email request to BRUGG Pipes</a></span></div>
+<p class="hint" id="copied" aria-live="polite"></p><pre id="summary" hidden></pre></div>
 </div></section>
 <section id="contact" class="contact"><div class="wrap"><p class="eyebrow" style="color:#fff">Contact</p><h2>Send us your route. We size it and price it.</h2><p class="lead">BRUGG Pipes supports your project with pressure-loss and heat-loss sizing, routing and installer training.</p>
 <div class="ways"><a href="mailto:sales.bpna@brugg.com"><small>Email</small><b>sales.bpna@brugg.com</b></a><a href="tel:+18159277355"><small>Phone</small><b>+1 815 927 7355</b></a><a href="https://www.bruggpipes.com/us/contact/" target="_blank" rel="noopener"><small>Contact page</small><b>bruggpipes.com/us/contact</b></a></div></div></section>
 </main>
 <footer class="site-footer"><div class="wrap"><div><p>BRUGG Pipes · <a href="https://www.bruggpipes.com/us/">bruggpipes.com</a> · <a href="mailto:sales.bpna@brugg.com">sales.bpna@brugg.com</a> · <a href="tel:+18159277355">+1 815 927 7355</a></p><p class="links"><a href="../">Products</a><a href="../configurator/">Configurator</a><a href="../academy/">Academy</a><a href="https://www.bruggpipes.com/us/contact/" target="_blank" rel="noopener">Contact</a></p><p class="links"><a href="https://www.bruggpipes.com/us/legal-notice/">Legal notice</a><a href="https://www.bruggpipes.com/us/privacy-policy/">Privacy policy</a><a href="https://www.bruggpipes.com/us/compliance/">Compliance</a><a href="https://www.bruggpipes.com/us/t-c/">Terms and conditions</a></p><p class="links social"><a href="https://www.facebook.com/bruggpipes" target="_blank" rel="noopener">Facebook</a><a href="https://www.youtube.com/c/BRUGGPipes" target="_blank" rel="noopener">YouTube</a><a href="https://www.bruggpipes.com/linkedin" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.instagram.com/bruggpipes" target="_blank" rel="noopener">Instagram</a><a href="https://twitter.com/BRUGG_Pipes" target="_blank" rel="noopener">X</a></p><p class="group">A BRUGG GROUP COMPANY</p><p>Velocity and pressure loss are estimates for water and do not replace project engineering by BRUGG Pipes. Product values from the Technical Data Sheets. Subject to technical changes.</p></div><img src="/media/logo.png" alt="BRUGG Pipes"></div></footer>
-<script src="configurator.js" defer></script>
+<script src="configurator-calc.js" defer></script><script src="configurator.js" defer></script>
 </body></html>
