@@ -5,8 +5,7 @@ Static site, published by Netlify from the `main` branch. Netlify runs `python3 
 ## Structure
 
 - `site/index.html`: overview of all product groups
-- `site/<group>/index.html`: sub-product overview (PREMANT, CASAFLEX, CALPEX, ARMOPEX) or the page of a group created in the admin area
-- `site/<group>/product.html`: full product page of the four hand-built groups
+- `site/<group>/index.html`: landing page of the product group (hand-built for PREMANT, CASAFLEX, CALPEX, ARMOPEX; generated for groups created in the admin area)
 - `site/configurator/`: configurator for North America (US units)
 - `site/academy/`: Academy with online courses
 - `site/admin/`: content manager (Decap CMS 3.18, self-hosted, MIT license)

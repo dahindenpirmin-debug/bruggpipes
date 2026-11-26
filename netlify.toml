@@ -23,3 +23,9 @@
   for = "/*.mp4"
   [headers.values]
     Cache-Control = "public, max-age=604800"
+
+# The landing page is the page of each product group (no separate sub-product pages).
+[[redirects]]
+  from = "/:group/product.html"
+  to = "/:group/"
+  status = 301

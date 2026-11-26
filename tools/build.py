@@ -90,10 +90,10 @@ for slug,G in sorted(GROUPS.items(),key=lambda kv:(kv[1].get('order') or 99,kv[0
     img=f'<img src="{e(G.get("card_image") or "/media/logo.png")}" alt="{e(G["name"])} pipe">'
     tag='<span class="tag">Cooling and cold water</span>' if cat else '<span class="tag heat">Heating</span>'
     inner=f'<div class="pic">{img}{usa}</div><div class="txt"><span class="no">{len(heat)+len(cool)+1}</span><h3>{e(G["name"])}</h3>{tag}<ul>'+''.join(f'<li>{e(b)}</li>' for b in (G.get('card_bullets') or []))+'</ul>'
-    c=(f'<a class="card" href="{slug}/">{inner}<span class="go">'+('View sub-products' if G.get('legacy') else 'Open product page')+'</span></div></a>') if live else f'<div class="card off">{inner}<span class="go">Product page in preparation</span></div></div>'
+    c=(f'<a class="card" href="{slug}/">{inner}<span class="go">'+('Open product page')+'</span></div></a>') if live else f'<div class="card off">{inner}<span class="go">Product page in preparation</span></div></div>'
     (cool if cat else heat).append(c)
 body=f'''<div class="wrap intro"><p class="eyebrow">North America</p><h1>District Heating and Cooling Solutions</h1>
-<p class="sub">Pre-insulated pipe systems for North America. Pick a product to see its sub-products with data, videos and documents.</p></div></header>
+<p class="sub">Pre-insulated pipe systems for North America. Pick a product to open its page with data, videos and documents.</p></div></header>
 <main>
 <section id="heating" style="padding-top:20px"><div class="wrap"><p class="eyebrow">Heating</p><h2>Systems for local and district heating.</h2><div class="grid">{''.join(heat)}</div></div></section>
 <section id="cooling" class="tinted"><div class="wrap"><p class="eyebrow">Cooling and cold water</p><h2>Systems for cooling and cold water.</h2><div class="grid">{''.join(cool)}</div></div></section>
@@ -139,6 +139,7 @@ def card(n,i,img,name,tag,bullets,wide=False,usa=False):
     u='<img class="usa" src="../media/usa.png" alt="Made in USA">' if usa else ''
     return f'<a class="card{" wide" if wide else ""}" href="#{i}"><div class="pic"><img src="{img}" alt="{name}">{u}</div><div class="txt"><span class="no">{n}</span><h3>{name}</h3><span class="tag">{tag}</span><ul>'+''.join(f'<li>{b}</li>' for b in bullets)+'</ul><span class="go">View details</span></div></a>'
 def subpage(p,title,h1,crumbname,intro_count,cards,sections,d,alt):
+    return  # sub-product pages are switched off (decision of November 26, 2026); the landing page is the group page
     body=f'''<div class="wrap"><p class="crumb"><a href="../">Products</a> / <b>{crumbname}</b></p>
 <div class="herogrid"><div><p class="eyebrow">Local and district heating</p><h1>{h1}</h1><p class="sub">{d['sub']}</p>
 <div class="cta"><a class="btn solid" href="#products">Sub-products</a><a class="btn" href="product.html">Full product page</a><a class="btn" href="../configurator/">Configurator</a></div></div>
@@ -245,8 +246,8 @@ for p,t in TITLE.items():
     h=h.replace('<meta charset="utf-8">','<meta charset="utf-8">'+CSPMETA,1)
     h=re.sub(r'<title>.*?</title>',f'<title>{t}</title><link rel="icon" href="../media/logo.png">',h,count=1)
     h=h.replace('<a class="brand" href="#top">','<a class="brand" href="../">')
-    h=h.replace('<a href="https://www.bruggpipes.com/us/products/" target="_blank" rel="noopener">All products</a>',f'<a href="../">All products</a><a href="./">{N} sub-products</a><a href="https://brugg.partcommunity.com/3d-cad-models/sso/?languageIso=en" target="_blank" rel="noopener">CAD / BIM library</a>')
-    h=re.sub(r'<p class="crumb">.*?</p>',f'<p class="crumb"><a href="../" style="color:inherit">Products</a> / <a href="./" style="color:inherit">{N}</a> / <b>Product page</b></p>',h,count=1,flags=re.S)
+    h=h.replace('<a href="https://www.bruggpipes.com/us/products/" target="_blank" rel="noopener">All products</a>',f'<a href="../">All products</a><a href="../configurator/">Configurator</a><a href="../academy/">Academy</a><a href="https://brugg.partcommunity.com/3d-cad-models/sso/?languageIso=en" target="_blank" rel="noopener">CAD / BIM library</a>')
+    h=re.sub(r'<p class="crumb">.*?</p>',f'<p class="crumb"><a href="../" style="color:inherit">Products</a> / <b>{N}</b></p>',h,count=1,flags=re.S)
     h=re.sub(r'(<a class="dl[^"]*" href="[^"]+" target="_blank" rel="noopener")( data-file="[^"]+" data-name="([^"]+)")',lambda m:f'{m.group(1)} download="{m.group(3)}"{m.group(2)}',h)
     for t,tb in re.findall(r'<h3 class="sub"[^>]*>(.*?)</h3><div class="scroll">(<table[^>]*>.*?</table>)</div>',h,re.S):
         if html.unescape(t) in TABLES[p]: h=h.replace(tb,TABLES[p][html.unescape(t)])
@@ -257,11 +258,11 @@ for p,t in TITLE.items():
     h=re.sub(r'<li>(?:(?!</li>).)*guide-specification\.docx(?:(?!</li>).)*</li>','',h,flags=re.S)
     js.append('''(function(){var q=new URLSearchParams(location.search).get('v');if(!q)return;var t=document.querySelector('.tab[data-v="'+q.replace(/[^a-z0-9-]/g,'')+'"]');if(t)t.click();})();''')
     open(f'{SITE}/{p}/product.js','w',encoding='utf-8').write('"use strict";\n'+'\n'.join(js))
-    h=h.replace('<a href="./">'+N+' sub-products</a>','<a href="./">'+N+' sub-products</a><a href="../configurator/">Configurator</a>')
+    h=h.replace('src="media/logo.png"','src="/media/logo.png"')
     h=h.replace('</body>','<script src="product.js" defer></script>\n</body>')
     h=h.replace('<a href="#contact">Contact</a>','<a href="https://www.bruggpipes.com/us/contact/" target="_blank" rel="noopener">Contact</a>').replace('<a href="https://www.bruggpipes.com/us/" target="_blank" rel="noopener"><small>Web</small><b>bruggpipes.com</b></a>','<a href="https://www.bruggpipes.com/us/contact/" target="_blank" rel="noopener"><small>Contact page</small><b>bruggpipes.com/us/contact</b></a>')
     h=h.replace('<a href="https://www.bruggpipes.com/us/t-c/">Terms and conditions</a></p>','<a href="https://www.bruggpipes.com/us/t-c/">Terms and conditions</a></p>'+SOC)
-    open(f'{SITE}/{p}/product.html','w',encoding='utf-8').write(h)
+    open(f'{SITE}/{p}/index.html','w',encoding='utf-8').write(h)
 exec(open(ROOT+'/tools/configurator.py',encoding='utf-8').read())
 build_extra()
 print('built')

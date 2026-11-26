@@ -18,7 +18,7 @@
     $('err').hidden = true;
     $('cfg').scrollIntoView({ block: 'start' });
   }
-  function fail(msg, input) { var e = $('err'); e.textContent = msg; e.hidden = false; if (input) { input.classList.add('bad'); input.focus(); } return false; }
+  function fail(msg, input) { var e = $('err'), stp = $('s' + cur), nav = stp ? stp.querySelector('.nav') : null; if (nav) stp.insertBefore(e, nav); e.textContent = msg; e.hidden = false; if (input) { input.classList.add('bad'); input.focus({ preventScroll: true }); } e.scrollIntoView({ block: 'center' }); return false; }
   function num(id, label, req) {
     var i = $(id); i.classList.remove('bad');
     if (i.value.trim() === '') { if (req) { fail('Please enter ' + label + '.', i); return NaN; } return null; }

@@ -24,7 +24,7 @@ for p,P in DATA['products'].items():
             lim=dict(s['limits']); lim.update(s.get('rowLimits',{}).get(r[0],{})); z['lim']=lim
             sizes.append(z)
         out['series'].append({'product':p,'productName':P['name'],'type':P['type'],'id':s['id'],'name':s['name'],'pipes':s['pipes'],'material':s['material'],
-          'pByT':s.get('pressureByTempF'),'note':s.get('note',''),'source':P['source'],'page':f'../{p}/#{s["id"]}','sizes':sizes})
+          'pByT':s.get('pressureByTempF'),'note':s.get('note',''),'source':P['source'],'page':f'../{p}/#range','sizes':sizes})
 os.makedirs(SITE+'/data',exist_ok=True); os.makedirs(SITE+'/configurator',exist_ok=True)
 json.dump(out,open(SITE+'/data/products.json','w',encoding='utf-8'),ensure_ascii=False,separators=(',',':'))
 
