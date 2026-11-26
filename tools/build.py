@@ -265,7 +265,7 @@ secs=[sec('uno','Single pipe','ARMOPEX UNO','Seven sizes in coils. Aramid-reinfo
 subpage('armopex','ARMOPEX by BRUGG Pipes: Sub-products','ARMOPEX – Flexible Pipe for Medium-Pressure District Heating','ARMOPEX','Pipe, connectors and installation.',cards,secs,d,'ARMOPEX pipes in the trench')
 
 # ---------- patch product pages ----------
-TITLE={'casaflex':'CASAFLEX by BRUGG Pipes','premant':'PREMANT by BRUGG Pipes','calpex':'CALPEX by BRUGG Pipes','armopex':'ARMOPEX by BRUGG Pipes'}
+TITLE={'casaflex':'CASAFLEX by BRUGG Pipes','premant':'PREMANT by BRUGG Pipes','calpex':'CALPEX by BRUGG Pipes','armopex':'ARMOPEX by BRUGG Pipes','bioflex':'BIOFLEX by BRUGG Pipes'}
 for p,t in TITLE.items():
     h=rd(p); N=p.upper()
     h=h.replace('<meta charset="utf-8">','<meta charset="utf-8">'+CSPMETA,1)
@@ -275,7 +275,7 @@ for p,t in TITLE.items():
     h=re.sub(r'<p class="crumb">.*?</p>',f'<p class="crumb"><a href="../" style="color:inherit">Products</a> / <b>{N}</b></p>',h,count=1,flags=re.S)
     h=re.sub(r'(<a class="dl[^"]*" href="[^"]+" target="_blank" rel="noopener")( data-file="[^"]+" data-name="([^"]+)")',lambda m:f'{m.group(1)} download="{m.group(3)}"{m.group(2)}',h)
     for t,tb in re.findall(r'<h3 class="sub"[^>]*>(.*?)</h3><div class="scroll">(<table[^>]*>.*?</table>)</div>',h,re.S):
-        if html.unescape(t) in TABLES[p]: h=h.replace(tb,TABLES[p][html.unescape(t)])
+        if html.unescape(t) in TABLES.get(p,{}): h=h.replace(tb,TABLES[p][html.unescape(t)])
     h=apply_group(h,GROUPS[p],p)
     h=h.replace(' oncontextmenu="return false"','')
     js=[]
@@ -290,6 +290,17 @@ for p,t in TITLE.items():
     h=h.replace('<a class="btn" href="#documents">Downloads</a></div>','<a class="btn" href="#documents">Downloads</a><a class="btn" href="../configurator/">Configurator</a></div>',1)
     h=restyle(h,'../','products',t,f'{N} by BRUGG Pipes: data, videos and documents for North America.')
     open(f'{SITE}/{p}/index.html','w',encoding='utf-8').write(h)
+# ---------- BIOFLEX sizing tool (calculates in the browser, same header and footer as all pages) ----------
+if os.path.exists(SRC+'/bioflex-sizing.html'):
+    h=rd('bioflex-sizing')
+    h=h.replace('<meta charset="utf-8">','<meta charset="utf-8">'+CSPMETA,1)
+    h=re.sub(r'<p class="crumb">.*?</p>','<p class="crumb"><a href="../" style="color:inherit">Products</a> / <a href="./" style="color:inherit">BIOFLEX</a> / <b>Sizing tool</b></p>',h,count=1,flags=re.S)
+    h=h.replace('<a class="brand" href="#top">','<a class="brand" href="../">').replace('src="media/logo.png"','src="/media/logo.png"').replace('href="index.html','href="./')
+    h=restyle(h,'../','products','BIOFLEX Sizing Tool by BRUGG Pipes','BIOFLEX sizing tool: heating pipe for digesters, calculated in the browser.')
+    js=[]
+    h=re.sub(r'<script>(.*?)</script>',lambda m:(js.append(m.group(1)),'')[1],h,flags=re.S)
+    open(f'{SITE}/bioflex/sizing.js','w',encoding='utf-8').write('"use strict";\n'+'\n'.join(js))
+    open(f'{SITE}/bioflex/sizing.html','w',encoding='utf-8').write(h.replace('</body>','<script src="sizing.js" defer></script>\n</body>'))
 exec(open(ROOT+'/tools/configurator.py',encoding='utf-8').read())
 build_extra()
 print('built;',len(set(MISSING)),'files referenced in data/ are not in site/ and are hidden')

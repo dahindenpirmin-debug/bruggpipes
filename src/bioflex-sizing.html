@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BIOFLEX Sizing Tool by BRUGG Pipes</title>
+<style>
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/inter-latin-400-normal.woff2) format('woff2')}@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/inter-latin-500-normal.woff2) format('woff2')}@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/inter-latin-600-normal.woff2) format('woff2')}@font-face{font-family:'Inter';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/inter-latin-700-normal.woff2) format('woff2')}@font-face{font-family:'Inter Tight';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/inter-tight-latin-600-normal.woff2) format('woff2')}@font-face{font-family:'Inter Tight';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/inter-tight-latin-700-normal.woff2) format('woff2')}@font-face{font-family:'Inter Tight';font-style:normal;font-weight:800;font-display:swap;src:url(fonts/inter-tight-latin-800-normal.woff2) format('woff2')}
+:root{ /* layout idea: brand-blue hero photo, then a white data-sheet rhythm; the big numerals carry the page */
+--blue:#293D91;--blue-deep:#1B2A6B;--ink:#16181D;--grey:#4A5160;--line:#C9CED8;--tint:#EEF1F8;--paper:#fff;--steel:#8C93A3;
+--display:"Inter Tight","Inter",Arial,sans-serif;--body:"Inter",Arial,Helvetica,sans-serif;color-scheme:light}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.55 var(--body);-webkit-font-smoothing:antialiased}
+img,video{max-width:100%;display:block}a{color:var(--blue)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+h1,h2,h3,h4{font-family:var(--display);text-wrap:balance;margin:0}
+h2{font-weight:800;font-size:clamp(30px,4.2vw,50px);line-height:1.04;letter-spacing:-.02em;color:var(--blue)}
+.eyebrow{font:700 12.5px var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin:0 0 14px}
+.lead{font-size:19px;color:var(--grey);max-width:62ch;margin:16px 0 0}
+section{padding:84px 0}
+:focus-visible{outline:3px solid #F2B705;outline-offset:3px}
+/* nav */
+.nav{position:absolute;left:0;right:0;top:0;z-index:3}.nav .wrap{display:flex;align-items:center;gap:28px;padding-top:22px}.nav img{width:132px}
+.nav nav{margin-left:auto;display:flex;gap:26px;flex-wrap:wrap}.nav a{color:#fff;text-decoration:none;font:600 14.5px var(--body)}.nav a:hover{text-decoration:underline}
+/* hero */
+.hero{position:relative;color:#fff;background:linear-gradient(90deg,var(--blue) 0%,var(--blue) 34%,rgba(41,61,145,.78) 54%,rgba(41,61,145,.12) 100%),url(media/hero.jpg) right 60%/cover no-repeat,var(--blue);padding:150px 0 0}
+.hero h1{font-weight:800;font-size:clamp(42px,7vw,92px);line-height:.96;letter-spacing:-.03em;max-width:11ch}
+.hero .eyebrow{color:#fff;opacity:.9}.hero p.sub{font-size:20px;max-width:46ch;margin:26px 0 0;color:#E4E8F7}
+.cta{display:flex;gap:14px;flex-wrap:wrap;margin:34px 0 0}
+.btn{display:inline-block;padding:15px 24px;border-radius:4px;font:700 15.5px var(--body);text-decoration:none;border:2px solid #fff;color:#fff;transition:background .15s,color .15s}.btn.solid{background:#fff;color:var(--blue)}.btn:hover{background:#fff;color:var(--blue)}.btn.solid:hover{background:var(--tint)}
+.band{display:grid;grid-template-columns:repeat(4,1fr);margin-top:76px;background:var(--blue-deep)}
+.band div{padding:26px 24px 24px;border-left:1px solid rgba(255,255,255,.2)}.band div:first-child{border-left:0}
+.band b{display:block;font:800 clamp(28px,3.6vw,44px)/1 var(--display);letter-spacing:-.02em}.band span{display:block;margin-top:8px;font-size:14px;color:#D5DAF0}
+/* video */
+.videobox{background:var(--ink);border-radius:6px;overflow:hidden;box-shadow:0 24px 60px -30px rgba(27,42,107,.55)}video{width:100%;aspect-ratio:16/9;background:#000}
+.split{display:grid;grid-template-columns:1fr 1.5fr;gap:56px;align-items:center}
+/* reasons */
+.reasons{list-style:none;padding:0;margin:54px 0 0;display:grid;grid-template-columns:1fr 1fr;column-gap:64px}
+.reasons li{display:grid;grid-template-columns:minmax(230px,.9fr) 1.1fr;gap:22px;padding:30px 0;border-top:1px solid var(--line);align-items:start}
+.num{font:800 clamp(38px,4.4vw,56px)/.95 var(--display);letter-spacing:-.035em;color:var(--blue);white-space:nowrap}.num small{display:block;font:600 13px/1.3 var(--body);letter-spacing:0;color:var(--grey);margin-top:10px;white-space:normal}
+.reasons h3{font-weight:700;font-size:20px;line-height:1.2}.reasons p{margin:8px 0 0;color:var(--grey);font-size:16px}
+/* cost */
+.tinted{background:var(--tint)}
+.cost{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:44px}
+.pair{background:var(--paper);padding:22px 20px 18px;border-radius:6px}.pair h4{font:700 16px var(--body)}
+.bars{display:flex;gap:14px;align-items:flex-end;height:230px;margin-top:38px}.bar{flex:1;height:var(--h);border-radius:4px 4px 0 0;position:relative;min-height:10px}
+.bar.rigid{background:var(--steel)}.bar.cfl{background:var(--blue)}.bar b{position:absolute;left:0;right:0;bottom:calc(100% + 6px);text-align:center;font:800 19px var(--display);white-space:nowrap;font-variant-numeric:tabular-nums}.bar.cfl b{color:var(--blue)}.bar.rigid b{color:var(--grey)}
+.leg{display:flex;gap:14px;margin-top:10px;font-size:12.5px;color:var(--grey)}.leg span{flex:1;text-align:center}
+.fine{font-size:13px;color:var(--grey);max-width:95ch;margin:22px 0 0}
+.calc{min-width:520px;font-size:14.5px}.calc.wide{min-width:760px}.calc td:first-child{color:var(--ink);font-weight:600}.calc.nums td:not(:first-child),.calc.nums th:not(:first-child){text-align:right;padding-right:0;padding-left:14px}.calc td b{font-family:var(--body);font-size:inherit;color:var(--ink)}
+.calcgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px 44px;align-items:start}.calcgrid>div{min-width:0}.calcgrid.one{grid-template-columns:1fr}.calcgrid:not(.one) .calc{min-width:0}.ch{font:700 17px var(--display);margin:34px 0 0}.calcgrid .scroll,.ch+.scroll{margin-top:10px}.tinted .calc th{border-bottom-color:var(--ink)}
+.assume{background:var(--paper);border-radius:6px;padding:22px 24px;margin-top:34px;font-size:14.5px;color:var(--grey)}.assume ul{margin:12px 0 0;padding-left:18px}.assume li{margin-bottom:8px}
+@media (max-width:900px){.calcgrid{grid-template-columns:1fr}}
+/* construction */
+.two{display:grid;grid-template-columns:1.15fr 1fr;gap:56px;align-items:start;margin-top:44px}
+.figure{background:#f2f3f5;border-radius:6px;overflow:hidden}
+table{border-collapse:collapse;width:100%;font-size:15px;font-variant-numeric:tabular-nums}th,td{text-align:left;padding:11px 14px 11px 0;border-bottom:1px solid var(--line);vertical-align:top}th{font:700 12.5px var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--grey);border-bottom:2px solid var(--ink)}
+td i{font-style:normal;color:var(--steel);white-space:nowrap}td b{color:var(--blue);font-family:var(--display);font-size:17px;white-space:nowrap}
+.kv td:first-child{color:var(--grey);width:48%}.kv td:last-child{font-weight:600}
+.scroll{overflow-x:auto;margin-top:26px}.scroll table{min-width:880px}
+h3.sub{font-weight:800;font-size:24px;color:var(--ink);margin-top:54px}
+/* install */
+.inst{display:grid;grid-template-columns:1.55fr 1fr;gap:34px;margin-top:44px;align-items:start}
+.tabs{display:grid;gap:10px}.tab{display:grid;grid-template-columns:1fr auto;gap:2px 12px;text-align:left;padding:16px 18px;background:var(--paper);border:1.5px solid var(--line);border-radius:6px;cursor:pointer;font:inherit;color:var(--ink)}
+.tab b{font:700 18px var(--display)}.tab span{grid-column:1;font-size:14px;color:var(--grey)}.tab em{grid-row:1/3;grid-column:2;align-self:center;font:600 13px var(--body);font-style:normal;color:var(--grey)}
+.tab:hover{border-color:var(--blue)}.tab.on{background:var(--blue);border-color:var(--blue);color:#fff}.tab.on span,.tab.on em{color:#D5DAF0}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:54px}.steps figure{margin:0}.steps img{aspect-ratio:4/3;object-fit:cover;width:100%;border-radius:6px;background:#f2f3f5}.steps img.fit{object-fit:contain}
+.steps figcaption{margin-top:14px;font-size:15.5px;color:var(--grey)}.steps figcaption b{display:block;font:700 19px var(--display);color:var(--ink);margin-bottom:4px}
+.mlinks{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+/* docs */
+.docs{list-style:none;padding:0;margin:40px 0 0;border-top:2px solid var(--ink)}.docs li{display:grid;grid-template-columns:1fr 150px auto;gap:20px;align-items:center;padding:17px 0;border-bottom:1px solid var(--line)}
+.docs b{display:block;font:700 18px var(--display)}.docs span{font-size:15px;color:var(--grey)}.docs em{font-style:normal;font-size:13.5px;color:var(--grey)}
+.dl{display:inline-block;padding:10px 16px;border:1.5px solid var(--blue);border-radius:4px;font:700 14px var(--body);text-decoration:none;color:var(--blue);white-space:nowrap;background:var(--paper)}.dl:hover{background:var(--blue);color:#fff}.dl.sm{padding:7px 12px;font-size:13px}.dl[aria-busy="true"]{opacity:.6}
+#dlmsg{min-height:1.5em;font-size:14px;color:var(--grey);margin:14px 0 0}
+/* contact */
+.contact{background:var(--blue);color:#fff}.contact h2{color:#fff}.contact .lead{color:#E4E8F7}
+.ways{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}.ways a,.ways div{display:block;padding:22px;background:var(--blue-deep);border-radius:6px;color:#fff;text-decoration:none}.ways small{display:block;font:700 12px var(--body);letter-spacing:.14em;text-transform:uppercase;color:#C5CCEC;margin-bottom:8px}.ways b{font:700 clamp(17px,2vw,22px) var(--display);overflow-wrap:anywhere}
+footer{padding:30px 0 40px;font-size:13px;color:var(--grey)}footer .wrap{display:flex;gap:24px;justify-content:space-between;align-items:flex-end;flex-wrap:wrap}footer img{width:112px}footer p{margin:0 0 8px;max-width:80ch}footer .legal{display:flex;flex-wrap:wrap;gap:6px 20px}footer a{color:var(--grey)}
+@media (max-width:900px){section{padding:60px 0}.split,.two,.inst{grid-template-columns:1fr;gap:30px}.reasons{grid-template-columns:1fr}.cost{grid-template-columns:1fr 1fr}.band{grid-template-columns:1fr 1fr}.band div:nth-child(3){border-left:0}.band div:nth-child(n+3){border-top:1px solid rgba(255,255,255,.2)}.steps,.ways{grid-template-columns:1fr}.nav nav{display:none}.hero{padding-top:110px;background:linear-gradient(180deg,rgba(41,61,145,.94),rgba(41,61,145,.8)),url(media/hero.jpg) center/cover no-repeat,var(--blue)}.docs li{grid-template-columns:1fr auto}.docs em{display:none}}
+@media (max-width:520px){.reasons li{grid-template-columns:1fr;gap:10px}.cost{grid-template-columns:1fr}.bars{height:160px}.docs li{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+
+/* ---- BRUGG website and brochure look: white pages, light type, blue caps labels ---- */
+body{font-weight:300;color:#1a1a1a}
+.top{background:#fff;color:var(--ink);padding:0 0 0}
+.hbar{display:flex;align-items:center;gap:28px;padding-top:20px;padding-bottom:18px;border-bottom:1px solid var(--line)}.hbar img{width:128px}
+.hbar nav{margin-left:auto;display:flex;gap:26px;flex-wrap:wrap}.hbar nav a{color:var(--ink);text-decoration:none;font:600 14.5px var(--body)}.hbar nav a:hover{color:var(--blue)}
+.crumb{font-size:13px;color:var(--grey);margin:18px 0 0}.crumb b{font-weight:600;color:var(--ink)}
+.herogrid{display:grid;grid-template-columns:1.05fr 1fr;gap:52px;align-items:center;padding:38px 0 46px}
+.top h1{font:700 clamp(30px,3.6vw,46px)/1.12 var(--body);letter-spacing:-.01em;color:var(--ink);max-width:none;margin:0}
+.top .eyebrow{color:var(--blue)}.top p.sub{font-size:18px;color:var(--grey);margin:20px 0 0;max-width:52ch}.top p.sub b{color:var(--ink);font-weight:700;display:block;margin-bottom:6px}
+.heroimg img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.btn{border-color:var(--blue);color:var(--blue);border-radius:0}.btn.solid{background:var(--blue);color:#fff}.btn:hover{background:var(--blue);color:#fff}.btn.solid:hover{background:var(--blue-deep);color:#fff}
+.band{margin-top:0;background:var(--tint);color:var(--ink)}.band div{border-left:1px solid var(--line)}.band b{color:var(--blue);font-family:var(--body);font-weight:700}.band span{color:var(--grey)}
+h2{font:700 clamp(24px,2.8vw,34px)/1.18 var(--body);letter-spacing:-.005em;color:var(--ink)}
+.eyebrow{letter-spacing:.09em;font-size:13.5px}
+.num{font-family:var(--body);font-weight:700;letter-spacing:-.02em}.reasons h3,.tab b,.docs b,.steps figcaption b,h3.sub,.ways b{font-family:var(--body)}
+td b{font-family:var(--body)}.bar.rigid b,.bar.cfl b{font-family:var(--body)}
+.videobox,.pair,.tab,.dl,.figure,.steps img,.ways a,.ways div{border-radius:0}.videobox{box-shadow:none}
+footer .group{font:700 12px var(--body);letter-spacing:.14em;color:var(--blue);margin-top:10px}
+@media (max-width:900px){.herogrid{grid-template-columns:1fr;gap:26px}.hbar nav{display:none}}
+
+@font-face{font-family:'Roboto Condensed';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/roboto-condensed-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Roboto Condensed';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/roboto-condensed-latin-700-normal.woff2) format('woff2')}
+.hd{border-bottom:4px solid var(--blue)}.hrow{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;padding-top:26px}
+.brand{display:block;text-decoration:none;padding-bottom:14px}.brand img{width:150px}.brand span{display:block;margin-top:14px;font:400 12.5px "Roboto Condensed",var(--body);letter-spacing:.02em;color:var(--grey)}
+.hnav{display:flex;flex-direction:column;align-items:flex-end;gap:24px}
+.util{display:flex;gap:30px;flex-wrap:wrap;justify-content:flex-end}.util a{font:400 15px "Roboto Condensed",var(--body);letter-spacing:.09em;text-transform:uppercase;color:#3b3f48;text-decoration:none}.util a:hover{color:var(--blue)}
+.tabs3{display:flex;gap:2px}.tabs3 a{background:var(--blue);color:#fff;font:700 15.5px "Roboto Condensed",var(--body);letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding:15px 24px 14px;white-space:nowrap}.tabs3 a:hover{background:var(--blue-deep)}
+@media (max-width:1080px){.tabs3 a{padding:14px 15px 13px;font-size:14.5px}}
+@media (max-width:900px){.hrow{align-items:flex-start;flex-direction:column;gap:6px}.hnav{align-items:flex-start;width:100%}.util{display:flex}.tabs3{width:100%;flex-wrap:wrap}.tabs3 a{flex:1 1 30%;text-align:center;padding:12px 6px;font-size:13.5px}}
+
+/* ---- BIOFLEX additions ---- */
+.cost.three{grid-template-columns:repeat(3,1fr)}.bars.tri .bar{font-size:0}.bar.pe{background:#B9BFCC}.bar.pe b{color:var(--grey);font-family:var(--body)}
+.sysgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}.sysgrid a,.sysgrid div.s{display:grid;grid-template-columns:86px 1fr;gap:16px;align-items:center;background:var(--paper);padding:18px;text-decoration:none;color:var(--ink);border:1.5px solid var(--line)}.sysgrid a:hover{border-color:var(--blue)}.sysgrid img{max-height:120px;margin:0 auto}.sysgrid small{display:block;font:700 11.5px var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--blue)}.sysgrid b{display:block;font:700 20px var(--body);margin:2px 0 4px}.sysgrid span{font-size:14.5px;color:var(--grey)}
+.figs4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:34px}.figs4 figure{margin:0}.figs4 img{width:100%;aspect-ratio:4/3;object-fit:cover;background:#f2f3f5}.figs4 figcaption{margin-top:10px;font-size:14.5px;color:var(--grey)}.figs4 figcaption b{display:block;color:var(--ink);font-weight:700;font-size:16px}
+.tool{display:grid;grid-template-columns:minmax(300px,380px) 1fr;gap:44px;align-items:start;margin-top:36px}.tool>*{min-width:0}
+.form{background:var(--tint);padding:24px}.form label{display:block;font:600 13.5px var(--body);margin:14px 0 5px}.form label:first-child{margin-top:0}.form small{font-weight:400;color:var(--grey)}
+.form input,.form select{width:100%;padding:10px 11px;border:1.5px solid var(--line);background:#fff;font:400 16px var(--body);color:var(--ink);border-radius:0}.form input:focus,.form select:focus{border-color:var(--blue);outline:0}
+.duo{display:grid;grid-template-columns:1.3fr 1fr;gap:8px}.form button{margin-top:20px;width:100%;cursor:pointer;font-family:var(--body)}
+#msg{color:#B3261E;font-weight:600;font-size:14.5px;min-height:1.4em;margin:12px 0 0}
+.res{display:grid;grid-template-columns:1.25fr 1fr 1fr;background:var(--blue);color:#fff}.res div{padding:22px 20px;border-left:1px solid rgba(255,255,255,.25)}.res div:first-child{border-left:0}.res b{display:block;font:700 clamp(26px,3.2vw,40px)/1 var(--body);letter-spacing:-.02em}.res span{display:block;margin-top:8px;font-size:13.5px;color:#D5DAF0}.res small{display:block;font:700 11.5px var(--body);letter-spacing:.12em;text-transform:uppercase;color:#C5CCEC;margin-bottom:8px}
+#out h3{font:700 19px var(--body);margin:34px 0 0}#out .scroll{margin-top:10px}#out .scroll table{min-width:560px;font-size:14.5px}#out tr.sel td{font-weight:600;background:var(--tint)}#out p.fine{margin-top:10px}
+#notes{margin:14px 0 0;padding-left:18px;font-size:14.5px;color:var(--grey)}#notes li{margin-bottom:6px}
+.acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}.acts .dl{cursor:pointer;font-family:var(--body)}
+@media (max-width:900px){.cost.three,.sysgrid{grid-template-columns:1fr}.figs4{grid-template-columns:1fr 1fr}.tool{grid-template-columns:1fr}.res{grid-template-columns:1fr}.res div{border-left:0;border-top:1px solid rgba(255,255,255,.25)}.res div:first-child{border-top:0}}
+@media print{.hd,.form,.contact,footer,.acts,.crumb,.cta{display:none!important}section{padding:10px 0}.tool{display:block}body{font-size:12px}#out .scroll table{min-width:0}}
+</style></head><body>
+<header class="top" id="top"><div class="hd"><div class="wrap hrow"><a class="brand" href="index.html"><img src="media/logo.png" alt="BRUGG Pipes"><span>A BRUGG GROUP COMPANY</span></a>
+<div class="hnav"><nav class="util" aria-label="More"><a href="https://www.bruggpipes.com/us/products/" target="_blank" rel="noopener">All products</a></nav>
+<nav class="tabs3" aria-label="Sections"><a href="index.html">BIOFLEX</a><a href="index.html#why">Advantages</a><a href="index.html#system">Technical data</a><a href="index.html#installation">Installation</a><a href="index.html#documents">Downloads</a><a href="#contact">Contact</a></nav></div></div></div>
+<div class="wrap"><p class="crumb">Home / Products / Biogas / BIOFLEX / <b>Sizing tool</b></p>
+<div style="padding:30px 0 40px"><p class="eyebrow">BIOFLEX digester heating</p><h1>How much BIOFLEX does your digester need?</h1>
+<p class="sub">Enter your digester and the heat it needs. You get the pipe length per coil, the number of circuits, brackets and end connectors, and the pre-insulated pipe to the heat source. US units, metric in parentheses.</p></div></div></header>
+<main>
+<section style="padding-top:0"><div class="wrap"><div class="tool">
+<form class="form" id="form" novalidate>
+<label for="pname">Project name <small>(optional, for the printout)</small></label><input id="pname" type="text" maxlength="60" autocomplete="off">
+<label for="dia">Digester inside diameter, ft</label><input id="dia" type="number" inputmode="decimal" min="10" max="195" step="0.5" value="60">
+<label for="depth">Liquid depth, ft</label><input id="depth" type="number" inputmode="decimal" min="5" max="98" step="0.5" value="20">
+<label for="proc">Process temperature</label><select id="proc"><option value="meso">Mesophilic, 100 °F (38 °C)</option><option value="thermo">Thermophilic, 125 °F (52 °C)</option><option value="custom">Other</option></select>
+<div id="tprocw" hidden><label for="tproc">Process temperature, °F</label><input id="tproc" type="number" inputmode="decimal" min="60" max="150" step="1" value="80"></div>
+<label for="q">Heat into the digester</label><div class="duo"><input id="q" type="number" inputmode="decimal" min="1" step="any" value="500000"><select id="qunit" aria-label="Unit"><option value="btu">BTU/h</option><option value="mbh">MBH</option><option value="kw">kW</option></select></div>
+<label for="tin">Heating water supply temperature, °F</label><input id="tin" type="number" inputmode="decimal" min="80" max="230" step="1" value="160">
+<label for="fluid">Heating medium</label><select id="fluid"><option value="water">Water</option><option value="glycol">Water with 35% glycol</option></select>
+<label for="vel">Flow velocity in the pipe</label><select id="vel"><option value="0.5">1.6 ft/s (0.5 m/s), standard</option><option value="0.4">1.3 ft/s (0.4 m/s)</option><option value="0.3">1.0 ft/s (0.3 m/s)</option></select>
+<label for="margin">Design margin on the heat</label><select id="margin"><option value="0.1">10%, standard</option><option value="0.2">20%</option><option value="0">None</option></select>
+<label for="loops">Loops per heating circuit</label><select id="loops"><option value="0">Automatic</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select>
+<label for="route">Route from heat source to digester, ft <small>(for CALPEX)</small></label><input id="route" type="number" inputmode="decimal" min="0" step="1" value="200">
+<button class="btn solid" type="submit">Calculate</button>
+<p class="fine" style="margin-top:14px">Heat demand not known yet? Send us tank size, insulation, feed rate and feed temperature. BRUGG engineering calculates it for you.</p>
+</form>
+<div><p id="msg" role="alert"></p><div id="out" hidden>
+<div class="res"><div><small>BIOFLEX to order</small><b id="h-len"></b><span id="h-sub"></span></div><div><small>Layout</small><b id="h-circ"></b><span id="h-circ-sub"></span></div><div><small>Brackets</small><b id="h-br"></b><span id="h-br-sub"></span></div></div>
+<h3>Your BIOFLEX package</h3><div class="scroll"><table id="pkg"></table></div>
+<p class="fine">Brackets hold two loops each and are counted at one every 3.3 ft (1.0 m) of tank circumference, rounded up to full packs of 10. Optional items follow connection variant BGT 1.810 (connection inside the tank).</p>
+<h3>CALPEX to the heat source</h3><p class="fine" id="cpxt"></p><div class="scroll"><table id="cpx"></table></div>
+<h3>Design values</h3><div class="scroll"><table class="kv" id="kv"></table></div><ul id="notes"></ul>
+<h3>All layouts for this digester</h3><div class="scroll"><table id="alt"></table></div>
+<p class="fine">The tool picks the layout with the fewest circuits, which means the fewest wall penetrations and end connectors, and then the least pipe. A single coil stays below 492 ft (150 m).</p>
+<div class="acts"><a class="dl" id="mail" href="mailto:sales.bpna@brugg.com">Email this sizing to BRUGG for a quote</a><button type="button" class="dl" id="print">Print or save as PDF</button></div>
+<p class="fine">Method: BRUGG design sheet for BIOFLEX digester heating. One circuit is a single-pass heat exchanger in the substrate with a linear heat transfer value of 65 W/(m·K) (37.6 BTU/(h·ft·°F)) for BIOFLEX CNW 60/66. Loop diameter is the tank diameter minus 1.3 ft (0.4 m). The result is a budget sizing for a complete mix digester; it does not replace the design check by BRUGG engineering, and it does not include the pressure loss of the heating circuit. Nothing you enter is stored or sent.</p>
+</div></div></div></div></section>
+<section id="contact" class="contact"><div class="wrap"><p class="eyebrow" style="color:#fff">Contact</p><h2>Send us your digester data. We size it and price it.</h2><p class="lead">BRUGG Pipes supports your project with the heat transfer design, the layout on the tank wall, bracket drawings and installer training.</p>
+<div class="ways"><a href="mailto:sales.bpna@brugg.com"><small>Email</small><b>sales.bpna@brugg.com</b></a><a href="tel:+18159277355"><small>Phone</small><b>+1 815 927 7355</b></a><a href="https://www.bruggpipes.com/us/" target="_blank" rel="noopener"><small>Web</small><b>bruggpipes.com</b></a></div></div></section>
+</main>
+<footer><div class="wrap"><div><p>BRUGG Pipes · <a href="https://www.bruggpipes.com/us/">bruggpipes.com</a> · sales.bpna@brugg.com · +1 815 927 7355</p>
+<p class="legal"><a href="https://www.bruggpipes.com/us/legal-notice/">Legal notice</a><a href="https://www.bruggpipes.com/us/privacy-policy/">Privacy policy</a><a href="https://www.bruggpipes.com/us/compliance/">Compliance</a><a href="https://www.bruggpipes.com/us/t-c/">Terms and conditions</a></p>
+<p class="group">A BRUGG GROUP COMPANY</p><p>Sizing method and values from the BRUGG design sheet for BIOFLEX digester heating; CALPEX sizes from the CALPEX PUR-KING Technical Data Sheet, November 16, 2026. Subject to technical changes.</p></div><img src="media/logo.png" alt="BRUGG Pipes"></div></footer>
+<script>
+var CALPEX=[["0.75\"/3.07\"", "UNO", "SDR 9", 17.28, 701], ["1.00\"/3.07\"", "UNO", "SDR 9", 22.22, 701], ["1.25\"/3.07\"", "UNO", "SDR 9", 27.16, 701], ["1.50\"/3.66\"", "UNO", "SDR 9", 32.1, 427], ["2.00\"/4.45\"", "UNO", "SDR 9", 41.98, 300], ["2x0.75\"/3.66\"", "DUO", "SDR 9", 17.28, 427], ["2x1.00\"/4.45\"", "DUO", "SDR 9", 22.22, 300], ["2x1.25\"/5.03\"", "DUO", "SDR 9", 27.16, 213], ["2x1.50\"/6.42\"", "DUO", "SDR 9", 32.1, 91], ["2x2.00\"/7.20\"", "DUO", "SDR 9", 41.98, 37], ["25/76", "UNO", "SDR 11", 20.6, 701], ["32/76", "UNO", "SDR 11", 26.4, 701], ["40/91", "UNO", "SDR 11", 32.8, 427], ["50/111", "UNO", "SDR 11", 41.1, 300], ["63/126", "UNO", "SDR 11", 51.7, 213], ["75/142", "UNO", "SDR 11", 61.8, 107], ["90/162", "UNO", "SDR 11", 74.1, 91], ["110/162", "UNO", "SDR 11", 90.5, 91], ["125/182", "UNO", "SDR 11", 102.8, 37], ["140/202", "UNO", "SDR 11", 115.3, 35], ["25+25/91", "DUO", "SDR 11", 20.6, 427], ["32+32/111", "DUO", "SDR 11", 26.4, 300], ["40+40/126", "DUO", "SDR 11", 32.8, 213], ["50+50/162", "DUO", "SDR 11", 41.1, 91], ["63+63/182", "DUO", "SDR 11", 51.7, 37]];
+/* BIOFLEX digester heating: sizing logic of the BRUGG design sheet "BIOFLEX Auslegung 2011" (metric inside, US units at the edges). */
+var K_L=65,          // W/(m K): linear heat transfer value of BIOFLEX CNW 60/66 in the substrate (BRUGG design sheet)
+    D_FLOW=0.063,    // m: flow diameter used by the design sheet
+    RHO=1010,        // kg/m3 as in the design sheet
+    CP={water:4184,glycol:3542},   // J/(kg K); glycol = water/glycol 65/35 (design sheet)
+    WALL_GAP=0.4,    // m: loop diameter = tank diameter - 0.4 m
+    END_ALLOW=2,     // m per circuit for the two ends
+    COIL_MAX=150,    // m: single coil should stay below 150 m; about 100 m is ideal
+    SPACING=1.0,     // m between brackets (3.3 ft; never more than 4 ft)
+    ROW_PITCH=0.254, // m: 10 in between rows
+    FIRST_ROW=0.914, // m: lowest row 3 ft above the floor
+    RRK={meso:[0.08,0.18],thermo:[0.15,0.25]}; // m of pipe per m3 of digester volume
+function up(x,step){return Math.ceil((x-1e-9)/step)*step}
+function circuit(Ld,p){ // heat of one circuit of length L (m)
+  var m=p.v*Math.PI*D_FLOW*D_FLOW/4*RHO, cp=CP[p.fluid];
+  var tout=p.T+(p.tin-p.T)*Math.exp(-K_L*Ld/(cp*m));
+  return {m:m,tout:tout,q:m*cp*(p.tin-tout)/1000};
+}
+function sizeBioflex(p){ // p: D,H (m), T,tin (C), q (kW), v (m/s), fluid, margin (0.1), loops (0=auto)
+  var loop=Math.PI*(p.D-WALL_GAP), qd=p.q*(1+p.margin), opts=[], n;
+  var rowsMax=Math.max(1,Math.floor((p.H-FIRST_ROW-0.3)/ROW_PITCH)+1);
+  for(n=1;n<=4;n++){
+    var L=n*loop+END_ALLOW, c=circuit(L,p), k=Math.ceil(qd/c.q-1e-9);
+    var Lft=up(L*3.28084,10);
+    opts.push({loops:n,L:L,Lft:Lft,circuits:k,qc:c.q,tout:c.tout,m:c.m,total:k*L,totalFt:k*Lft,rows:k*n,
+      coilOk:L<=COIL_MAX||n===1,fits:k*n<=rowsMax});
+  }
+  var ok=opts.filter(function(o){return o.coilOk&&o.fits});
+  if(!ok.length) ok=opts.filter(function(o){return o.coilOk});
+  ok.sort(function(a,b){return a.circuits-b.circuits||a.total-b.total});
+  var pick=p.loops?opts[p.loops-1]:ok[0];
+  var vol=Math.PI*p.D*p.D/4*p.H, rrk=pick.total/vol, rng=RRK[p.T>=46?'thermo':'meso'];
+  var perRow=Math.ceil(Math.PI*p.D/SPACING), bRows=Math.ceil(pick.rows/2), br=perRow*bRows, packs=Math.ceil(br/10);
+  return {loop:loop,qd:qd,opts:opts,pick:pick,vol:vol,rrk:rrk,rrkRange:rng,rrkOk:rrk>=rng[0]&&rrk<=rng[1],rowsMax:rowsMax,
+    qInst:pick.circuits*pick.qc,flow:pick.circuits*pick.m,
+    brackets:{perRow:perRow,rows:bRows,count:br,packs:packs,ordered:packs*10},
+    fittings:{ends:2*pick.circuits,fix:packs*10+12*pick.circuits},
+    stackTop:FIRST_ROW+(pick.rows-1)*ROW_PITCH, long:pick.L>COIL_MAX};
+}
+function water(t){ // density kg/m3 and dynamic viscosity Pa s of water at t (C)
+  return {rho:1000.6-0.0128*Math.pow(t,1.76), mu:2.414e-5*Math.pow(10,247.8/(t+273.15-140))};
+}
+function dpPerM(mdot,idmm,t){ // Darcy-Weisbach, Swamee-Jain, PEX roughness 0.007 mm
+  var w=water(t), d=idmm/1000, v=mdot/w.rho/(Math.PI*d*d/4), re=w.rho*v*d/w.mu;
+  var f=re<2300?64/re:0.25/Math.pow(Math.log10(0.007/idmm/3.7+5.74/Math.pow(re,0.9)),2);
+  return {v:v,dp:f/d*w.rho*v*v/2};
+}
+function sizeCalpex(mdot,tin,tout,routeM){
+  if(tin>95) return {tooHot:true};
+  var tm=(tin+tout)/2, res={}, kinds=['UNO','DUO'];
+  kinds.forEach(function(kind){
+    var c=CALPEX.filter(function(r){return r[1]===kind}).map(function(r){var h=dpPerM(mdot,r[3],tm);return {type:r[0],sdr:r[2],id:r[3],coil:r[4],v:h.v,dp:h.dp}})
+      .filter(function(r){return r.dp<=200}).sort(function(a,b){return a.id-b.id||(a.sdr==='SDR 9'?-1:1)});
+    if(c.length){var s=c[0]; var runs=kind==='UNO'?2:1; s.lenFt=up(routeM*runs*1.05*3.28084,10); s.coils=Math.ceil(s.lenFt/(runs*3.28084*s.coil)-1e-9)*runs; s.runs=runs; res[kind]=s;}
+  });
+  return res;
+}
+(function(){
+var $=function(i){return document.getElementById(i)};
+var FT=3.28084, f0=function(x){return Math.round(x).toLocaleString('en-US')}, f1=function(x){return (Math.round(x*10)/10).toLocaleString('en-US',{minimumFractionDigits:1,maximumFractionDigits:1})};
+var toC=function(f){return (f-32)/1.8}, toF=function(c){return c*1.8+32};
+function el(t,c,txt){var e=document.createElement(t);if(c)e.className=c;if(txt!=null)e.textContent=txt;return e}
+function row(tb,cells,head){var tr=el('tr');cells.forEach(function(c){tr.appendChild(el(head?'th':'td',null,c))});tb.appendChild(tr);return tr}
+function read(){
+  var unit=$('qunit').value, q=parseFloat($('q').value), kw=unit==='kw'?q:unit==='mbh'?q*1000/3412.142:q/3412.142;
+  var proc=$('proc').value, T=proc==='meso'?100:proc==='thermo'?125:parseFloat($('tproc').value);
+  return {D:parseFloat($('dia').value)/FT,H:parseFloat($('depth').value)/FT,T:toC(T),TF:T,tin:toC(parseFloat($('tin').value)),tinF:parseFloat($('tin').value),
+    q:kw,v:parseFloat($('vel').value),fluid:$('fluid').value,margin:parseFloat($('margin').value),loops:parseInt($('loops').value,10),route:parseFloat($('route').value)/FT,name:$('pname').value.trim()};
+}
+function check(p){
+  var e=[];
+  if(!(p.D>=3&&p.D<=60)) e.push('Enter the inside diameter of the digester, 10 to 195 ft.');
+  if(!(p.H>=1.5&&p.H<=30)) e.push('Enter the liquid depth, 5 to 98 ft.');
+  if(!(p.q>0)) e.push('Enter the heat the heating system has to deliver.');
+  if(!(p.TF>=60&&p.TF<=150)) e.push('Enter a process temperature between 60 and 150 °F.');
+  if(!(p.tinF>=p.TF+10&&p.tinF<=230)) e.push('The supply temperature must be at least 10 °F above the process temperature and at most 230 °F.');
+  if(!(p.route>=0)) e.push('Enter the route length to the heat source in ft (0 if not needed).');
+  return e;
+}
+var last='';
+function run(){
+  var p=read(), errs=check(p), out=$('out'), msg=$('msg');
+  msg.textContent=errs.join(' '); out.hidden=errs.length>0; if(errs.length){return}
+  var r=sizeBioflex(p), k=r.pick, gpmC=k.m/RHO*15850.3, gpm=gpmC*k.circuits;
+  $('h-len').textContent=f0(k.totalFt)+' ft';
+  $('h-sub').textContent=k.circuits+(k.circuits>1?' coils of ':' coil of ')+f0(k.Lft)+' ft ('+f0(k.Lft/FT)+' m)'+(k.circuits>1?' each':'')+', 2 in (DN 50) BIOFLEX';
+  $('h-circ').textContent=k.circuits+' × '+k.loops;
+  $('h-circ-sub').textContent=(k.circuits>1?'heating circuits':'heating circuit')+' × '+(k.loops>1?'loops':'loop')+' around the wall';
+  $('h-br').textContent=f0(r.brackets.ordered);
+  $('h-br-sub').textContent='two-loop brackets, '+r.brackets.packs+' packs of 10';
+  var kv=$('kv');kv.textContent='';
+  [['Heat required',f0(p.q*3412.142)+' BTU/h ('+f0(p.q)+' kW)'],
+   ['Design heat incl. '+Math.round(p.margin*100)+'% margin',f0(r.qd*3412.142)+' BTU/h ('+f0(r.qd)+' kW)'],
+   ['Heat delivered by this layout',f0(r.qInst*3412.142)+' BTU/h ('+f0(r.qInst)+' kW)'],
+   ['Supply / return temperature',f0(p.tinF)+' / '+f0(toF(k.tout))+' °F ('+f0(p.tin)+' / '+f0(k.tout)+' °C)'],
+   ['Flow per circuit / total',f0(gpmC)+' / '+f0(gpm)+' gpm ('+f1(k.m/RHO*3600)+' / '+f1(r.flow/RHO*3600)+' m³/h)'],
+   ['Length of one loop',f0(r.loop*FT)+' ft ('+f1(r.loop)+' m)'],
+   ['Rows on the wall',k.rows+' rows, 10 in apart; top row '+f1(r.stackTop*FT)+' ft above the floor'],
+   ['Pipe per digester volume',(Math.round(r.rrk*1000)/10)+' cm per m³ (usual range '+r.rrkRange[0]*100+' to '+r.rrkRange[1]*100+')']
+  ].forEach(function(x){row(kv,x)});
+  var notes=$('notes');notes.textContent='';
+  function note(t){notes.appendChild(el('li',null,t))}
+  if(r.long) note(k.loops>1?'A coil of '+f0(k.Lft)+' ft is above the usual limit of 492 ft (150 m) for a single coil. Choose fewer loops per circuit, or ask BRUGG to check the coil size.':'One loop of this digester is longer than 492 ft (150 m), the usual limit for a single coil. BRUGG will check the coil size for shipping.');
+  if(!k.fits) note('This layout needs '+k.rows+' rows; with 10 in spacing only '+r.rowsMax+' rows fit below the liquid level. Raise the supply temperature or ask BRUGG for the six-loop bracket.');
+  if(!r.rrkOk) note(r.rrk<r.rrkRange[0]?'The pipe length per digester volume is below the usual range. This is common for large, well insulated tanks; BRUGG will confirm the heat demand.':'The pipe length per digester volume is above the usual range. Check the heat demand, or raise the supply temperature.');
+  if(p.fluid==='glycol') note('Calculated with a 35% glycol mix (specific heat 3,542 J/kg·K).');
+  note('Coil lengths are rounded up to the next 10 ft and include 6.6 ft (2 m) per circuit for the two pipe ends.');
+  var pk=$('pkg');pk.textContent='';row(pk,['Qty','Item','Article no.','Note'],true);
+  [[f0(k.totalFt)+' ft','BIOFLEX pipe CNW 60/66, 2 in (DN 50), AISI 316L','1014439',k.circuits+(k.circuits>1?' coils of ':' coil of ')+f0(k.Lft)+' ft'],
+   [r.fittings.ends,'End connector GRAPA-S DN 50, 2 in male thread','1014621','2 per circuit'],
+   [r.brackets.packs+' packs','Pipe support RBF 60 type A, pack of 10 ('+r.brackets.ordered+' brackets)','1014631',r.brackets.rows+(r.brackets.rows>1?' rows × ':' row × ')+r.brackets.perRow+' brackets, one every 3.3 ft (1.0 m)'],
+   [r.fittings.fix,'Fixing set with anchor BS 10','1014629','For brackets and flange plates'],
+   [r.fittings.ends,'Elbow screw fitting DN 50','1014617','Optional; or 90° union by the client'],
+   [r.fittings.ends,'Double nipple 2 in with flange plate','1014613','Optional; or hard pipe and wall seal by the client'],
+   [1,'Installation tool for GRAPA-S end connector (assembly flanges)','1014677','One set per site']
+  ].forEach(function(x){row(pk,x)});
+  var cx=$('cpx'),ct=$('cpxt');cx.textContent='';ct.textContent='';
+  if(!(p.route>0)){ct.textContent='Enter the route length between heat source and digester to get the pre-insulated pipe for the connection.'}
+  else{
+    var c=sizeCalpex(r.flow,p.tin,k.tout,p.route);
+    if(c.tooHot){ct.textContent='Your supply temperature is above 203 °F (95 °C), the limit of CALPEX. Use CASAFLEX, the flexible stainless steel pre-insulated pipe rated for 302 °F (150 °C). BRUGG sizes it for you: '+f0(gpm)+' gpm over a route of '+f0(p.route*FT)+' ft.'}
+    else if(!c.UNO&&!c.DUO){ct.textContent='The total flow of '+f0(gpm)+' gpm is above the CALPEX range at 200 Pa/m. BRUGG will propose PREMANT or parallel lines.'}
+    else{
+      ct.textContent='Sized for the total flow of '+f0(gpm)+' gpm at no more than 200 Pa/m (0.9 ft of head per 100 ft). Length is the route plus 5%, rounded up to the next 10 ft.';
+      row(cx,['Option','CALPEX type','Order length','Velocity','Pressure loss'],true);
+      ['UNO','DUO'].forEach(function(kind){var s=c[kind]; if(!s) return;
+        row(cx,[kind==='UNO'?'Two single pipes (supply and return)':'One twin pipe (supply and return in one jacket)','CALPEX PUR-KING '+kind+' '+s.type+' ('+s.sdr+')',f0(s.lenFt)+' ft'+(kind==='UNO'?' in total':''),f1(s.v*FT)+' ft/s',f0(s.dp)+' Pa/m'])});
+    }
+  }
+  var al=$('alt');al.textContent='';row(al,['Loops per circuit','Circuits','Coil length','Total pipe','Heat delivered','Return','Remark'],true);
+  r.opts.forEach(function(o){var tr=row(al,[o.loops,o.circuits,f0(o.Lft)+' ft',f0(o.totalFt)+' ft',f0(o.circuits*o.qc*3412.142)+' BTU/h',f0(toF(o.tout))+' °F',(o===k?'Selected':'')+(!o.coilOk?' Coil over 492 ft':'')+(!o.fits?' Too many rows':'')]); if(o===k) tr.className='sel'});
+  last='BIOFLEX sizing request'+(p.name?' - '+p.name:'')+'\n\nDigester: '+f0(p.D*FT)+' ft diameter, '+f0(p.H*FT)+' ft liquid depth, process '+f0(p.TF)+' F\nHeat required: '+f0(p.q*3412.142)+' BTU/h ('+f0(p.q)+' kW), margin '+Math.round(p.margin*100)+'%\nSupply temperature: '+f0(p.tinF)+' F, '+(p.fluid==='glycol'?'35% glycol':'water')+', velocity '+f1(p.v*FT)+' ft/s\n\nResult: '+f0(k.totalFt)+' ft BIOFLEX, '+k.circuits+' circuit(s) x '+k.loops+' loop(s), coil length '+f0(k.Lft)+' ft\nBrackets: '+r.brackets.ordered+' ('+r.brackets.packs+' packs of 10), end connectors: '+r.fittings.ends+'\nFlow: '+f0(gpm)+' gpm total, return '+f0(toF(k.tout))+' F\nRoute to heat source: '+f0(p.route*FT)+' ft\n\nPlease check the sizing and send a quote.\n';
+  $('mail').href='mailto:sales.bpna@brugg.com?subject='+encodeURIComponent('BIOFLEX sizing request'+(p.name?' - '+p.name:''))+'&body='+encodeURIComponent(last);
+}
+$('proc').addEventListener('change',function(){$('tprocw').hidden=$('proc').value!=='custom'});
+$('form').addEventListener('submit',function(e){e.preventDefault();run();$('out').scrollIntoView({behavior:'smooth',block:'start'})});
+Array.prototype.forEach.call(document.querySelectorAll('#form input,#form select'),function(i){i.addEventListener('change',function(){if(!$('out').hidden) run()})});
+$('print').addEventListener('click',function(){window.print()});
+run();
+})();
+
+</script></body></html>
