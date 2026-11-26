@@ -1,0 +1,34 @@
+.cfg{padding-top:10px}
+.steps5{list-style:none;margin:0 0 34px;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.steps5 li{border-top:4px solid var(--line);padding-top:10px;font:600 14.5px var(--body);color:var(--grey)}
+.steps5 li small{display:block;font:700 11.5px var(--body);letter-spacing:.1em;text-transform:uppercase}
+.steps5 li.on,.steps5 li.done{border-color:var(--blue);color:var(--ink)}.steps5 li.on small{color:var(--blue)}
+.step h3{font:700 19px var(--body);margin:34px 0 6px}
+.hint{color:var(--grey);font-size:15px;margin:8px 0 0;max-width:80ch}
+.row2,.row3{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}.row3{grid-template-columns:repeat(3,1fr)}
+.step label{display:block;font:600 14.5px var(--body);margin-top:6px}.step label em{font-style:normal;font-weight:400;color:var(--grey)}
+.step input[type=text],.step input[type=email],.step input[type=tel],.step input[type=number],.step select,.step textarea{display:block;width:100%;margin-top:6px;padding:12px 12px;border:1.5px solid var(--line);border-radius:0;font:400 16px var(--body);color:var(--ink);background:#fff}
+.step input:focus,.step select:focus,.step textarea:focus{outline:3px solid #F2B705;outline-offset:1px;border-color:var(--blue)}
+.step input.bad{border-color:#C8402F}
+.unit{display:grid;grid-template-columns:1fr auto;align-items:center}.unit i{font-style:normal;font-weight:600;color:var(--grey);padding:0 12px;margin-top:6px;align-self:stretch;display:flex;align-items:center;background:var(--tint);border:1.5px solid var(--line);border-left:0}
+.media{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:16px}
+.media label{border:1.5px solid var(--line);padding:16px 14px;cursor:pointer;margin:0;font-weight:400}.media input{position:absolute;opacity:0}
+.media b{display:block;font:700 16.5px var(--body);color:var(--blue)}.media span{display:block;font-size:13.5px;color:var(--grey);margin-top:4px}
+.media label:has(input:checked){background:var(--blue);border-color:var(--blue)}.media label:has(input:checked) b{color:#fff}.media label:has(input:checked) span{color:#D5DAF0}
+.media label:has(input:focus-visible){outline:3px solid #F2B705;outline-offset:2px}
+.nav{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:40px;padding-top:22px;border-top:1px solid var(--line)}.nav .right{display:flex;gap:10px;flex-wrap:wrap}
+.nav .btn{cursor:pointer;background:#fff;font-family:var(--body)}.nav .btn.solid{background:var(--blue)}
+.calcline{background:var(--tint);padding:14px 16px;margin:22px 0 0;font-size:15px;font-weight:400}.calcline:empty{display:none}.calcline b{font-weight:700}
+.msg{padding:14px 16px;margin:18px 0 0;font-size:15px;font-weight:400}.msg.err{background:#FBEDEA;color:#8E2A1D}.msg.ok{background:var(--tint)}
+.prod{border:1.5px solid var(--line);margin-top:22px}.prod header{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;padding:18px 20px;flex-wrap:wrap}
+.prod h3{margin:0;font:700 20px var(--body);color:var(--blue)}.prod header p{margin:4px 0 0;font-size:14.5px;color:var(--grey);max-width:70ch}
+.prod .need{text-align:right;font-size:13px;color:var(--grey)}.prod .need b{display:block;font:700 19px var(--body);color:var(--ink)}
+.prod .scroll{margin:0;padding:0 20px 14px}.prod table{min-width:820px;font-size:14.5px}.prod td.n,.prod th.n{text-align:right}
+.prod tr.rec td{background:var(--tint)}.prod tr.over td{color:var(--steel)}
+.badge{display:inline-block;margin-left:8px;padding:2px 7px;background:var(--blue);color:#fff;font:700 10.5px var(--body);letter-spacing:.08em;text-transform:uppercase;vertical-align:middle}
+.prod input[type=checkbox]{width:18px;height:18px;accent-color:var(--blue)}
+.unsuit{margin-top:30px}.unsuit h3{font:700 16px var(--body);margin:0 0 8px}.unsuit ul{margin:0;padding-left:18px;font-size:14.5px;color:var(--grey)}
+#summary{background:var(--tint);padding:20px;margin:20px 0 0;font:400 14px/1.55 ui-monospace,Consolas,monospace;white-space:pre-wrap;overflow-wrap:anywhere}
+@media (max-width:900px){.media{grid-template-columns:1fr 1fr}.row3{grid-template-columns:1fr}.steps5{grid-template-columns:repeat(5,1fr)}.steps5 li{font-size:0}.steps5 li small{font-size:11px}}
+@media (max-width:560px){.row2{grid-template-columns:1fr}.media{grid-template-columns:1fr}}
+@media print{header.top,footer,.contact,.nav,.steps5,.hint{display:none!important}#summary{background:none;padding:0}}

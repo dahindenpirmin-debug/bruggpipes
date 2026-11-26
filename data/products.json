@@ -1,0 +1,2725 @@
+{
+ "_readme": "Master data for the product pages and the configurator. Values come from the Technical Data Sheets; metric values govern. After a change run: python3 tools/build.py",
+ "updated": "2026-11-26",
+ "products": {
+  "casaflex": {
+   "name": "CASAFLEX",
+   "code": "CFL",
+   "type": "flexible",
+   "source": "Values from the CASAFLEX Technical Data Sheet, November 16, 2026. US values are conversions of the metric master data. Subject to technical changes.",
+   "series": [
+    {
+     "title": "CASAFLEX UNO, PN 16 / PN 25",
+     "id": "uno",
+     "name": "CASAFLEX UNO",
+     "pipes": 1,
+     "material": "corrugated",
+     "idCol": "Inner diameter",
+     "jacketCol": "Jacket",
+     "bendCol": "Min. bending radius",
+     "coilCol": "Max. coil, standard",
+     "limits": {
+      "tContF": 302,
+      "tPeakF": 356,
+      "pPsi": 362
+     },
+     "rowLimits": {
+      "4\"": {
+       "pPsi": 232
+      }
+     },
+     "note": "362 psi with PN 25 connection fittings (¾\" to 3\"); 232 psi with PN 16 fittings and for 4\".",
+     "columns": [
+      "Size",
+      "Type",
+      "Inner diameter",
+      "Jacket",
+      "Min. bending radius",
+      "Weight",
+      "Max. coil, standard",
+      "Max. coil, wide"
+     ],
+     "rows": [
+      [
+       "¾\"",
+       "CFL 22/91",
+       [
+        "0.87 in",
+        "22 mm"
+       ],
+       [
+        "3.58 in",
+        "91 mm"
+       ],
+       [
+        "3.3 ft",
+        "1.0 m"
+       ],
+       [
+        "0.87 lb/ft",
+        "1.30 kg/m"
+       ],
+       [
+        "1,049 ft",
+        "320 m"
+       ],
+       [
+        "1,509 ft",
+        "460 m"
+       ]
+      ],
+      [
+       "1\"",
+       "CFL 30/111",
+       [
+        "1.18 in",
+        "30 mm"
+       ],
+       [
+        "4.37 in",
+        "111 mm"
+       ],
+       [
+        "3.3 ft",
+        "1.0 m"
+       ],
+       [
+        "1.30 lb/ft",
+        "1.93 kg/m"
+       ],
+       [
+        "738 ft",
+        "225 m"
+       ],
+       [
+        "1,049 ft",
+        "320 m"
+       ]
+      ],
+      [
+       "1¼\"",
+       "CFL 39/126",
+       [
+        "1.54 in",
+        "39 mm"
+       ],
+       [
+        "4.96 in",
+        "126 mm"
+       ],
+       [
+        "4.0 ft",
+        "1.2 m"
+       ],
+       [
+        "1.75 lb/ft",
+        "2.60 kg/m"
+       ],
+       [
+        "360 ft",
+        "110 m"
+       ],
+       [
+        "475 ft",
+        "145 m"
+       ]
+      ],
+      [
+       "1½\"",
+       "CFL 48/126",
+       [
+        "1.89 in",
+        "48 mm"
+       ],
+       [
+        "4.96 in",
+        "126 mm"
+       ],
+       [
+        "4.0 ft",
+        "1.2 m"
+       ],
+       [
+        "1.96 lb/ft",
+        "2.92 kg/m"
+       ],
+       [
+        "360 ft",
+        "110 m"
+       ],
+       [
+        "475 ft",
+        "145 m"
+       ]
+      ],
+      [
+       "2\"",
+       "CFL 60/142",
+       [
+        "2.36 in",
+        "60 mm"
+       ],
+       [
+        "5.59 in",
+        "142 mm"
+       ],
+       [
+        "5.0 ft",
+        "1.5 m"
+       ],
+       [
+        "2.38 lb/ft",
+        "3.54 kg/m"
+       ],
+       [
+        "328 ft",
+        "100 m"
+       ],
+       [
+        "459 ft",
+        "140 m"
+       ]
+      ],
+      [
+       "2½\"",
+       "CFL 75/162",
+       [
+        "2.95 in",
+        "75 mm"
+       ],
+       [
+        "6.38 in",
+        "162 mm"
+       ],
+       [
+        "6.0 ft",
+        "1.8 m"
+       ],
+       [
+        "3.23 lb/ft",
+        "4.80 kg/m"
+       ],
+       [
+        "288 ft",
+        "88 m"
+       ],
+       [
+        "377 ft",
+        "115 m"
+       ]
+      ],
+      [
+       "3\"",
+       "CFL 98/162",
+       [
+        "3.86 in",
+        "98 mm"
+       ],
+       [
+        "6.38 in",
+        "162 mm"
+       ],
+       [
+        "6.6 ft",
+        "2.0 m"
+       ],
+       [
+        "3.83 lb/ft",
+        "5.70 kg/m"
+       ],
+       [
+        "288 ft",
+        "88 m"
+       ],
+       [
+        "377 ft",
+        "115 m"
+       ]
+      ],
+      [
+       "4\"",
+       "CFL 127/202",
+       [
+        "5.00 in",
+        "127 mm"
+       ],
+       [
+        "8.27 in",
+        "210 mm"
+       ],
+       [
+        "9.2 ft",
+        "2.8 m"
+       ],
+       [
+        "5.91 lb/ft",
+        "8.80 kg/m"
+       ],
+       [
+        "111 ft",
+        "34 m"
+       ],
+       [
+        "157 ft",
+        "48 m"
+       ]
+      ]
+     ]
+    },
+    {
+     "title": "CASAFLEX DUO, PN 16",
+     "id": "duo",
+     "name": "CASAFLEX DUO",
+     "pipes": 2,
+     "material": "corrugated",
+     "idCol": "Inner diameter, each",
+     "jacketCol": "Jacket",
+     "bendCol": "Min. bending radius",
+     "coilCol": "Max. coil, standard",
+     "limits": {
+      "tContF": 302,
+      "tPeakF": 356,
+      "pPsi": 232
+     },
+     "rowLimits": {
+      "2 × 2\"": {
+       "tContF": 266
+      }
+     },
+     "columns": [
+      "Size",
+      "Type",
+      "Inner diameter, each",
+      "Jacket",
+      "Min. bending radius",
+      "Weight",
+      "Max. coil, standard",
+      "Max. coil, wide"
+     ],
+     "rows": [
+      [
+       "2 × ¾\"",
+       "CFL 22+22/111",
+       [
+        "0.87 in",
+        "22 mm"
+       ],
+       [
+        "4.37 in",
+        "111 mm"
+       ],
+       [
+        "3.7 ft",
+        "1.1 m"
+       ],
+       [
+        "1.68 lb/ft",
+        "2.5 kg/m"
+       ],
+       [
+        "738 ft",
+        "225 m"
+       ],
+       [
+        "1,049 ft",
+        "320 m"
+       ]
+      ],
+      [
+       "2 × 1\"",
+       "CFL 30+30/126",
+       [
+        "1.18 in",
+        "30 mm"
+       ],
+       [
+        "4.96 in",
+        "126 mm"
+       ],
+       [
+        "4.6 ft",
+        "1.4 m"
+       ],
+       [
+        "2.08 lb/ft",
+        "3.1 kg/m"
+       ],
+       [
+        "360 ft",
+        "110 m"
+       ],
+       [
+        "475 ft",
+        "145 m"
+       ]
+      ],
+      [
+       "2 × 1¼\"",
+       "CFL 39+39/142",
+       [
+        "1.54 in",
+        "39 mm"
+       ],
+       [
+        "5.59 in",
+        "142 mm"
+       ],
+       [
+        "5.0 ft",
+        "1.5 m"
+       ],
+       [
+        "2.49 lb/ft",
+        "3.7 kg/m"
+       ],
+       [
+        "328 ft",
+        "100 m"
+       ],
+       [
+        "459 ft",
+        "140 m"
+       ]
+      ],
+      [
+       "2 × 1½\"",
+       "CFL 48+48/162",
+       [
+        "1.89 in",
+        "48 mm"
+       ],
+       [
+        "6.38 in",
+        "162 mm"
+       ],
+       [
+        "6.0 ft",
+        "1.8 m"
+       ],
+       [
+        "2.82 lb/ft",
+        "4.2 kg/m"
+       ],
+       [
+        "288 ft",
+        "88 m"
+       ],
+       [
+        "377 ft",
+        "115 m"
+       ]
+      ],
+      [
+       "2 × 2\"",
+       "CFL 60+60/182*",
+       [
+        "2.36 in",
+        "60 mm"
+       ],
+       [
+        "7.17 in",
+        "182 mm"
+       ],
+       [
+        "6.6 ft",
+        "2.0 m"
+       ],
+       [
+        "3.43 lb/ft",
+        "5.1 kg/m"
+       ],
+       "on request",
+       "on request"
+      ]
+     ]
+    }
+   ],
+   "hydraulics": {
+    "method": "Constant friction factor per size, derived from the pressure loss values of the BRUGG Pipes configurator (configurator.bruggpipes.com) at the reference point.",
+    "reference": {
+     "massFlowKgH": 21500,
+     "densityKgM3": 972,
+     "note": "500 kW, 80/60 °C"
+    },
+    "pointsByInnerDiameterMm": {
+     "22": 610794,
+     "30": 125805,
+     "39": 28439,
+     "48": 9740,
+     "60": 2391,
+     "75": 1003,
+     "98": 230,
+     "127": 69
+    },
+    "unit": "Pa/m"
+   }
+  },
+  "armopex": {
+   "name": "ARMOPEX",
+   "code": "APX",
+   "type": "flexible",
+   "source": "Values from the ARMOPEX Technical Data Sheet, November 16, 2026. Subject to technical changes.",
+   "series": [
+    {
+     "title": "ARMOPEX UNO",
+     "id": "uno",
+     "name": "ARMOPEX UNO",
+     "pipes": 1,
+     "material": "pex",
+     "idCol": "Carrier pipe ID",
+     "jacketCol": "Jacket OD",
+     "bendCol": "Min. bending radius",
+     "coilCol": "Max. coil length",
+     "limits": {
+      "tContF": 185,
+      "tPeakF": 239,
+      "pPsi": 174
+     },
+     "note": "Peak temperature 239 °F for 100 h.",
+     "columns": [
+      "Type",
+      "Carrier pipe OD",
+      "Carrier pipe ID",
+      "Jacket OD",
+      "Capacity",
+      "R-value °F·ft·h/BTU",
+      "Weight",
+      "Min. bending radius",
+      "Max. coil length"
+     ],
+     "rows": [
+      [
+       "40/91",
+       [
+        "1.575 in",
+        "40.0 mm"
+       ],
+       [
+        "1.283 in",
+        "32.6 mm"
+       ],
+       [
+        "3.66 in",
+        "93 mm"
+       ],
+       [
+        "0.0672 gal/ft",
+        "0.835 l/m"
+       ],
+       "12.54",
+       [
+        "0.9 lb/ft",
+        "1.4 kg/m"
+       ],
+       [
+        "2.7 ft",
+        "0.8 m"
+       ],
+       [
+        "1,400 ft",
+        "427 m"
+       ]
+      ],
+      [
+       "50/111",
+       [
+        "1.961 in",
+        "49.8 mm"
+       ],
+       [
+        "1.606 in",
+        "40.8 mm"
+       ],
+       [
+        "4.45 in",
+        "113 mm"
+       ],
+       [
+        "0.1052 gal/ft",
+        "1.307 l/m"
+       ],
+       "12.18",
+       [
+        "1.3 lb/ft",
+        "2.0 kg/m"
+       ],
+       [
+        "3.0 ft",
+        "0.9 m"
+       ],
+       [
+        "985 ft",
+        "300 m"
+       ]
+      ],
+      [
+       "63/126",
+       [
+        "2.433 in",
+        "61.8 mm"
+       ],
+       [
+        "2.024 in",
+        "51.4 mm"
+       ],
+       [
+        "5.04 in",
+        "128 mm"
+       ],
+       [
+        "0.1671 gal/ft",
+        "2.075 l/m"
+       ],
+       "10.68",
+       [
+        "1.7 lb/ft",
+        "2.6 kg/m"
+       ],
+       [
+        "3.3 ft",
+        "1.0 m"
+       ],
+       [
+        "700 ft",
+        "213 m"
+       ]
+      ],
+      [
+       "75/142",
+       [
+        "2.866 in",
+        "72.8 mm"
+       ],
+       [
+        "2.417 in",
+        "61.4 mm"
+       ],
+       [
+        "5.63 in",
+        "143 mm"
+       ],
+       [
+        "0.2384 gal/ft",
+        "2.961 l/m"
+       ],
+       "9.89",
+       [
+        "2.3 lb/ft",
+        "3.4 kg/m"
+       ],
+       [
+        "3.7 ft",
+        "1.1 m"
+       ],
+       [
+        "350 ft",
+        "107 m"
+       ]
+      ],
+      [
+       "90/162",
+       [
+        "3.406 in",
+        "86.5 mm"
+       ],
+       [
+        "2.898 in",
+        "73.6 mm"
+       ],
+       [
+        "6.42 in",
+        "163 mm"
+       ],
+       [
+        "0.3425 gal/ft",
+        "4.254 l/m"
+       ],
+       "9.09",
+       [
+        "3.1 lb/ft",
+        "4.6 kg/m"
+       ],
+       [
+        "4.0 ft",
+        "1.2 m"
+       ],
+       [
+        "300 ft",
+        "91 m"
+       ]
+      ],
+      [
+       "110/162",
+       [
+        "4.130 in",
+        "104.9 mm"
+       ],
+       [
+        "3.543 in",
+        "90.0 mm"
+       ],
+       [
+        "6.42 in",
+        "163 mm"
+       ],
+       [
+        "0.5123 gal/ft",
+        "6.362 l/m"
+       ],
+       "6.31",
+       [
+        "3.8 lb/ft",
+        "5.7 kg/m"
+       ],
+       [
+        "4.0 ft",
+        "1.2 m"
+       ],
+       [
+        "300 ft",
+        "91 m"
+       ]
+      ],
+      [
+       "125/182*",
+       [
+        "4.606 in",
+        "117.0 mm"
+       ],
+       [
+        "4.024 in",
+        "102.2 mm"
+       ],
+       [
+        "7.20 in",
+        "183 mm"
+       ],
+       [
+        "0.6605 gal/ft",
+        "8.203 l/m"
+       ],
+       "6.16",
+       [
+        "4.8 lb/ft",
+        "7.2 kg/m"
+       ],
+       [
+        "4.6 ft",
+        "1.4 m"
+       ],
+       [
+        "120 ft",
+        "37 m"
+       ]
+      ]
+     ]
+    },
+    {
+     "title": "Trench, two pipes",
+     "id": "trench",
+     "name": "Trench, two pipes",
+     "config": false,
+     "columns": [
+      "Jacket OD",
+      "Trench width, two pipes",
+      "Trench depth"
+     ],
+     "rows": [
+      [
+       [
+        "3.66 in",
+        "93 mm"
+       ],
+       [
+        "19.7 in",
+        "50 cm"
+       ],
+       [
+        "31.5 in",
+        "80 cm"
+       ]
+      ],
+      [
+       [
+        "4.45 in",
+        "113 mm"
+       ],
+       [
+        "21.7 in",
+        "55 cm"
+       ],
+       [
+        "33.5 in",
+        "85 cm"
+       ]
+      ],
+      [
+       [
+        "5.04 in",
+        "128 mm"
+       ],
+       [
+        "21.7 in",
+        "55 cm"
+       ],
+       [
+        "33.5 in",
+        "85 cm"
+       ]
+      ],
+      [
+       [
+        "5.63 in",
+        "143 mm"
+       ],
+       [
+        "23.6 in",
+        "60 cm"
+       ],
+       [
+        "33.5 in",
+        "85 cm"
+       ]
+      ],
+      [
+       [
+        "6.42 in",
+        "163 mm"
+       ],
+       [
+        "25.6 in",
+        "65 cm"
+       ],
+       [
+        "35.4 in",
+        "90 cm"
+       ]
+      ],
+      [
+       [
+        "7.20 in",
+        "183 mm"
+       ],
+       [
+        "27.6 in",
+        "70 cm"
+       ],
+       [
+        "37.4 in",
+        "95 cm"
+       ]
+      ]
+     ]
+    }
+   ]
+  },
+  "calpex": {
+   "name": "CALPEX PUR-KING",
+   "code": "CPX",
+   "type": "flexible",
+   "source": "Values from the CALPEX PUR-KING Technical Data Sheet, November 16, 2026. US values are conversions of the metric master data. Subject to technical changes.",
+   "series": [
+    {
+     "title": "CALPEX PUR-KING UNO, SDR 9 (ASTM)",
+     "id": "uno-sdr9",
+     "name": "CALPEX PUR-KING UNO, SDR 9",
+     "pipes": 1,
+     "sdr": 9,
+     "material": "pex",
+     "idCol": "Carrier ID",
+     "jacketCol": "Jacket OD",
+     "bendCol": "Min. bending radius",
+     "coilCol": "Standard coil",
+     "limits": {
+      "tContF": 203,
+      "tPeakF": 203
+     },
+     "pressureByTempF": [
+      [
+       73.4,
+       160
+      ],
+      [
+       180,
+       100
+      ],
+      [
+       200,
+       80
+      ]
+     ],
+     "note": "Pressure rating depends on temperature; the rating of the next higher temperature step is applied.",
+     "columns": [
+      "Type",
+      "Carrier OD",
+      "Carrier ID",
+      "Jacket OD",
+      "Min. bending radius",
+      "Weight",
+      "Standard coil"
+     ],
+     "rows": [
+      [
+       "0.75\"/3.07\"",
+       [
+        "0.875 in",
+        "22.22 mm"
+       ],
+       [
+        "0.680 in",
+        "17.28 mm"
+       ],
+       [
+        "3.07 in",
+        "78 mm"
+       ],
+       [
+        "1.5 ft",
+        "0.45 m"
+       ],
+       [
+        "0.6 lb/ft",
+        "0.9 kg/m"
+       ],
+       [
+        "2,300 ft",
+        "701 m"
+       ]
+      ],
+      [
+       "1.00\"/3.07\"",
+       [
+        "1.125 in",
+        "28.58 mm"
+       ],
+       [
+        "0.875 in",
+        "22.22 mm"
+       ],
+       [
+        "3.07 in",
+        "78 mm"
+       ],
+       [
+        "1.7 ft",
+        "0.50 m"
+       ],
+       [
+        "0.7 lb/ft",
+        "1.0 kg/m"
+       ],
+       [
+        "2,300 ft",
+        "701 m"
+       ]
+      ],
+      [
+       "1.25\"/3.07\"",
+       [
+        "1.375 in",
+        "34.92 mm"
+       ],
+       [
+        "1.069 in",
+        "27.16 mm"
+       ],
+       [
+        "3.07 in",
+        "78 mm"
+       ],
+       [
+        "1.9 ft",
+        "0.55 m"
+       ],
+       [
+        "0.7 lb/ft",
+        "1.1 kg/m"
+       ],
+       [
+        "2,300 ft",
+        "701 m"
+       ]
+      ],
+      [
+       "1.00\"/3.66\"",
+       [
+        "1.125 in",
+        "28.58 mm"
+       ],
+       [
+        "0.875 in",
+        "22.22 mm"
+       ],
+       [
+        "3.66 in",
+        "93 mm"
+       ],
+       [
+        "2.3 ft",
+        "0.70 m"
+       ],
+       [
+        "0.8 lb/ft",
+        "1.3 kg/m"
+       ],
+       [
+        "1,400 ft",
+        "427 m"
+       ]
+      ],
+      [
+       "1.25\"/3.66\"",
+       [
+        "1.375 in",
+        "34.92 mm"
+       ],
+       [
+        "1.069 in",
+        "27.16 mm"
+       ],
+       [
+        "3.66 in",
+        "93 mm"
+       ],
+       [
+        "2.3 ft",
+        "0.70 m"
+       ],
+       [
+        "0.9 lb/ft",
+        "1.3 kg/m"
+       ],
+       [
+        "1,400 ft",
+        "427 m"
+       ]
+      ],
+      [
+       "1.50\"/3.66\"",
+       [
+        "1.625 in",
+        "41.28 mm"
+       ],
+       [
+        "1.264 in",
+        "32.10 mm"
+       ],
+       [
+        "3.66 in",
+        "93 mm"
+       ],
+       [
+        "1.9 ft",
+        "0.55 m"
+       ],
+       [
+        "1.0 lb/ft",
+        "1.5 kg/m"
+       ],
+       [
+        "1,400 ft",
+        "427 m"
+       ]
+      ],
+      [
+       "1.50\"/4.45\"",
+       [
+        "1.625 in",
+        "41.28 mm"
+       ],
+       [
+        "1.264 in",
+        "32.10 mm"
+       ],
+       [
+        "4.45 in",
+        "113 mm"
+       ],
+       [
+        "2.5 ft",
+        "0.75 m"
+       ],
+       [
+        "1.3 lb/ft",
+        "1.9 kg/m"
+       ],
+       [
+        "985 ft",
+        "300 m"
+       ]
+      ],
+      [
+       "2.00\"/4.45\"",
+       [
+        "2.125 in",
+        "53.98 mm"
+       ],
+       [
+        "1.653 in",
+        "41.98 mm"
+       ],
+       [
+        "4.45 in",
+        "113 mm"
+       ],
+       [
+        "2.0 ft",
+        "0.60 m"
+       ],
+       [
+        "1.5 lb/ft",
+        "2.2 kg/m"
+       ],
+       [
+        "985 ft",
+        "300 m"
+       ]
+      ]
+     ]
+    },
+    {
+     "title": "CALPEX PUR-KING DUO, SDR 9 (ASTM)",
+     "id": "duo-sdr9",
+     "name": "CALPEX PUR-KING DUO, SDR 9",
+     "pipes": 2,
+     "sdr": 9,
+     "material": "pex",
+     "idCol": "Carrier ID",
+     "jacketCol": "Jacket OD",
+     "bendCol": "Min. bending radius",
+     "coilCol": "Standard coil",
+     "limits": {
+      "tContF": 203,
+      "tPeakF": 203
+     },
+     "pressureByTempF": [
+      [
+       73.4,
+       160
+      ],
+      [
+       180,
+       100
+      ],
+      [
+       200,
+       80
+      ]
+     ],
+     "note": "Pressure rating depends on temperature; the rating of the next higher temperature step is applied.",
+     "columns": [
+      "Type",
+      "Carrier OD, each",
+      "Carrier ID",
+      "Jacket OD",
+      "Min. bending radius",
+      "Weight",
+      "Standard coil"
+     ],
+     "rows": [
+      [
+       "2x0.75\"/3.66\"",
+       [
+        "0.875 in",
+        "22.22 mm"
+       ],
+       [
+        "0.680 in",
+        "17.28 mm"
+       ],
+       [
+        "3.66 in",
+        "93 mm"
+       ],
+       [
+        "1.9 ft",
+        "0.55 m"
+       ],
+       [
+        "0.9 lb/ft",
+        "1.3 kg/m"
+       ],
+       [
+        "1,400 ft",
+        "427 m"
+       ]
+      ],
+      [
+       "2x1.00\"/4.45\"",
+       [
+        "1.125 in",
+        "28.58 mm"
+       ],
+       [
+        "0.875 in",
+        "22.22 mm"
+       ],
+       [
+        "4.45 in",
+        "113 mm"
+       ],
+       [
+        "2.5 ft",
+        "0.75 m"
+       ],
+       [
+        "1.3 lb/ft",
+        "1.9 kg/m"
+       ],
+       [
+        "985 ft",
+        "300 m"
+       ]
+      ],
+      [
+       "2x1.25\"/5.03\"",
+       [
+        "1.375 in",
+        "34.92 mm"
+       ],
+       [
+        "1.069 in",
+        "27.16 mm"
+       ],
+       [
+        "5.03 in",
+        "128 mm"
+       ],
+       [
+        "2.7 ft",
+        "0.80 m"
+       ],
+       [
+        "1.7 lb/ft",
+        "2.5 kg/m"
+       ],
+       [
+        "700 ft",
+        "213 m"
+       ]
+      ],
+      [
+       "2x1.50\"/6.42\"",
+       [
+        "1.625 in",
+        "41.28 mm"
+       ],
+       [
+        "1.264 in",
+        "32.10 mm"
+       ],
+       [
+        "6.42 in",
+        "163 mm"
+       ],
+       [
+        "3.7 ft",
+        "1.10 m"
+       ],
+       [
+        "2.6 lb/ft",
+        "3.9 kg/m"
+       ],
+       [
+        "300 ft",
+        "91 m"
+       ]
+      ],
+      [
+       "2x2.00\"/7.20\"",
+       [
+        "2.125 in",
+        "53.98 mm"
+       ],
+       [
+        "1.653 in",
+        "41.98 mm"
+       ],
+       [
+        "7.20 in",
+        "183 mm"
+       ],
+       [
+        "4.3 ft",
+        "1.30 m"
+       ],
+       [
+        "3.4 lb/ft",
+        "5.1 kg/m"
+       ],
+       [
+        "120 ft",
+        "37 m"
+       ]
+      ]
+     ]
+    },
+    {
+     "title": "CALPEX PUR-KING UNO, SDR 11 (metric)",
+     "id": "uno-sdr11",
+     "name": "CALPEX PUR-KING UNO, SDR 11",
+     "pipes": 1,
+     "sdr": 11,
+     "material": "pex",
+     "idCol": "Carrier ID",
+     "jacketCol": "Jacket OD",
+     "bendCol": "Min. bending radius",
+     "coilCol": "Standard coil",
+     "limits": {
+      "tContF": 203,
+      "tPeakF": 203
+     },
+     "pressureByTempF": [
+      [
+       73,
+       125
+      ],
+      [
+       180,
+       80
+      ],
+      [
+       200,
+       65
+      ]
+     ],
+     "note": "Pressure rating depends on temperature; the rating of the next higher temperature step is applied.",
+     "columns": [
+      "Type",
+      "Carrier OD",
+      "Carrier ID",
+      "Jacket OD",
+      "Min. bending radius",
+      "Weight",
+      "Standard coil"
+     ],
+     "rows": [
+      [
+       "25/76",
+       [
+        "0.99 in",
+        "25.20 mm"
+       ],
+       [
+        "0.81 in",
+        "20.60 mm"
+       ],
+       [
+        "3.07 in",
+        "78 mm"
+       ],
+       [
+        "1.5 ft",
+        "0.45 m"
+       ],
+       [
+        "0.6 lb/ft",
+        "0.9 kg/m"
+       ],
+       [
+        "2,300 ft",
+        "701 m"
+       ]
+      ],
+      [
+       "32/76",
+       [
+        "1.27 in",
+        "32.20 mm"
+       ],
+       [
+        "1.04 in",
+        "26.40 mm"
+       ],
+       [
+        "3.07 in",
+        "78 mm"
+       ],
+       [
+        "1.7 ft",
+        "0.50 m"
+       ],
+       [
+        "0.7 lb/ft",
+        "1.0 kg/m"
+       ],
+       [
+        "2,300 ft",
+        "701 m"
+       ]
+      ],
+      [
+       "40/91",
+       [
+        "1.58 in",
+        "40.20 mm"
+       ],
+       [
+        "1.29 in",
+        "32.80 mm"
+       ],
+       [
+        "3.66 in",
+        "93 mm"
+       ],
+       [
+        "1.9 ft",
+        "0.55 m"
+       ],
+       [
+        "0.9 lb/ft",
+        "1.4 kg/m"
+       ],
+       [
+        "1,400 ft",
+        "427 m"
+       ]
+      ],
+      [
+       "50/111",
+       [
+        "1.98 in",
+        "50.30 mm"
+       ],
+       [
+        "1.62 in",
+        "41.10 mm"
+       ],
+       [
+        "4.45 in",
+        "113 mm"
+       ],
+       [
+        "2.0 ft",
+        "0.60 m"
+       ],
+       [
+        "1.3 lb/ft",
+        "2.0 kg/m"
+       ],
+       [
+        "985 ft",
+        "300 m"
+       ]
+      ],
+      [
+       "63/126",
+       [
+        "2.49 in",
+        "63.30 mm"
+       ],
+       [
+        "2.04 in",
+        "51.70 mm"
+       ],
+       [
+        "5.03 in",
+        "128 mm"
+       ],
+       [
+        "2.2 ft",
+        "0.65 m"
+       ],
+       [
+        "1.7 lb/ft",
+        "2.6 kg/m"
+       ],
+       [
+        "700 ft",
+        "213 m"
+       ]
+      ],
+      [
+       "75/142",
+       [
+        "2.97 in",
+        "75.40 mm"
+       ],
+       [
+        "2.43 in",
+        "61.80 mm"
+       ],
+       [
+        "5.63 in",
+        "143 mm"
+       ],
+       [
+        "2.3 ft",
+        "0.70 m"
+       ],
+       [
+        "2.3 lb/ft",
+        "3.4 kg/m"
+       ],
+       [
+        "350 ft",
+        "107 m"
+       ]
+      ],
+      [
+       "90/162",
+       [
+        "3.56 in",
+        "90.50 mm"
+       ],
+       [
+        "2.92 in",
+        "74.10 mm"
+       ],
+       [
+        "6.42 in",
+        "163 mm"
+       ],
+       [
+        "3.3 ft",
+        "1.00 m"
+       ],
+       [
+        "3.1 lb/ft",
+        "4.6 kg/m"
+       ],
+       [
+        "300 ft",
+        "91 m"
+       ]
+      ],
+      [
+       "110/162",
+       [
+        "4.35 in",
+        "110.50 mm"
+       ],
+       [
+        "3.56 in",
+        "90.50 mm"
+       ],
+       [
+        "6.42 in",
+        "163 mm"
+       ],
+       [
+        "3.7 ft",
+        "1.10 m"
+       ],
+       [
+        "3.8 lb/ft",
+        "5.7 kg/m"
+       ],
+       [
+        "300 ft",
+        "91 m"
+       ]
+      ],
+      [
+       "125/182*",
+       [
+        "4.94 in",
+        "125.60 mm"
+       ],
+       [
+        "4.05 in",
+        "102.80 mm"
+       ],
+       [
+        "7.20 in",
+        "183 mm"
+       ],
+       [
+        "4.3 ft",
+        "1.30 m"
+       ],
+       [
+        "4.8 lb/ft",
+        "7.2 kg/m"
+       ],
+       [
+        "120 ft",
+        "37 m"
+       ]
+      ],
+      [
+       "140/202*",
+       [
+        "5.54 in",
+        "140.70 mm"
+       ],
+       [
+        "4.54 in",
+        "115.30 mm"
+       ],
+       [
+        "7.95 in",
+        "202 mm"
+       ],
+       [
+        "4.6 ft",
+        "1.40 m"
+       ],
+       [
+        "5.6 lb/ft",
+        "8.4 kg/m"
+       ],
+       [
+        "115 ft",
+        "35 m"
+       ]
+      ]
+     ]
+    },
+    {
+     "title": "CALPEX PUR-KING DUO, SDR 11 (metric)",
+     "id": "duo-sdr11",
+     "name": "CALPEX PUR-KING DUO, SDR 11",
+     "pipes": 2,
+     "sdr": 11,
+     "material": "pex",
+     "idCol": "Carrier ID",
+     "jacketCol": "Jacket OD",
+     "bendCol": "Min. bending radius",
+     "coilCol": "Standard coil",
+     "limits": {
+      "tContF": 203,
+      "tPeakF": 203
+     },
+     "pressureByTempF": [
+      [
+       73,
+       125
+      ],
+      [
+       180,
+       80
+      ],
+      [
+       200,
+       65
+      ]
+     ],
+     "note": "Pressure rating depends on temperature; the rating of the next higher temperature step is applied.",
+     "columns": [
+      "Type",
+      "Carrier OD, each",
+      "Carrier ID",
+      "Jacket OD",
+      "Min. bending radius",
+      "Weight",
+      "Standard coil"
+     ],
+     "rows": [
+      [
+       "25+25/91",
+       [
+        "0.99 in",
+        "25.20 mm"
+       ],
+       [
+        "0.81 in",
+        "20.60 mm"
+       ],
+       [
+        "3.66 in",
+        "93 mm"
+       ],
+       [
+        "1.9 ft",
+        "0.55 m"
+       ],
+       [
+        "0.9 lb/ft",
+        "1.3 kg/m"
+       ],
+       [
+        "1,400 ft",
+        "427 m"
+       ]
+      ],
+      [
+       "32+32/111",
+       [
+        "1.27 in",
+        "32.20 mm"
+       ],
+       [
+        "1.04 in",
+        "26.40 mm"
+       ],
+       [
+        "4.45 in",
+        "113 mm"
+       ],
+       [
+        "2.0 ft",
+        "0.60 m"
+       ],
+       [
+        "1.3 lb/ft",
+        "1.9 kg/m"
+       ],
+       [
+        "985 ft",
+        "300 m"
+       ]
+      ],
+      [
+       "40+40/126",
+       [
+        "1.58 in",
+        "40.20 mm"
+       ],
+       [
+        "1.29 in",
+        "32.80 mm"
+       ],
+       [
+        "5.03 in",
+        "128 mm"
+       ],
+       [
+        "2.2 ft",
+        "0.65 m"
+       ],
+       [
+        "1.7 lb/ft",
+        "2.5 kg/m"
+       ],
+       [
+        "700 ft",
+        "213 m"
+       ]
+      ],
+      [
+       "50+50/162",
+       [
+        "1.98 in",
+        "50.30 mm"
+       ],
+       [
+        "1.62 in",
+        "41.10 mm"
+       ],
+       [
+        "6.42 in",
+        "163 mm"
+       ],
+       [
+        "3.7 ft",
+        "1.10 m"
+       ],
+       [
+        "2.7 lb/ft",
+        "4.0 kg/m"
+       ],
+       [
+        "300 ft",
+        "91 m"
+       ]
+      ],
+      [
+       "63+63/182",
+       [
+        "2.49 in",
+        "63.30 mm"
+       ],
+       [
+        "2.04 in",
+        "51.70 mm"
+       ],
+       [
+        "7.20 in",
+        "183 mm"
+       ],
+       [
+        "4.0 ft",
+        "1.20 m"
+       ],
+       [
+        "3.6 lb/ft",
+        "5.3 kg/m"
+       ],
+       [
+        "120 ft",
+        "37 m"
+       ]
+      ]
+     ]
+    }
+   ]
+  },
+  "premant": {
+   "name": "PREMANT",
+   "code": "PRE",
+   "type": "rigid",
+   "source": "Values from the PREMANT Technical Data Sheet, November 17, 2026. US values are conversions of the metric master data. Subject to technical changes.",
+   "series": [
+    {
+     "title": "PREMANT UNO",
+     "id": "uno",
+     "name": "PREMANT UNO",
+     "pipes": 1,
+     "material": "steel",
+     "steelCol": "Steel pipe, OD × wall",
+     "jacketCol": "Jacket, series 1",
+     "limits": {
+      "tContF": 291,
+      "tPeakF": 291,
+      "pPsi": 362
+     },
+     "note": "362 psi is not valid for all temperature and diameter combinations. Higher temperatures on request.",
+     "columns": [
+      "Size",
+      "DN",
+      "Steel pipe, OD × wall",
+      "Jacket, series 1",
+      "Jacket, series 2",
+      "Jacket, series 3",
+      "Weight, series 1",
+      "Water content",
+      "Standard lengths"
+     ],
+     "rows": [
+      [
+       "¾\"",
+       "DN 20",
+       [
+        "1.059 × 0.102 in",
+        "26.9 × 2.6 mm"
+       ],
+       [
+        "3.54 in",
+        "90 mm"
+       ],
+       [
+        "4.33 in",
+        "110 mm"
+       ],
+       [
+        "4.92 in",
+        "125 mm"
+       ],
+       [
+        "1.8 lb/ft",
+        "2.7 kg/m"
+       ],
+       [
+        "0.030 gal/ft",
+        "0.37 l/m"
+       ],
+       "20 / 39 ft"
+      ],
+      [
+       "1\"",
+       "DN 25",
+       [
+        "1.327 × 0.102 in",
+        "33.7 × 2.6 mm"
+       ],
+       [
+        "3.54 in",
+        "90 mm"
+       ],
+       [
+        "4.33 in",
+        "110 mm"
+       ],
+       [
+        "4.92 in",
+        "125 mm"
+       ],
+       [
+        "2.1 lb/ft",
+        "3.1 kg/m"
+       ],
+       [
+        "0.052 gal/ft",
+        "0.64 l/m"
+       ],
+       "20 / 39 ft"
+      ],
+      [
+       "1¼\"",
+       "DN 32",
+       [
+        "1.669 × 0.102 in",
+        "42.4 × 2.6 mm"
+       ],
+       [
+        "4.33 in",
+        "110 mm"
+       ],
+       [
+        "4.92 in",
+        "125 mm"
+       ],
+       [
+        "5.51 in",
+        "140 mm"
+       ],
+       [
+        "2.7 lb/ft",
+        "4 kg/m"
+       ],
+       [
+        "0.088 gal/ft",
+        "1.09 l/m"
+       ],
+       "20 / 39 ft"
+      ],
+      [
+       "1½\"",
+       "DN 40",
+       [
+        "1.902 × 0.102 in",
+        "48.3 × 2.6 mm"
+       ],
+       [
+        "4.33 in",
+        "110 mm"
+       ],
+       [
+        "4.92 in",
+        "125 mm"
+       ],
+       [
+        "5.51 in",
+        "140 mm"
+       ],
+       [
+        "3.0 lb/ft",
+        "4.4 kg/m"
+       ],
+       [
+        "0.118 gal/ft",
+        "1.46 l/m"
+       ],
+       "20 / 39 ft"
+      ],
+      [
+       "2\"",
+       "DN 50",
+       [
+        "2.374 × 0.114 in",
+        "60.3 × 2.9 mm"
+       ],
+       [
+        "4.92 in",
+        "125 mm"
+       ],
+       [
+        "5.51 in",
+        "140 mm"
+       ],
+       [
+        "6.30 in",
+        "160 mm"
+       ],
+       [
+        "3.9 lb/ft",
+        "5.8 kg/m"
+       ],
+       [
+        "0.188 gal/ft",
+        "2.33 l/m"
+       ],
+       "20 / 39 ft"
+      ],
+      [
+       "2½\"",
+       "DN 65",
+       [
+        "2.996 × 0.114 in",
+        "76.1 × 2.9 mm"
+       ],
+       [
+        "5.51 in",
+        "140 mm"
+       ],
+       [
+        "6.30 in",
+        "160 mm"
+       ],
+       [
+        "7.09 in",
+        "180 mm"
+       ],
+       [
+        "4.8 lb/ft",
+        "7.1 kg/m"
+       ],
+       [
+        "0.312 gal/ft",
+        "3.88 l/m"
+       ],
+       "20 / 39 ft"
+      ],
+      [
+       "3\"",
+       "DN 80",
+       [
+        "3.500 × 0.126 in",
+        "88.9 × 3.2 mm"
+       ],
+       [
+        "6.30 in",
+        "160 mm"
+       ],
+       [
+        "7.09 in",
+        "180 mm"
+       ],
+       [
+        "7.87 in",
+        "200 mm"
+       ],
+       [
+        "6.0 lb/ft",
+        "9 kg/m"
+       ],
+       [
+        "0.431 gal/ft",
+        "5.35 l/m"
+       ],
+       "20 / 39 ft"
+      ],
+      [
+       "4\"",
+       "DN 100",
+       [
+        "4.500 × 0.142 in",
+        "114.3 × 3.6 mm"
+       ],
+       [
+        "7.87 in",
+        "200 mm"
+       ],
+       [
+        "8.86 in",
+        "225 mm"
+       ],
+       [
+        "9.84 in",
+        "250 mm"
+       ],
+       [
+        "8.7 lb/ft",
+        "13 kg/m"
+       ],
+       [
+        "0.725 gal/ft",
+        "9.01 l/m"
+       ],
+       "20 / 39 / 52 ft"
+      ],
+      [
+       "5\"",
+       "DN 125",
+       [
+        "5.500 × 0.142 in",
+        "139.7 × 3.6 mm"
+       ],
+       [
+        "8.86 in",
+        "225 mm"
+       ],
+       [
+        "9.84 in",
+        "250 mm"
+       ],
+       [
+        "11.02 in",
+        "280 mm"
+       ],
+       [
+        "10.7 lb/ft",
+        "15.9 kg/m"
+       ],
+       [
+        "1.11 gal/ft",
+        "13.79 l/m"
+       ],
+       "20 / 39 / 52 ft"
+      ],
+      [
+       "6\"",
+       "DN 150",
+       [
+        "6.626 × 0.157 in",
+        "168.3 × 4.0 mm"
+       ],
+       [
+        "9.84 in",
+        "250 mm"
+       ],
+       [
+        "11.02 in",
+        "280 mm"
+       ],
+       [
+        "12.40 in",
+        "315 mm"
+       ],
+       [
+        "13.8 lb/ft",
+        "20.5 kg/m"
+       ],
+       [
+        "1.62 gal/ft",
+        "20.18 l/m"
+       ],
+       "20 / 39 / 52 ft"
+      ],
+      [
+       "8\"",
+       "DN 200",
+       [
+        "8.626 × 0.177 in",
+        "219.1 × 4.5 mm"
+       ],
+       [
+        "12.40 in",
+        "315 mm"
+       ],
+       [
+        "13.98 in",
+        "355 mm"
+       ],
+       [
+        "15.75 in",
+        "400 mm"
+       ],
+       [
+        "20.5 lb/ft",
+        "30.5 kg/m"
+       ],
+       [
+        "2.79 gal/ft",
+        "34.67 l/m"
+       ],
+       "20 / 39 / 52 ft"
+      ],
+      [
+       "10\"",
+       "DN 250",
+       [
+        "10.748 × 0.197 in",
+        "273.0 × 5.0 mm"
+       ],
+       [
+        "15.75 in",
+        "400 mm"
+       ],
+       [
+        "17.72 in",
+        "450 mm"
+       ],
+       [
+        "19.69 in",
+        "500 mm"
+       ],
+       [
+        "29.2 lb/ft",
+        "43.5 kg/m"
+       ],
+       [
+        "4.37 gal/ft",
+        "54.33 l/m"
+       ],
+       "20 / 39 / 52 ft"
+      ],
+      [
+       "12\"",
+       "DN 300",
+       [
+        "12.752 × 0.220 in",
+        "323.9 × 5.6 mm"
+       ],
+       [
+        "17.72 in",
+        "450 mm"
+       ],
+       [
+        "19.69 in",
+        "500 mm"
+       ],
+       [
+        "22.05 in",
+        "560 mm"
+       ],
+       [
+        "37.8 lb/ft",
+        "56.2 kg/m"
+       ],
+       [
+        "6.18 gal/ft",
+        "76.8 l/m"
+       ],
+       "20 / 39 / 52 ft"
+      ],
+      [
+       "14\"",
+       "DN 350",
+       [
+        "14.000 × 0.220 in",
+        "355.6 × 5.6 mm"
+       ],
+       [
+        "19.69 in",
+        "500 mm"
+       ],
+       [
+        "22.05 in",
+        "560 mm"
+       ],
+       [
+        "24.80 in",
+        "630 mm"
+       ],
+       [
+        "42.8 lb/ft",
+        "63.7 kg/m"
+       ],
+       [
+        "7.50 gal/ft",
+        "93.16 l/m"
+       ],
+       "20 / 39 / 52 ft"
+      ],
+      [
+       "16\"",
+       "DN 400",
+       [
+        "16.000 × 0.248 in",
+        "406.4 × 6.3 mm"
+       ],
+       [
+        "22.05 in",
+        "560 mm"
+       ],
+       [
+        "24.80 in",
+        "630 mm"
+       ],
+       [
+        "27.95 in",
+        "710 mm"
+       ],
+       [
+        "54.4 lb/ft",
+        "81 kg/m"
+       ],
+       [
+        "9.81 gal/ft",
+        "121.8 l/m"
+       ],
+       "20 / 39 / 52 ft"
+      ],
+      [
+       "18\"",
+       "DN 450",
+       [
+        "18.000 × 0.248 in",
+        "457.2 × 6.3 mm"
+       ],
+       [
+        "24.80 in",
+        "630 mm"
+       ],
+       [
+        "27.95 in",
+        "710 mm"
+       ],
+       [
+        "31.50 in",
+        "800 mm"
+       ],
+       [
+        "62.8 lb/ft",
+        "93.5 kg/m"
+       ],
+       [
+        "12.50 gal/ft",
+        "155.25 l/m"
+       ],
+       "20 / 39 / 52 ft"
+      ],
+      [
+       "20\"",
+       "DN 500",
+       [
+        "20.000 × 0.248 in",
+        "508.0 × 6.3 mm"
+       ],
+       [
+        "27.95 in",
+        "710 mm"
+       ],
+       [
+        "31.50 in",
+        "800 mm"
+       ],
+       [
+        "35.43 in",
+        "900 mm"
+       ],
+       [
+        "72.6 lb/ft",
+        "108 kg/m"
+       ],
+       [
+        "15.52 gal/ft",
+        "192.75 l/m"
+       ],
+       "20 / 39 / 52 ft"
+      ],
+      [
+       "24\"",
+       "DN 600",
+       [
+        "24.016 × 0.280 in",
+        "610.0 × 7.1 mm"
+       ],
+       [
+        "31.50 in",
+        "800 mm"
+       ],
+       [
+        "35.43 in",
+        "900 mm"
+       ],
+       [
+        "39.37 in",
+        "1000 mm"
+       ],
+       [
+        "94.1 lb/ft",
+        "140 kg/m"
+       ],
+       [
+        "22.45 gal/ft",
+        "278.8 l/m"
+       ],
+       "20 / 39 / 52 ft"
+      ],
+      [
+       "28\"",
+       "DN 700",
+       [
+        "27.992 × 0.315 in",
+        "711.0 × 8.0 mm"
+       ],
+       [
+        "35.43 in",
+        "900 mm"
+       ],
+       [
+        "39.37 in",
+        "1000 mm"
+       ],
+       [
+        "43.31 in",
+        "1100 mm"
+       ],
+       [
+        "121.0 lb/ft",
+        "180 kg/m"
+       ],
+       [
+        "30.55 gal/ft",
+        "379.37 l/m"
+       ],
+       "20 / 39 / 52 ft"
+      ],
+      [
+       "32\"",
+       "DN 800",
+       [
+        "32.008 × 0.346 in",
+        "813.0 × 8.8 mm"
+       ],
+       [
+        "39.37 in",
+        "1000 mm"
+       ],
+       [
+        "43.31 in",
+        "1100 mm"
+       ],
+       [
+        "47.24 in",
+        "1200 mm"
+       ],
+       [
+        "149.8 lb/ft",
+        "223 kg/m"
+       ],
+       [
+        "40.02 gal/ft",
+        "496.98 l/m"
+       ],
+       "20 / 39 / 52 ft"
+      ],
+      [
+       "36\"",
+       "DN 900",
+       [
+        "35.984 × 0.394 in",
+        "914.0 × 10.0 mm"
+       ],
+       [
+        "43.31 in",
+        "1100 mm"
+       ],
+       [
+        "47.24 in",
+        "1200 mm"
+       ],
+       "–",
+       [
+        "187.5 lb/ft",
+        "279 kg/m"
+       ],
+       [
+        "50.54 gal/ft",
+        "627.72 l/m"
+       ],
+       "20 / 39 ft"
+      ],
+      [
+       "40\"",
+       "DN 1000",
+       [
+        "40.000 × 0.433 in",
+        "1016.0 × 11.0 mm"
+       ],
+       [
+        "47.24 in",
+        "1200 mm"
+       ],
+       "–",
+       "–",
+       [
+        "226.5 lb/ft",
+        "337 kg/m"
+       ],
+       [
+        "62.48 gal/ft",
+        "776 l/m"
+       ],
+       "20 ft"
+      ]
+     ]
+    },
+    {
+     "title": "PREMANT DUO, two service pipes in one jacket",
+     "id": "duo",
+     "name": "PREMANT DUO",
+     "pipes": 2,
+     "material": "steel",
+     "steelCol": "Steel pipe, OD × wall, each",
+     "jacketCol": "Jacket, series 1",
+     "limits": {
+      "tContF": 266,
+      "tPeakF": 266,
+      "pPsi": 362
+     },
+     "note": "362 psi is not valid for all temperature and diameter combinations.",
+     "columns": [
+      "Size",
+      "DN",
+      "Steel pipe, OD × wall, each",
+      "Jacket, series 1",
+      "Jacket, series 2",
+      "Jacket, series 3",
+      "Weight, series 1",
+      "Standard lengths"
+     ],
+     "rows": [
+      [
+       "2 × ¾\"",
+       "DN 20",
+       [
+        "1.059 × 0.102 in",
+        "26.9 × 2.6 mm"
+       ],
+       [
+        "4.92 in",
+        "125 mm"
+       ],
+       [
+        "5.51 in",
+        "140 mm"
+       ],
+       [
+        "6.30 in",
+        "160 mm"
+       ],
+       [
+        "3.3 lb/ft",
+        "4.9 kg/m"
+       ],
+       "20 ft"
+      ],
+      [
+       "2 × 1\"",
+       "DN 25",
+       [
+        "1.327 × 0.102 in",
+        "33.7 × 2.6 mm"
+       ],
+       [
+        "5.51 in",
+        "140 mm"
+       ],
+       [
+        "6.30 in",
+        "160 mm"
+       ],
+       [
+        "7.09 in",
+        "180 mm"
+       ],
+       [
+        "4.1 lb/ft",
+        "6.1 kg/m"
+       ],
+       "20 ft"
+      ],
+      [
+       "2 × 1¼\"",
+       "DN 32",
+       [
+        "1.669 × 0.102 in",
+        "42.4 × 2.6 mm"
+       ],
+       [
+        "6.30 in",
+        "160 mm"
+       ],
+       [
+        "7.09 in",
+        "180 mm"
+       ],
+       [
+        "7.87 in",
+        "200 mm"
+       ],
+       [
+        "5.1 lb/ft",
+        "7.6 kg/m"
+       ],
+       "20 / 39 ft"
+      ],
+      [
+       "2 × 1½\"",
+       "DN 40",
+       [
+        "1.902 × 0.102 in",
+        "48.3 × 2.6 mm"
+       ],
+       [
+        "6.30 in",
+        "160 mm"
+       ],
+       [
+        "7.09 in",
+        "180 mm"
+       ],
+       [
+        "7.87 in",
+        "200 mm"
+       ],
+       [
+        "5.6 lb/ft",
+        "8.3 kg/m"
+       ],
+       "20 / 39 ft"
+      ],
+      [
+       "2 × 2\"",
+       "DN 50",
+       [
+        "2.374 × 0.114 in",
+        "60.3 × 2.9 mm"
+       ],
+       [
+        "7.87 in",
+        "200 mm"
+       ],
+       [
+        "8.86 in",
+        "225 mm"
+       ],
+       [
+        "9.84 in",
+        "250 mm"
+       ],
+       [
+        "7.9 lb/ft",
+        "11.8 kg/m"
+       ],
+       "20 / 39 ft"
+      ],
+      [
+       "2 × 2½\"",
+       "DN 65",
+       [
+        "2.996 × 0.114 in",
+        "76.1 × 2.9 mm"
+       ],
+       [
+        "8.86 in",
+        "225 mm"
+       ],
+       [
+        "9.84 in",
+        "250 mm"
+       ],
+       [
+        "11.02 in",
+        "280 mm"
+       ],
+       [
+        "9.9 lb/ft",
+        "14.8 kg/m"
+       ],
+       "20 / 39 ft"
+      ],
+      [
+       "2 × 3\"",
+       "DN 80",
+       [
+        "3.500 × 0.126 in",
+        "88.9 × 3.2 mm"
+       ],
+       [
+        "9.84 in",
+        "250 mm"
+       ],
+       [
+        "11.02 in",
+        "280 mm"
+       ],
+       [
+        "12.40 in",
+        "315 mm"
+       ],
+       [
+        "12.4 lb/ft",
+        "18.5 kg/m"
+       ],
+       "20 / 39 ft"
+      ],
+      [
+       "2 × 4\"",
+       "DN 100",
+       [
+        "4.500 × 0.142 in",
+        "114.3 × 3.6 mm"
+       ],
+       [
+        "12.40 in",
+        "315 mm"
+       ],
+       [
+        "13.98 in",
+        "355 mm"
+       ],
+       [
+        "15.75 in",
+        "400 mm"
+       ],
+       [
+        "18.5 lb/ft",
+        "27.5 kg/m"
+       ],
+       "20 / 39 / 52 ft"
+      ],
+      [
+       "2 × 5\"",
+       "DN 125",
+       [
+        "5.500 × 0.142 in",
+        "139.7 × 3.6 mm"
+       ],
+       [
+        "15.75 in",
+        "400 mm"
+       ],
+       [
+        "17.72 in",
+        "450 mm"
+       ],
+       [
+        "19.69 in",
+        "500 mm"
+       ],
+       [
+        "24.6 lb/ft",
+        "36.6 kg/m"
+       ],
+       "20 / 39 / 52 ft"
+      ],
+      [
+       "2 × 6\"",
+       "DN 150",
+       [
+        "6.626 × 0.157 in",
+        "168.3 × 4.0 mm"
+       ],
+       [
+        "17.72 in",
+        "450 mm"
+       ],
+       [
+        "19.69 in",
+        "500 mm"
+       ],
+       [
+        "22.05 in",
+        "560 mm"
+       ],
+       [
+        "31.8 lb/ft",
+        "47.3 kg/m"
+       ],
+       "20 / 39 / 52 ft"
+      ],
+      [
+       "2 × 8\"",
+       "DN 200",
+       [
+        "8.626 × 0.177 in",
+        "219.1 × 4.5 mm"
+       ],
+       [
+        "22.05 in",
+        "560 mm"
+       ],
+       [
+        "24.80 in",
+        "630 mm"
+       ],
+       [
+        "27.95 in",
+        "710 mm"
+       ],
+       [
+        "47.2 lb/ft",
+        "70.3 kg/m"
+       ],
+       "20 / 39 / 52 ft"
+      ]
+     ]
+    }
+   ]
+  }
+ },
+ "hydraulics": {
+  "designRulePaPerM": 200,
+  "designRuleSource": "BRUGG Pipes training: pressure drop sizing 100 to 200 Pa/m",
+  "roughnessMm": {
+   "pex": 0.007,
+   "steel": 0.045
+  },
+  "cpKJkgK": 4.186
+ }
+}

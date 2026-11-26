@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BRUGG Pipes Product Overview</title>
+<style>
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/inter-latin-400-normal.woff2) format('woff2')}@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/inter-latin-500-normal.woff2) format('woff2')}@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/inter-latin-600-normal.woff2) format('woff2')}@font-face{font-family:'Inter';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/inter-latin-700-normal.woff2) format('woff2')}@font-face{font-family:'Inter Tight';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/inter-tight-latin-600-normal.woff2) format('woff2')}@font-face{font-family:'Inter Tight';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/inter-tight-latin-700-normal.woff2) format('woff2')}@font-face{font-family:'Inter Tight';font-style:normal;font-weight:800;font-display:swap;src:url(fonts/inter-tight-latin-800-normal.woff2) format('woff2')}
+:root{ /* layout idea: the overview slide as a page; eight product cards on white, the pipe pictures carry it */
+--blue:#293D91;--blue-deep:#1B2A6B;--ink:#16181D;--grey:#4A5160;--line:#C9CED8;--tint:#EEF1F8;--paper:#fff;--heat:#C8402F;
+--display:"Inter Tight","Inter",Arial,sans-serif;--body:"Inter",Arial,Helvetica,sans-serif;color-scheme:light}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.5 var(--body);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+header{background:var(--blue);color:#fff;padding:26px 0 44px}header img{width:132px}
+header p.eyebrow{font:700 12.5px var(--body);letter-spacing:.16em;text-transform:uppercase;margin:44px 0 12px;opacity:.9}
+h1{font:800 clamp(34px,5.4vw,64px)/1 var(--display);letter-spacing:-.025em;margin:0;text-wrap:balance}
+header p.sub{font-size:19px;color:#E4E8F7;max-width:60ch;margin:18px 0 0}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;padding:44px 0 56px}
+.card{display:grid;grid-template-columns:116px 1fr;gap:18px;padding:22px 20px 20px;border:1.5px solid var(--line);border-radius:8px;text-decoration:none;color:var(--ink);background:var(--paper);position:relative;transition:border-color .15s,box-shadow .15s,transform .15s}
+a.card:hover{border-color:var(--blue);box-shadow:0 18px 40px -26px rgba(27,42,107,.6);transform:translateY(-2px)}
+a.card:focus-visible{outline:3px solid #F2B705;outline-offset:3px}
+.pic{position:relative;display:flex;align-items:flex-end;justify-content:center;min-height:168px}.pic>img:first-child{height:168px;width:auto;max-width:none}
+.usa{position:absolute;left:-6px;top:-4px;width:40px}
+.no{position:absolute;right:16px;top:16px;width:24px;height:24px;background:var(--blue);color:#fff;font:700 12px/24px var(--body);text-align:center;border-radius:3px}
+h2{font:800 21px/1.15 var(--display);color:var(--blue);margin:0 34px 6px 0}
+.tag{display:inline-block;font:700 10.5px var(--body);letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border-radius:3px}.tag.heat{color:var(--heat);background:#FBEDEA}.tag.cool{color:var(--blue);background:var(--tint)}
+ul{list-style:none;margin:12px 0 14px;padding:0;font-size:14.5px;color:var(--grey)}li{padding:1.5px 0}
+.go{font:700 13.5px var(--body);color:var(--blue)}a.card .go:after{content:" \2192"}
+.card.off{background:#FAFBFD}.card.off .go{color:#8C93A3;font-weight:600}
+footer{border-top:1px solid var(--line);padding:26px 0 40px;font-size:13px;color:var(--grey)}footer .wrap{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}footer img{width:112px}footer p{margin:0 0 6px}footer a{color:var(--grey);margin-right:18px}
+@media (max-width:980px){.grid{grid-template-columns:1fr 1fr}}@media (max-width:640px){.grid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.card{transition:none}a.card:hover{transform:none}}
+</style></head><body>
+<header><div class="wrap"><img src="media/logo-white.png" alt="BRUGG Pipes"><p class="eyebrow">North America</p><h1>District Heating and Cooling Solutions</h1><p class="sub">Eight pre-insulated pipe systems. Pick a product to open its page with data, videos and documents.</p></div></header>
+<main class="wrap"><div class="grid"><a class="card" href="https://claude.ai/artifact/HuzYjkiKPWHs49frxV1Sx9" target="_blank" rel="noopener"><div class="pic"><img src="media/premant.png" alt="PREMANT pipe"></div>
+<div class="txt"><span class="no">1</span><h2>PREMANT</h2><span class="tag heat">Heating</span><ul><li>Operating temperature 250 °F</li><li>Operating pressure 362 psi</li><li>DN 20–1000</li><li>EN 253 pre-insulated pipe</li><li>Leak detection</li></ul>
+<span class="go">Open product page</span></div></a><div class="card off"><div class="pic"><img src="media/fhk.png" alt="FLEXWELL FHK pipe"></div>
+<div class="txt"><span class="no">2</span><h2>FLEXWELL FHK</h2><span class="tag heat">Heating</span><ul><li>Operating temperature 302 °F</li><li>Operating pressure 362 psi</li><li>1" to 6" (DN 25–150)</li><li>Leak detection</li></ul>
+<span class="go">Product page in preparation</span></div></div><a class="card" href="https://claude.ai/artifact/FihQz28CgRscMqn5jQVVJA" target="_blank" rel="noopener"><div class="pic"><img src="media/casaflex.jpg" alt="CASAFLEX pipe"></div>
+<div class="txt"><span class="no">3</span><h2>CASAFLEX</h2><span class="tag heat">Heating</span><ul><li>Operating temperature 302 °F</li><li>Operating pressure 362 psi</li><li>¾" to 4" (DN 20–100)</li><li>Leak detection</li></ul>
+<span class="go">Open product page</span></div></a><a class="card" href="https://claude.ai/artifact/Mcjc2tqeuSWQo7AXs1q1kn" target="_blank" rel="noopener"><div class="pic"><img src="media/calpex.png" alt="CALPEX PUR-KING pipe"><img class="usa" src="media/usa.png" alt="Made in USA"></div>
+<div class="txt"><span class="no">4</span><h2>CALPEX PUR-KING</h2><span class="tag heat">Heating</span><ul><li>Operating temperature 176 °F (short term 203 °F)</li><li>Operating pressure 87 psi</li><li>0.75" to 5.5"</li><li>Up to 2" NSF 61 certified</li></ul>
+<span class="go">Open product page</span></div></a><a class="card" href="https://claude.ai/artifact/GavmAL9XKXS3WqfkB2TRop" target="_blank" rel="noopener"><div class="pic"><img src="media/armopex.jpg" alt="ARMOPEX pipe"><img class="usa" src="media/usa.png" alt="Made in USA"></div>
+<div class="txt"><span class="no">5</span><h2>ARMOPEX</h2><span class="tag heat">Heating</span><ul><li>Operating temperature 203 °F (short term 239 °F)</li><li>Operating pressure 174 psi</li><li>1.25" to 5" (DN 20–125)</li></ul>
+<span class="go">Open product page</span></div></a><div class="card off"><div class="pic"><img src="media/polarflex.png" alt="POLARFLEX pipe"><img class="usa" src="media/usa.png" alt="Made in USA"></div>
+<div class="txt"><span class="no">6</span><h2>POLARFLEX</h2><span class="tag cool">Cooling and cold water</span><ul><li>Operating temperature −40 to 140 °F</li><li>Operating pressure 100–200 psi</li><li>1" to 4" (DN 20–100)</li><li>Heat trace channel</li></ul>
+<span class="go">Product page in preparation</span></div></div><div class="card off"><div class="pic"><img src="media/citiflex.png" alt="CITIFLEX pipe"><img class="usa" src="media/usa.png" alt="Made in USA"></div>
+<div class="txt"><span class="no">7</span><h2>CITIFLEX</h2><span class="tag cool">Cooling and cold water</span><ul><li>Operating temperature −40 to 140 °F</li><li>Operating pressure 362 psi</li><li>1" and 2"</li><li>AWWA certified</li><li>Heat trace channel</li></ul>
+<span class="go">Product page in preparation</span></div></div><div class="card off"><div class="pic"><img src="media/coolflex.png" alt="COOLFLEX pipe"><img class="usa" src="media/usa.png" alt="Made in USA"></div>
+<div class="txt"><span class="no">8</span><h2>COOLFLEX</h2><span class="tag cool">Cooling and cold water</span><ul><li>Operating temperature −40 to 140 °F</li><li>Operating pressure 100–200 psi</li><li>1" to 4" (DN 20–125)</li></ul>
+<span class="go">Product page in preparation</span></div></div></div></main>
+<footer><div class="wrap"><div><p>BRUGG Pipes · bruggpipes.com · sales.bpna@brugg.com · +1 815 927 7355</p><p><a href="https://www.bruggpipes.com/us/legal-notice/" target="_blank" rel="noopener">Legal notice</a><a href="https://www.bruggpipes.com/us/privacy-policy/" target="_blank" rel="noopener">Privacy policy</a><a href="https://www.bruggpipes.com/us/compliance/" target="_blank" rel="noopener">Compliance</a><a href="https://www.bruggpipes.com/us/t-c/" target="_blank" rel="noopener">Terms and conditions</a></p><p>Values as on the BRUGG Pipes product overview. Subject to technical changes.</p></div><img src="media/logo.png" alt="BRUGG Pipes"></div></footer>
+</body></html>
