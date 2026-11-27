@@ -165,7 +165,7 @@ footer .group{font:700 12px var(--body);letter-spacing:.14em;color:var(--blue);m
 <div class="defs"><div><b>Loop</b><span>The pipe laid once around the tank wall. Its length is set by the digester diameter.</span></div><div><b>Circuit</b><span>One continuous coil of pipe with its own supply and return through the wall. A circuit makes one or more loops; no joints inside the tank.</span></div><div><b>Row</b><span>Loops sit above each other, 10 in apart, the lowest 3 ft above the floor. One bracket holds two rows.</span></div></div>
 <h3>How much pipe you really need</h3><div id="need"></div><p class="fine" id="needt"></p>
 <h3>Your BIOFLEX package</h3><div class="scroll"><table id="pkg"></table></div>
-<p class="fine">Brackets hold two loops each and are counted at one every 3.3 ft (1.0 m) of tank circumference, rounded up to full packs of 10. Optional items follow connection variant BGT 1.810 (connection inside the tank).</p>
+<p class="fine">Brackets hold two loops each and are counted at one every 3.3 ft (1.0 m) of tank circumference, rounded up to full packs of 10. All fittings have 2 in NPT threads. The 2 in NPT hard pipe through the wall and the 90° union are supplied by the client.</p>
 <h3>CALPEX to the heat source</h3><p class="fine" id="cpxt"></p><div class="scroll"><table id="cpx"></table></div>
 <h3>Design values</h3><div class="scroll"><table class="kv" id="kv"></table></div><ul id="notes"></ul>
 <h3>All layouts for this digester</h3><div class="scroll"><table id="alt"></table></div>
@@ -317,7 +317,7 @@ function run(){
   $('h-circ').textContent=k.circuits+' × '+k.loops;
   $('h-circ-sub').textContent=(k.circuits>1?'heating circuits':'heating circuit')+' × '+(k.loops>1?'loops':'loop')+' around the wall';
   $('h-br').textContent=f0(r.brackets.ordered);
-  $('h-br-sub').textContent='two-loop brackets, '+r.brackets.packs+' packs of 10';
+  $('h-br-sub').textContent='pipe supports, '+r.brackets.packs+' packs of 10';
   draw(p,r);
   var pin=$('pin');pin.textContent='';
   [['Digester',f0(p.D*FT)+' ft inside diameter ('+f1(p.D)+' m), '+f0(p.H*FT)+' ft liquid depth ('+f1(p.H)+' m)'],['Process temperature',f0(p.TF)+' °F ('+f0(p.T)+' °C)'],['Heat into the digester',f0(p.q*3412.142)+' BTU/h ('+f0(p.q)+' kW), design margin '+Math.round(p.margin*100)+'%'],
@@ -351,12 +351,11 @@ function run(){
   note('Coil lengths are rounded up to the next 10 ft and include 6.6 ft (2 m) per circuit for the two pipe ends.');
   var pk=$('pkg');pk.textContent='';row(pk,['Qty','Item','Article no.','Note'],true);
   [[f0(k.totalFt)+' ft','BIOFLEX pipe CNW 60/66, 2 in (DN 50), AISI 316L','1014439',k.circuits+(k.circuits>1?' coils of ':' coil of ')+f0(k.Lft)+' ft'],
-   [r.fittings.ends,'End connector GRAPA-S DN 50, 2 in male thread','1014621','2 per circuit'],
-   [r.brackets.packs+' packs','Pipe support RBF 60 type A, pack of 10 ('+r.brackets.ordered+' brackets)','1014631',r.brackets.rows+(r.brackets.rows>1?' rows × ':' row × ')+r.brackets.perRow+' brackets, one every 3.3 ft (1.0 m)'],
-   [r.fittings.fix,'Fixing set with anchor BS 10','1014629','For brackets and flange plates'],
-   [r.fittings.ends,'Elbow screw fitting DN 50','1014617','Optional; or 90° union by the client'],
-   [r.fittings.ends,'Double nipple 2 in with flange plate','1014613','Optional; or hard pipe and wall seal by the client'],
-   [1,'Installation tool for GRAPA-S end connector (assembly flanges)','1014677','One set per site']
+   [r.fittings.ends,'2" BIOFLEX NPT end fitting (GRAPA-S, 2 in NPT)','1014614','2 per circuit'],
+   [r.brackets.packs+' packs','Pipe support RBF 60 type F incl. bend support, pack of 10 ('+r.brackets.ordered+' supports)','1014631',r.brackets.rows+(r.brackets.rows>1?' rows × ':' row × ')+r.brackets.perRow+' supports, one every 3.3 ft (1.0 m)'],
+   [k.circuits+(k.circuits>1?' sets':' set'),'Wall seal / ring gasket type WD 85-94 (set of 2)','1014623','1 set per circuit, for supply and return'],
+   [1,'DN 50 assembly tool B-NPT','1014283','One per site'],
+   ['By client','2 in NPT hard pipe through the wall and 90° union','','2 of each per circuit']
   ].forEach(function(x){row(pk,x)});
   var cx=$('cpx'),ct=$('cpxt');cx.textContent='';ct.textContent='';
   if(!(p.route>0)){ct.textContent='Enter the route length between heat source and digester to get the pre-insulated pipe for the connection.'}
