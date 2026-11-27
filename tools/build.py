@@ -129,6 +129,7 @@ for slug,G in sorted(GROUPS.items(),key=lambda kv:(kv[1].get('order') or 99,kv[0
     usa='<img class="usa" src="media/usa.png" alt="Made in USA">' if G.get('made_in_usa') else ''
     tag='<span class="tag">Cooling and cold water</span>' if cat else '<span class="tag heat">Heating</span>'
     if G.get('category')=='fuel': tag='<span class="tag">Fuel and DEF</span>'
+    if G.get('category')=='industry': tag='<span class="tag">Fuel and industry</span>'
     line=re.sub(r'^'+re.escape(G['name'].split()[0])+r'[^\u2013-]*\s[\u2013-]\s','',G.get('tagline') or '')
     V=items(G,'videos'); D=items(G,'documents')
     more=[]
@@ -287,7 +288,7 @@ secs=[sec('uno','Single pipe','ARMOPEX UNO','Seven sizes in coils. Aramid-reinfo
 subpage('armopex','ARMOPEX by BRUGG Pipes: Sub-products','ARMOPEX – Flexible Pipe for Medium-Pressure District Heating','ARMOPEX','Pipe, connectors and installation.',cards,secs,d,'ARMOPEX pipes in the trench')
 
 # ---------- patch product pages ----------
-TITLE={'casaflex':'CASAFLEX by BRUGG Pipes','premant':'PREMANT by BRUGG Pipes','calpex':'CALPEX by BRUGG Pipes','armopex':'ARMOPEX by BRUGG Pipes','bioflex':'BIOFLEX by BRUGG Pipes','secon-x':'SECON-X by BRUGG Pipes'}
+TITLE={'casaflex':'CASAFLEX by BRUGG Pipes','premant':'PREMANT by BRUGG Pipes','calpex':'CALPEX by BRUGG Pipes','armopex':'ARMOPEX by BRUGG Pipes','bioflex':'BIOFLEX by BRUGG Pipes','secon-x':'SECON-X by BRUGG Pipes','flexwell-hl':'FLEXWELL-HL by BRUGG Pipes'}
 for p,t in TITLE.items():
     h=rd(p); N=p.upper()
     h=h.replace('<meta charset="utf-8">','<meta charset="utf-8">'+CSPMETA,1)

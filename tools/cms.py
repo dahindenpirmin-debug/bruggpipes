@@ -38,7 +38,7 @@ def apply_group(h,G,p):
         h=h.replace(f'"media/{x["id"]}.mp4"','"'+e(x['file'])+'"').replace(f'"media/poster-{x["id"]}.jpg"','"'+e(x.get('poster'))+'"')
     for x in D:
         if x['id'].startswith('docs/'): h=h.replace('"'+x['id']+'"','"'+e(x['file'])+'"')
-    assert JS_OLD in h,p
+    assert JS_OLD in h or 'id="instvideo"' not in h,p   # pages without an installation video carry no player script
     return h.replace(JS_OLD,JS_NEW)
 def hide_missing_videos(h):
     def f(m):

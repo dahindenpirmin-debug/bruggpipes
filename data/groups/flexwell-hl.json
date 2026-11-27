@@ -1,0 +1,48 @@
+{
+  "name": "FLEXWELL-HL",
+  "order": 11,
+  "category": "industry",
+  "status": "live",
+  "made_in_usa": false,
+  "card_image": "/media/flexwell-hl.png",
+  "card_bullets": [
+    "Double-wall 316L stainless steel",
+    "145 psi (10 bar), suction or pressure",
+    "1\" to 3\" (DN 25–80), up to 3,000 ft",
+    "2 h fire rating per UL 1369"
+  ],
+  "legacy": true,
+  "tagline": "FLEXWELL-HL – Flexible Double-Wall Stainless Steel Pipe for Fuel Systems",
+  "description": "",
+  "hero_image": "/flexwell-hl/media/hero.jpg",
+  "key_figures": [
+    {
+      "value": "145 psi",
+      "label": "operating pressure (10 bar), suction or pressure"
+    },
+    {
+      "value": "3,000 ft",
+      "label": "factory lengths, up to 914 m in one piece"
+    },
+    {
+      "value": "2 h",
+      "label": "fire rating per UL 1369"
+    },
+    {
+      "value": "1 to 3 in",
+      "label": "four sizes, DN 25 to DN 80"
+    }
+  ],
+  "videos": [],
+  "documents": [
+    {
+      "id": "docs/data-sheet.pdf",
+      "section": "",
+      "title": "Data Sheet",
+      "description": "Description, construction, leak detection, physical properties of the four sizes",
+      "note": "2 pages · BRUGG original",
+      "file": "/flexwell-hl/docs/data-sheet.pdf",
+      "download_name": "4_FSR_Data Sheet_2021 Mar.pdf"
+    }
+  ]
+}

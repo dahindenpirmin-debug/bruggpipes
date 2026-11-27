@@ -55,7 +55,7 @@ collections:
     fields:
       - { label: Name, name: name, widget: string }
       - { label: Position on the overview, name: order, widget: number, value_type: int, min: 1, default: 20 }
-      - { label: Category, name: category, widget: select, options: [ { label: Heating, value: heating }, { label: Cooling and cold water, value: cooling }, { label: Fuel and DEF, value: fuel } ], default: heating }
+      - { label: Category, name: category, widget: select, options: [ { label: Heating, value: heating }, { label: Cooling and cold water, value: cooling }, { label: Fuel and DEF, value: fuel }, { label: Fuel and industry, value: industry } ], default: heating }
       - { label: Status, name: status, widget: select, options: [ { label: 'Live: page is online', value: live }, { label: 'In preparation: hidden', value: preparation } ], default: preparation }
       - { label: Made in USA badge, name: made_in_usa, widget: boolean, default: false }
       - { label: Picture on the overview card, name: card_image, widget: image, required: false }
