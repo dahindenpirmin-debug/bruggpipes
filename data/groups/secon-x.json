@@ -1,0 +1,75 @@
+{
+  "name": "SECON-X",
+  "order": 10,
+  "category": "fuel",
+  "status": "live",
+  "made_in_usa": false,
+  "card_image": "/media/secon-x.png",
+  "card_bullets": [
+    "Gas stations, DEF, marinas, industry",
+    "1 in to 3 in, 316L stainless steel",
+    "145 psig (10 bar), UL 971A",
+    "No welds, no joints in the ground"
+  ],
+  "legacy": true,
+  "tagline": "SECON-X – Flexible Double-Wall Stainless Steel Fuel Pipe",
+  "description": "",
+  "hero_image": "/secon-x/media/hero.jpg",
+  "key_figures": [
+    {
+      "value": "1,000+ ft",
+      "label": "(305 m) and more in one piece, no intermediate joints"
+    },
+    {
+      "value": "145 psig",
+      "label": "(10 bar) max. operating pressure, 1 in to 2 in"
+    },
+    {
+      "value": "316L",
+      "label": "stainless steel primary pipe"
+    },
+    {
+      "value": "UL 971A",
+      "label": "approved pipe with cULus mark"
+    }
+  ],
+  "videos": [],
+  "documents": [
+    {
+      "id": "docs/data-sheet.pdf",
+      "section": "",
+      "title": "Data Sheet",
+      "description": "Description, sizes and pressure ratings, technical data of all four sizes",
+      "note": "2 pages · BRUGG original",
+      "file": "/secon-x/docs/data-sheet.pdf",
+      "download_name": "3_SEC_Data Sheet_2025.pdf"
+    },
+    {
+      "id": "docs/technical-details.pdf",
+      "section": "",
+      "title": "Technical Details",
+      "description": "System description, fittings, pressure loss diagrams, tips for laying, references",
+      "note": "20 pages · BRUGG original, metric",
+      "file": "/secon-x/docs/technical-details.pdf",
+      "download_name": "2_SEC_Technical Details_2021 May.pdf"
+    },
+    {
+      "id": "ul-certificate",
+      "section": "",
+      "title": "Certificate of Compliance ANSI/CAN/UL/ULC",
+      "description": "UL certificate for SECON-X",
+      "note": "bruggpipes.com",
+      "file": "https://www.bruggpipes.com/fileadmin/user_upload/downloads/produkte/03-industrie/07-secon-x/zertifikate/FSR_und_SEC_Zertifikat_UL.pdf",
+      "download_name": "UL Certificate.pdf"
+    },
+    {
+      "id": "epd",
+      "section": "",
+      "title": "Certificate EPD",
+      "description": "Environmental Product Declaration",
+      "note": "bruggpipes.com",
+      "file": "https://www.bruggpipes.com/fileadmin/user_upload/downloads/produkte/03-industrie/allgemein/EPD_document_EPD-IES-0017460_001_en.pdf",
+      "download_name": "EPD.pdf"
+    }
+  ]
+}

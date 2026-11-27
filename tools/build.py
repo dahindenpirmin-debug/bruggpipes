@@ -84,7 +84,7 @@ def footer(root,note):
     prods=''.join(f'<li><a href="{root}{k}/">{e(G["name"])}</a></li>' for k,G in live)
     x=' target="_blank" rel="noopener"'
     return f'''<footer class="site-footer"><div class="fwrap"><div class="fgrid">
-<div class="fbrand"><a href="{root}"><img src="/media/logo.png" alt="BRUGG Pipes" width="150"></a><p class="group">A BRUGG GROUP COMPANY</p><p>Pre-insulated pipe systems for district heating and cooling in North America.</p>
+<div class="fbrand"><a href="{root}"><img src="/media/logo.png" alt="BRUGG Pipes" width="150"></a><p class="group">A BRUGG GROUP COMPANY</p><p>Flexible and pre-insulated pipe systems for North America.</p>
 <p class="fcontact"><a href="tel:+18159277355">+1 815 927 7355</a><a href="mailto:sales.bpna@brugg.com">sales.bpna@brugg.com</a><a href="https://www.bruggpipes.com/us/"{x}>bruggpipes.com</a></p></div>
 <nav aria-label="Products"><h4>Products</h4><ul>{prods}</ul></nav>
 <nav aria-label="Tools and training"><h4>Tools and training</h4><ul><li><a href="{root}configurator/">Configurator</a></li><li><a href="{root}bioflex/sizing.html">BIOFLEX sizing tool</a></li><li><a href="{root}academy/">Academy</a></li><li><a href="{root}academy/#installation">Installation library</a></li><li><a href="https://brugg.partcommunity.com/3d-cad-models/sso/?languageIso=en"{x}>CAD / BIM library</a></li></ul></nav>
@@ -128,6 +128,7 @@ for slug,G in sorted(GROUPS.items(),key=lambda kv:(kv[1].get('order') or 99,kv[0
     cat=G.get('category')=='cooling'; legacy=bool(G.get('legacy'))
     usa='<img class="usa" src="media/usa.png" alt="Made in USA">' if G.get('made_in_usa') else ''
     tag='<span class="tag">Cooling and cold water</span>' if cat else '<span class="tag heat">Heating</span>'
+    if G.get('category')=='fuel': tag='<span class="tag">Fuel and DEF</span>'
     line=re.sub(r'^'+re.escape(G['name'].split()[0])+r'[^\u2013-]*\s[\u2013-]\s','',G.get('tagline') or '')
     V=items(G,'videos'); D=items(G,'documents')
     more=[]
@@ -142,7 +143,7 @@ if len(cards)%3==2: cards.append('<a class="card help" href="configurator/"><p c
 body=f'''<div class="wrap intro"><p class="eyebrow">North America</p><h1>District Heating and Cooling Solutions</h1>
 <p class="sub">Pre-insulated pipe systems for North America. Pick a product to open its page with data, videos and documents, or let the configurator size your line.</p><div class="cta"><a class="btn solid" href="configurator/">Open the configurator</a><a class="btn" href="https://www.bruggpipes.com/us/contact/" target="_blank" rel="noopener">Talk to sales</a></div></div></header>
 <main>
-<section id="products" style="padding-top:20px"><div class="wrap"><p class="eyebrow">Products</p><h2>Pre-insulated pipe systems.</h2><div class="grid">{''.join(cards)}</div></div></section>
+<section id="products" style="padding-top:20px"><div class="wrap"><p class="eyebrow">Products</p><h2>Pipe systems for energy, biogas and fuel.</h2><div class="grid">{''.join(cards)}</div></div></section>
 <section id="configurator-teaser" style="padding-bottom:0"><div class="wrap split" style="grid-template-columns:1.4fr 1fr"><div><p class="eyebrow">Configurator</p><h2>Size your line in five steps.</h2><p class="lead">Enter temperatures, heat load and route length in US units. The configurator shows the suitable BRUGG Pipes systems with velocity and pressure loss for every size and prepares your request for a quote.</p></div><div><a class="btn solid" href="configurator/">Open the configurator</a></div></div></section>
 <section id="cad"><div class="wrap split" style="grid-template-columns:1.4fr 1fr"><div><p class="eyebrow">3D CAD and BIM</p><h2>Models for your drawings, straight from the BRUGG Pipes BIM library.</h2><p class="lead">3D CAD models and BIM objects of BRUGG Pipes products for download in your CAD format. The library opens in English in a new tab; a free account with your business email is required.</p></div><div><a class="btn solid" href="https://brugg.partcommunity.com/3d-cad-models/sso/?languageIso=en" target="_blank" rel="noopener">Open the CAD / BIM library</a></div></div></section>'''
 open(f'{SITE}/index.html','w',encoding='utf-8').write(page('BRUGG Pipes North America: Product Overview','',[('Products','#products'),('Configurator','configurator/'),('Academy','academy/'),('CAD / BIM','#cad'),('Contact','https://www.bruggpipes.com/us/contact/')],body,'Values as on the BRUGG Pipes product overview. Subject to technical changes.','BRUGG Pipes North America: pre-insulated pipe systems for district heating and cooling, with data, videos and documents.'))
@@ -286,7 +287,7 @@ secs=[sec('uno','Single pipe','ARMOPEX UNO','Seven sizes in coils. Aramid-reinfo
 subpage('armopex','ARMOPEX by BRUGG Pipes: Sub-products','ARMOPEX – Flexible Pipe for Medium-Pressure District Heating','ARMOPEX','Pipe, connectors and installation.',cards,secs,d,'ARMOPEX pipes in the trench')
 
 # ---------- patch product pages ----------
-TITLE={'casaflex':'CASAFLEX by BRUGG Pipes','premant':'PREMANT by BRUGG Pipes','calpex':'CALPEX by BRUGG Pipes','armopex':'ARMOPEX by BRUGG Pipes','bioflex':'BIOFLEX by BRUGG Pipes'}
+TITLE={'casaflex':'CASAFLEX by BRUGG Pipes','premant':'PREMANT by BRUGG Pipes','calpex':'CALPEX by BRUGG Pipes','armopex':'ARMOPEX by BRUGG Pipes','bioflex':'BIOFLEX by BRUGG Pipes','secon-x':'SECON-X by BRUGG Pipes'}
 for p,t in TITLE.items():
     h=rd(p); N=p.upper()
     h=h.replace('<meta charset="utf-8">','<meta charset="utf-8">'+CSPMETA,1)
